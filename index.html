@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>AIF Studio | AI業務自動化エージェント構築会社</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AIF Studioは、AIとノーコードを組み合わせて、メール・事務・営業・バックオフィスをまるごと自動化するAI業務自動化エージェント構築会社です。" />
+
+  <!-- フォント：Inter + Noto Sans JP -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #030712;
+      --bg-alt: #020617;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --accent: #0ea5e9;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-strong: #22d3ee;
+      --accent-gold: #fbbf24;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #fb7185;
+      --radius-xl: 18px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", "Noto Sans JP", sans-serif;
+      font-size: 16px;
+      background: radial-gradient(circle at top, #020617 0, #020617 25%, #020617 40%, #000 75%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.08), transparent 50%),
+        radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.12), transparent 45%),
+        linear-gradient(145deg, #020617 0%, #020617 50%, #000 100%);
+    }
+
+    .max-w {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.45), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* ここに自分のロゴPNGを置く想定（aif-logo.png） */
+    .logo-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: #e5f4ff;
+    }
+
+    .logo-text-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 4px 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), var(--accent-strong));
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.25), rgba(15, 23, 42, 0.2));
+      font-size: 0.9rem;
+      color: #e0faff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
+      box-shadow: 0 12px 35px rgba(8, 47, 73, 0.65);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent-strong);
+      box-shadow: 0 18px 45px rgba(8, 47, 73, 0.95);
+    }
+
+    .nav-badge {
+      font-size: 0.78rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    main {
+      padding-bottom: 80px;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 70px 0 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 12px 5px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), rgba(15, 23, 42, 0.9));
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .badge-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #e0f2fe, #0ea5e9 60%, #1d4ed8 90%);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge-dot::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 15%, rgba(248, 250, 252, 0.95), transparent 55%);
+      mix-blend-mode: screen;
+    }
+
+    .badge-kv {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e0f2ff;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 3.7vw, 3.3rem);
+      line-height: 1.15;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+
+    .hero-title span.gradient {
+      background: linear-gradient(120deg, #f9fafb, #e0f2fe, #7dd3fc, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub-typing {
+      font-family: "Inter", "Noto Sans JP", sans-serif;
+      font-size: 0.98rem;
+      color: #bae6fd;
+      margin-bottom: 10px;
+      min-height: 1.5em;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 1px solid rgba(148, 163, 184, 0.9);
+      animation: caret 1s steps(2, end) infinite;
+    }
+
+    @keyframes caret {
+      0%, 48% { border-color: rgba(148, 163, 184, 0.9); }
+      48.01%, 100% { border-color: transparent; }
+    }
+
+    .hero-sub {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 24px;
+    }
+
+    .hero-sub strong {
+      color: #e5f4ff;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .btn-primary {
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      background: radial-gradient(circle at top, #38bdf8, #0ea5e9, #0369a1);
+      color: #f9fafb;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 16px 40px rgba(8, 47, 73, 0.9);
+      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, filter 0.16s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 22px 55px rgba(8, 47, 73, 1);
+    }
+
+    .btn-secondary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: border-color 0.16s, color 0.16s, background 0.16s;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(209, 213, 219, 0.9);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .hero-notes {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-notes span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-notes span i {
+      font-size: 0.85rem;
+      color: #22c55e;
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .floating-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), rgba(15, 23, 42, 0.96));
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .floating-card::before {
+      content: "";
+      position: absolute;
+      top: -35%;
+      right: -25%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.4), transparent 55%);
+      filter: blur(6px);
+      opacity: 0.6;
+    }
+
+    .fc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      z-index: 1;
+    }
+
+    .fc-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e5f4ff;
+    }
+
+    .fc-badge {
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(240, 249, 255, 0.25);
+      color: #e0f2fe;
+    }
+
+    .fc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      z-index: 1;
+    }
+
+    .fc-block {
+      border-radius: 14px;
+      padding: 10px 11px;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.92));
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fc-block small {
+      font-size: 0.86rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .metric {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent-strong);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .metric span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .fc-status {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .fc-status span {
+      font-size: 0.8rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #e0f2fe;
+    }
+
+    .fc-log {
+      margin-top: 6px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      max-height: 90px;
+      overflow-y: auto;
+      z-index: 1;
+    }
+
+    .fc-log-line {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+
+    .fc-log-time {
+      font-size: 0.82rem;
+      color: rgba(148, 163, 184, 0.9);
+      width: 46px;
+      flex-shrink: 0;
+    }
+
+    .fc-log-text {
+      flex: 1;
+    }
+
+    .fc-pill-row {
+      margin-top: 4px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .fc-pill {
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+    }
+
+    .fc-orbit {
+      position: absolute;
+      inset: -40px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.18);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .fc-orbit-dot {
+      position: absolute;
+      top: 20%;
+      left: 76%;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
+    }
+
+    /* Section titles */
+    .section-header {
+      margin-bottom: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .section-desc {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 580px;
+    }
+
+    /* Problem → solution */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 22px;
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.88));
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-chip {
+      font-size: 0.9rem;
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .problem-list,
+    .solution-list {
+      list-style: none;
+      margin-top: 8px;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .problem-list li,
+    .solution-list li {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .problem-list li span.icon {
+      margin-top: 3px;
+      font-size: 0.96rem;
+      color: var(--danger);
+    }
+
+    .solution-list li span.icon {
+      margin-top: 3px;
+      font-size: 0.96rem;
+      color: #22c55e;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 16px 16px;
+      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), rgba(15, 23, 42, 0.96));
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .service-tag {
+      font-size: 0.88rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--muted);
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .service-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .service-list li {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .service-list li span.icon {
+      font-size: 0.85rem;
+      color: var(--accent-strong);
+      margin-top: 2px;
+    }
+
+    .service-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .service-meta strong {
+      font-size: 0.96rem;
+      color: #e5e7eb;
+    }
+
+    .pill-soft {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    /* More services (accordion) */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .accordion-item {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9));
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 11px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.98rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .accordion-header span:first-child {
+      text-align: left;
+    }
+
+    .accordion-icon {
+      font-size: 1.1rem;
+      color: var(--muted);
+      transition: transform 0.2s ease-out;
+    }
+
+    .accordion-item.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 16px;
+      transition: max-height 0.25s ease-out, padding-top 0.25s ease-out, padding-bottom 0.25s ease-out;
+    }
+
+    .accordion-item.open .accordion-content {
+      padding-top: 6px;
+      padding-bottom: 10px;
+    }
+
+    .accordion-content ul {
+      list-style: none;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .accordion-content li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 5px;
+    }
+
+    .accordion-content li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.86rem;
+      color: var(--accent-strong);
+    }
+
+    /* Flow */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 22px;
+    }
+
+    .flow-steps {
+      list-style: none;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .flow-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #e0f2fe;
+      flex-shrink: 0;
+    }
+
+    .flow-step-title {
+      font-size: 1rem;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .flow-note {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .flow-metrics {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 16px 16px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.17), rgba(15, 23, 42, 0.94));
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .metric-block small {
+      font-size: 0.92rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .metric-block strong {
+      font-size: 1.12rem;
+      color: #e0f2fe;
+    }
+
+    .metric-block span {
+      font-size: 0.9rem;
+      color: #bae6fd;
+      margin-left: 3px;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 20px;
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(250, 250, 250, 0.16);
+      padding: 18px 18px 14px;
+      background: radial-gradient(circle at top left, rgba(234, 179, 8, 0.2), rgba(15, 23, 42, 0.95));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pricing-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #fef9c3;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      color: #fef9c3;
+      font-weight: 500;
+    }
+
+    .pricing-note {
+      font-size: 0.96rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .pricing-list {
+      font-size: 0.96rem;
+      color: var(--muted);
+      list-style: none;
+    }
+
+    .pricing-list li {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .pricing-list li span.icon {
+      font-size: 0.96rem;
+      color: var(--accent-gold);
+      margin-top: 2px;
+    }
+
+    .pricing-side-note {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .chip-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    /* Contact */
+    .contact-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.15), rgba(15, 23, 42, 0.96));
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .contact-main {
+      max-width: 450px;
+    }
+
+    .contact-main p {
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .mailto-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      font-size: 0.96rem;
+      color: #e0f2fe;
+      margin-top: 8px;
+      transition: background 0.16s, transform 0.16s, box-shadow 0.16s;
+    }
+
+    .mailto-link:hover {
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(8, 47, 73, 0.85);
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.85));
+      padding: 14px 0 16px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-tagline {
+      font-size: 0.92rem;
+      color: #e0f2fe;
+    }
+
+    .footer-tagline span {
+      color: #facc15;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .problem-grid,
+      .flow-grid,
+      .pricing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .flow-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        position: static;
+        background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.96));
+      }
+
+      .nav {
+        padding: 10px 0 8px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 32px;
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .flow-metrics {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="max-w nav">
+        <div class="logo">
+          <!-- 自分のロゴ画像のパスに変更してOK -->
+          <img src="aif-logo.png" alt="AIF Studio Logo" class="logo-img" />
+          <div>
+            <div class="logo-text-main">AIF STUDIO</div>
+            <div class="logo-text-sub">AI業務自動化エージェント構築会社</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#services">サービス</a>
+          <a href="#more-services">できること</a>
+          <a href="#flow">導入フロー</a>
+          <a href="#pricing">料金</a>
+          <a href="#contact">お問い合わせ</a>
+          <button class="nav-cta" onclick="scrollToSection('contact')">
+            <span>AI導入の相談をする</span>
+            <span class="nav-badge">初回ヒアリング無料</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="max-w">
+        <!-- Hero -->
+        <section class="hero">
+          <div>
+            <div class="badge">
+              <div class="badge-dot"></div>
+              <div>
+                <div class="badge-kv">Japan · AI Automation Agency</div>
+                <div style="font-size: 0.9rem; color: var(--muted);">
+                  メール・事務・営業を、自律するAIワーカーに。
+                </div>
+              </div>
+            </div>
+
+            <h1 class="hero-title">
+              日本から、<span class="gradient">未来を照らす</span><br />
+              AI業務自動化エージェント
+            </h1>
+
+            <div class="hero-sub-typing" id="typing"></div>
+
+            <p class="hero-sub">
+              AIF Studioは、既存の業務を“分析 → 分解 → 自動化”し、
+              <strong>メール・事務・営業・バックオフィスをAIワーカーに置き換える</strong>
+              専門チームです。<br />
+              モデル開発ではなく、<strong>今すぐ動くAIシステム</strong>を構築します。
+            </p>
+
+            <div class="hero-cta-row">
+              <button class="btn-primary" onclick="scrollToSection('contact')">
+                無料ヒアリングを予約
+                <span>→</span>
+              </button>
+              <button class="btn-secondary" onclick="scrollToSection('services')">
+                できることを詳しく見る
+              </button>
+            </div>
+
+            <div class="hero-notes">
+              <span><i>●</i> 1人事業・少人数チームでも対応可</span>
+              <span><i>●</i> AIモデル開発不要 / 既存LLM活用</span>
+              <span><i>●</i> PoCから小さく始めて拡張可能</span>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="floating-card reveal">
+              <div class="fc-header">
+                <div class="fc-title">AIF Autonomous Worker</div>
+                <div class="fc-badge">稼働中 · 24/7</div>
+              </div>
+
+              <div class="fc-grid">
+                <div class="fc-block">
+                  <small>今日だけで削減した時間</small>
+                  <div class="metric">
+                    <span id="metric-hours">0</span>時間
+                    <span>（人手換算）</span>
+                  </div>
+                  <div class="fc-status">
+                    <span>メール返信</span>
+                    <span>事務処理</span>
+                  </div>
+                </div>
+                <div class="fc-block">
+                  <small>推定コスト削減額</small>
+                  <div class="metric">
+                    ¥<span id="metric-cost">0</span>
+                    <span>/ 月</span>
+                  </div>
+                  <div class="fc-pill-row">
+                    <div class="fc-pill">人件費</div>
+                    <div class="fc-pill">教育コスト</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fc-log">
+                <div class="fc-log-line">
+                  <div class="fc-log-time">09:12</div>
+                  <div class="fc-log-text">新規見積依頼メールを自動分類 → 営業担当へSlack通知</div>
+                </div>
+                <div class="fc-log-line">
+                  <div class="fc-log-time">10:03</div>
+                  <div class="fc-log-text">請求書PDFから金額・期日を抽出 → スプレッドシート更新</div>
+                </div>
+                <div class="fc-log-line">
+                  <div class="fc-log-time">13:47</div>
+                  <div class="fc-log-text">未返信リードへフォローアップメール案を生成・送信</div>
+                </div>
+                <div class="fc-log-line">
+                  <div class="fc-log-time">16:21</div>
+                  <div class="fc-log-text">社内ナレッジから回答を検索 → 問い合わせ対応を自動回答</div>
+                </div>
+              </div>
+
+              <div class="fc-orbit">
+                <div class="fc-orbit-dot"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Problem / Solution -->
+        <section id="problem" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Problem → Solution</div>
+            <div class="section-title">AIが「何を」置き換え、あなたは「何に」集中できるか。</div>
+            <p class="section-desc">
+              AIFが見ているのは、ツール導入ではなく「人がやらなくていい作業を、どこまでAIに任せられるか」です。
+              現場の業務を解像度高く分解し、AIに向いている部分だけを切り出して自動化します。
+            </p>
+          </div>
+
+          <div class="problem-grid">
+            <div class="card">
+              <div class="card-header">
+                <span class="card-chip">Before</span>
+                <span class="card-title">現場で起きている “ムダな仕事”</span>
+              </div>
+              <ul class="problem-list">
+                <li>
+                  <span class="icon">×</span>
+                  <div>毎日同じようなメールを、言い回しだけ変えて書き直している</div>
+                </li>
+                <li>
+                  <span class="icon">×</span>
+                  <div>PDF・Excel・紙の情報を、ひたすら別システムへ転記している</div>
+                </li>
+                <li>
+                  <span class="icon">×</span>
+                  <div>報告書や議事録を書くだけで、会議時間の2倍以上かかっている</div>
+                </li>
+                <li>
+                  <span class="icon">×</span>
+                  <div>属人化した「この人しか分からない仕事」が増え続けている</div>
+                </li>
+                <li>
+                  <span class="icon">×</span>
+                  <div>AIを触ってみたが、日常業務のどこに効かせればよいか分からない</div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <span class="card-chip">After</span>
+                <span class="card-title">AIFが提供する “自律するAIワーカー” の姿</span>
+              </div>
+              <ul class="solution-list">
+                <li>
+                  <span class="icon">✓</span>
+                  <div>問い合わせメールを自動で分類・要約し、返信案まで生成してくれる</div>
+                </li>
+                <li>
+                  <span class="icon">✓</span>
+                  <div>PDF・スプレッドシート・Webの情報を横断し、必要な項目だけ抽出して整理</div>
+                </li>
+                <li>
+                  <span class="icon">✓</span>
+                  <div>会議音声から議事録とToDoを自動生成、Slackやメールで共有</div>
+                </li>
+                <li>
+                  <span class="icon">✓</span>
+                  <div>社内ナレッジをRAGで統合し、「聞く前にAIに聞く」が当たり前になる</div>
+                </li>
+                <li>
+                  <span class="icon">✓</span>
+                  <div>マクロ・RPAでは難しかった“グレーな判断”を、生成AIが補完してくれる</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Services</div>
+            <div class="section-title">AI業務自動化エージェントで、日常業務を丸ごとリプレイス。</div>
+            <p class="section-desc">
+              AIFは「AIモデルを作る会社」ではなく、
+              <strong>既存のLLMを使って、御社専用のAIワーカー・チャットボット・自動化シナリオを構築する会社</strong>
+              です。
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-tag">
+                <span>AI Worker</span>
+                <span style="font-size: 0.86rem; color: #bbf7d0;">事務・営業・CS向け</span>
+              </div>
+              <div class="service-title">自律AIワーカー構築</div>
+              <p class="service-desc">
+                メール対応・報告書作成・日次作業を代行する、御社専用AIワーカーを設計・構築します。
+              </p>
+              <ul class="service-list">
+                <li><span class="icon">▸</span><div>メール分類・要約・返信案の自動生成</div></li>
+                <li><span class="icon">▸</span><div>議事録・日報・レポートの自動生成</div></li>
+                <li><span class="icon">▸</span><div>スプレッドシート・各種SaaSとの自動連携</div></li>
+              </ul>
+              <div class="service-meta">
+                <div>
+                  <div>参考価格</div>
+                  <strong>月 30,000〜</strong>
+                </div>
+                <div class="pill-soft">1〜2週間でPoCまで構築</div>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-tag">
+                <span>Chatbot / RAG</span>
+                <span style="font-size: 0.86rem; color: #bfdbfe;">社内・顧客向け</span>
+              </div>
+              <div class="service-title">AIチャットボット & ナレッジ検索</div>
+              <p class="service-desc">
+                社内マニュアル・FAQ・顧客情報をまとめて、チャット1つで検索できる環境をつくります。
+              </p>
+              <ul class="service-list">
+                <li><span class="icon">▸</span><div>社内規程・手順書のRAG化</div></li>
+                <li><span class="icon">▸</span><div>顧客向けFAQボット（Web / LINE）</div></li>
+                <li><span class="icon">▸</span><div>問い合わせ履歴からの自動回答提案</div></li>
+              </ul>
+              <div class="service-meta">
+                <div>
+                  <div>参考価格</div>
+                  <strong>月 40,000〜</strong>
+                </div>
+                <div class="pill-soft">小さく始めて段階的に拡張</div>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-tag">
+                <span>Automation</span>
+                <span style="font-size: 0.86rem; color: #a5b4fc;">Make / API連携</span>
+              </div>
+              <div class="service-title">業務自動化シナリオ構築</div>
+              <p class="service-desc">
+                Makeや各種APIを用いて、「人間が毎日やっている業務フロー」をそのまま自動化します。
+              </p>
+              <ul class="service-list">
+                <li><span class="icon">▸</span><div>メール → AI判定 → Slack承認 → システム登録</div></li>
+                <li><span class="icon">▸</span><div>PDF → AIで抽出 → スプレッドシート自動更新</div></li>
+                <li><span class="icon">▸</span><div>未返信リードへの自動フォローアップ</div></li>
+              </ul>
+              <div class="service-meta">
+                <div>
+                  <div>参考価格</div>
+                  <strong>月 50,000〜</strong>
+                </div>
+                <div class="pill-soft">シナリオテンプレで高速導入</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- More services (accordion) -->
+        <section id="more-services" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">More Solutions</div>
+            <div class="section-title">その他、こんなAIもつくれます。</div>
+            <p class="section-desc">
+              下記は一例です。実際には、既存の業務フローに合わせてカスタマイズして実装します。
+            </p>
+          </div>
+
+          <div class="accordion">
+            <!-- 1. 議事録 / レポートAI -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>議事録AI・レポート自動生成</span>
+                <span class="accordion-icon">＋</span>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>会議音声から議事録とToDoを自動生成</li>
+                  <li>営業日報・週次レポートの自動ドラフト生成</li>
+                  <li>KPIダッシュボードの要約テキスト生成</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 2. PDF / データ抽出AI -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>PDF・Excel・画像からのデータ抽出</span>
+                <span class="accordion-icon">＋</span>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>見積書・請求書PDFから金額・期日の自動抽出</li>
+                  <li>紙書類・スキャン画像からスプレッドシートへの転記</li>
+                  <li>複数ファイルの一括読み込み → 一覧表の自動生成</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 3. 予約 / 問い合わせ / CS -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>予約受付・問い合わせ・カスタマーサポート</span>
+                <span class="accordion-icon">＋</span>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>LINE / Webフォームからの予約受付AI</li>
+                  <li>問い合わせメールの分類・返信案生成</li>
+                  <li>よくある質問への自動回答ボット（FAQ + RAG）</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 4. 採用 / 人事AI -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>採用・人事まわりのAIアシスタント</span>
+                <span class="accordion-icon">＋</span>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>応募メール・履歴書の要点自動サマリ</li>
+                  <li>一次スクリーニングの基準チェック</li>
+                  <li>候補者への定型連絡の自動作成</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 5. マーケティング / コンテンツAI -->
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span>マーケティング・コンテンツ生成</span>
+                <span class="accordion-icon">＋</span>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>ブログ記事・ニュースレターのドラフト生成</li>
+                  <li>SNS投稿案・広告コピーの大量生成</li>
+                  <li>既存LPの改善案・ABテスト案の提案</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Flow -->
+        <section id="flow" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Implementation Flow</div>
+            <div class="section-title">PoCから本番運用まで、“最短距離”だけを通る。</div>
+            <p class="section-desc">
+              AIFは机上のコンサルではなく、「明日から動く仕組み」をつくる実装パートナーです。
+              まずは小さなPoCで効果を見てから、範囲を広げていきます。
+            </p>
+          </div>
+
+          <div class="flow-grid">
+            <div>
+              <ol class="flow-steps">
+                <li class="flow-step">
+                  <div class="flow-step-num">1</div>
+                  <div>
+                    <div class="flow-step-title">現状ヒアリング（1〜1.5時間）</div>
+                    <div class="flow-note">業務フロー・使用ツール・ボトルネックを伺い、AIが効く箇所を一緒に洗い出します。</div>
+                  </div>
+                </li>
+                <li class="flow-step">
+                  <div class="flow-step-num">2</div>
+                  <div>
+                    <div class="flow-step-title">AI化ポイントの選定 & PoC設計</div>
+                    <div class="flow-note">「1〜2週間で効果が見えるポイント」を優先して、最初のAIワーカー / シナリオを決めます。</div>
+                  </div>
+                </li>
+                <li class="flow-step">
+                  <div class="flow-step-num">3</div>
+                  <div>
+                    <div class="flow-step-title">PoC構築（1〜2週間）</div>
+                    <div class="flow-note">最小構成で実際に動かし、削減時間・工数を数値として測定します。</div>
+                  </div>
+                </li>
+                <li class="flow-step">
+                  <div class="flow-step-num">4</div>
+                  <div>
+                    <div class="flow-step-title">本番運用 & 横展開</div>
+                    <div class="flow-note">効果が出た箇所を標準フローに組み込み、他部署・他業務へ横展開していきます。</div>
+                  </div>
+                </li>
+              </ol>
+              <p class="flow-note">
+                ※ すべてオンライン完結。1人事業〜中小企業まで、代表・現場担当の方と直接やり取りしながら進めます。
+              </p>
+            </div>
+
+            <div class="flow-metrics">
+              <div class="metric-block">
+                <small>削減できる可能性がある作業時間</small>
+                <strong>30〜70<span>%</span></strong>
+                <div class="flow-note">（メール・事務・営業補助業務の合計）</div>
+              </div>
+              <div class="metric-block">
+                <small>平均構築期間</small>
+                <strong>2〜4<span>週間</span></strong>
+                <div class="flow-note">小さなPoCから段階的に拡張</div>
+              </div>
+              <div class="metric-block">
+                <small>必要な社内リソース</small>
+                <strong>担当者<span> 1名</span></strong>
+                <div class="flow-note">専任チームやエンジニアは不要です</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Pricing</div>
+            <div class="section-title">「AIコンサル費」ではなく、「業務削減の投資」として。</div>
+            <p class="section-desc">
+              AIFの料金は、AIモデル開発ではなく「既存の業務をどれだけ削れるか」をベースに決めています。
+              小さなPoCから始め、費用対効果を確認しながらスケールします。
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <div class="pricing-card">
+              <div class="pricing-title">PoCプラン（1業務 / 1エージェント）</div>
+              <div class="pricing-price">¥50,000〜<span> / 2週間</span></div>
+              <div class="pricing-note">
+                まずは1つの業務に絞って、「AIワーカーがどこまで代わりに動けるか」を検証します。
+              </div>
+              <ul class="pricing-list">
+                <li><span class="icon">★</span><div>対象業務の分解・AI適用範囲の設計</div></li>
+                <li><span class="icon">★</span><div>AIワーカー / チャットボット / 自動化シナリオの構築</div></li>
+                <li><span class="icon">★</span><div>テスト・調整・簡易マニュアルの提供</div></li>
+              </ul>
+            </div>
+            <div>
+              <p class="pricing-side-note">
+                2業務以上・部署横断・全社展開の場合は、<br />
+                削減見込み時間とご予算を伺った上で、柔軟に設計します。
+              </p>
+              <div class="chip-inline">
+                <span>✔</span>「まずは1つの業務だけAI化してみたい」というご相談も歓迎です。
+              </div>
+              <div class="chip-inline" style="margin-left: 4px;">
+                <span>✔</span> 1人事業・フリーランス向けのライトプランもご用意できます。
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Contact</div>
+            <div class="section-title">まだ「AIをちゃんと使い切れていない」と感じるなら。</div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-main">
+              <p>
+                「うちの業務はAIでどこまで自動化できるのか？」<br />
+                そんな疑問を持ったタイミングが、AIFへのご相談のタイミングです。
+              </p>
+              <p style="margin-top: 6px;">
+                具体的なツール名が分からなくても構いません。<br />
+                まずは日々の業務の愚痴から、聞かせてください。
+              </p>
+            </div>
+            <div>
+              <a class="mailto-link" href="mailto:info@example.com?subject=%5BAIF%E3%81%AB%E7%9B%B4%E6%8E%A5%E7%99%BB%E9%8C%B2%5D%20AI%E5%B0%8E%E5%85%A5%E3%81%AE%E7%9B%B8%E8%AB%87">
+                メールで相談する
+                <span>→</span>
+              </a>
+              <p style="font-size: 0.9rem; color: var(--muted); margin-top: 6px;">
+                ※ info@example.com を、あなたのメールアドレスに変更してください。
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main> 
+
+    <footer>
+      <div class="max-w footer-inner">
+        <div class="footer-tagline">
+          日本から、<span>未来を照らす。</span> AIF Studio
+        </div>
+        <div>© <span id="year"></span> AIF Studio. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // スムーススクロール
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.pageYOffset - 80,
+        behavior: "smooth",
+      });
+    }
+
+    // タイピング：1回だけ打ち切って終了（ループしない）
+    const typingEl = document.getElementById("typing");
+    const typingText = "AIが、御社の“裏方仕事”をまるごと引き受けます。";
+    let charIndex = 0;
+
+    function typeOnce() {
+      if (!typingEl) return;
+      if (charIndex <= typingText.length) {
+        typingEl.textContent = typingText.slice(0, charIndex);
+        charIndex++;
+        setTimeout(typeOnce, 40);
+      }
+    }
+
+    // メトリクス数字アニメーション（1回だけ）
+    function animateValue(el, target, duration) {
+      if (!el) return;
+      const start = 0;
+      const startTime = performance.now();
+
+      function frame(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const value = Math.floor(start + (target - start) * progress);
+        el.textContent = value.toLocaleString("ja-JP");
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+
+    // 折り畳み（アコーディオン）
+    document.querySelectorAll(".accordion-header").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.parentElement;
+        const content = item.querySelector(".accordion-content");
+        const isOpen = item.classList.toggle("open");
+        if (isOpen) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } else {
+          content.style.maxHeight = "0";
+        }
+      });
+    });
+
+    // 年表示＋初期アニメ起動
+    window.addEventListener("load", () => {
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      typeOnce();
+
+      const hoursEl = document.getElementById("metric-hours");
+      const costEl = document.getElementById("metric-cost");
+      if (hoursEl && costEl) {
+        animateValue(hoursEl, 6, 1200);       // 6時間削減イメージ
+        animateValue(costEl, 220000, 1500);   // 22万円削減イメージ
+      }
+    });
+  </script>
+</body>
+</html>
