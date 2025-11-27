@@ -17,28 +17,25 @@
 
   <style>
     /* =========================
-       基本設定
+       基本トークン
        ========================= */
     :root {
-      --bg-gradient: radial-gradient(circle at 0 0, #e6f2ff 0, #f4f7fb 45%, #e8edf7 100%);
-      --color-bg: #f4f7fb;
-      --color-surface: #ffffff;
-      --color-surface-soft: #f1f5f9;
-      --color-border-subtle: #e2e8f0;
-      --color-border-strong: #cbd5e1;
-      --color-main: #0f172a;
+      --bg-page: radial-gradient(circle at 0 0, #e8f2ff 0, #f6f8fc 40%, #eef2f9 100%);
+      --color-main: #020617;
       --color-sub: #334155;
       --color-muted: #64748b;
+      --color-border: #e2e8f0;
+      --color-surface: #ffffff;
+      --color-surface-soft: #f8fafc;
       --color-blue: #0ea5e9;
-      --color-blue-deep: #075985;
+      --color-blue-dark: #0369a1;
       --color-gold: #f5d565;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
-      --shadow-strong: 0 26px 70px rgba(15, 23, 42, 0.24);
-      --radius-lg: 20px;
-      --radius-xl: 26px;
-      --radius-pill: 999px;
       --max-width: 1120px;
-      --nav-height: 64px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+      --shadow-strong: 0 30px 80px rgba(15, 23, 42, 0.28);
     }
 
     *, *::before, *::after {
@@ -52,7 +49,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: var(--bg-gradient);
+      background: var(--bg-page);
       color: var(--color-main);
       font-family: "Noto Sans JP", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 14px;
@@ -60,11 +57,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+    img { max-width: 100%; display: block; }
 
     a {
       color: inherit;
@@ -89,24 +82,24 @@
     }
 
     /* =========================
-       ナビゲーション
+       ナビ（極力ミニマル）
        ========================= */
     .nav {
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(18px);
       background: linear-gradient(
         to bottom,
-        rgba(244, 247, 252, 0.98),
-        rgba(244, 247, 252, 0.94),
-        rgba(244, 247, 252, 0.9)
+        rgba(246, 248, 252, 0.98),
+        rgba(246, 248, 252, 0.94),
+        rgba(246, 248, 252, 0.9)
       );
-      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
     }
 
     .nav-inner {
-      height: var(--nav-height);
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -120,10 +113,10 @@
     }
 
     .brand-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 18px;
-      background: conic-gradient(from 200deg, #0ea5e9, #0f172a, #0ea5e9);
+      width: 28px;
+      height: 28px;
+      border-radius: 16px;
+      background: conic-gradient(from 210deg, #0ea5e9, #020617, #0ea5e9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -138,16 +131,16 @@
       content: "";
       position: absolute;
       inset: 4px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.7);
     }
 
     .brand-mark-inner {
-      width: 11px;
-      height: 11px;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 20%, #ffffff, #dbeafe, #020617);
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.9);
     }
 
     .brand-text {
@@ -157,8 +150,8 @@
     }
 
     .brand-name {
-      font-size: 15px;
-      letter-spacing: 0.18em;
+      font-size: 14px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       font-weight: 600;
     }
@@ -180,30 +173,30 @@
       padding: 6px 10px;
       border-radius: var(--radius-pill);
       border: 1px solid transparent;
-      transition: all 0.18s ease;
-      cursor: pointer;
+      transition: all 0.16s ease;
       white-space: nowrap;
     }
 
     .nav-link:hover {
       border-color: rgba(148, 163, 184, 0.7);
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.9);
       color: var(--color-main);
     }
 
     .nav-link-cta {
+      padding: 7px 16px;
       border-radius: var(--radius-pill);
-      padding: 7px 14px;
-      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
       border: none;
-      color: #04111f;
+      background: linear-gradient(135deg, #0ea5e9, #0369a1);
+      color: #f9fafb;
+      font-size: 13px;
       font-weight: 600;
-      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.5);
+      box-shadow: 0 16px 40px rgba(14, 165, 233, 0.6);
     }
 
     .nav-link-cta:hover {
+      box-shadow: 0 22px 60px rgba(14, 165, 233, 0.8);
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(14, 165, 233, 0.7);
     }
 
     .nav-right {
@@ -216,8 +209,8 @@
       font-size: 11px;
       padding: 4px 10px 5px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      background: rgba(248, 250, 252, 0.95);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      background: rgba(248, 250, 252, 0.96);
       color: var(--color-muted);
     }
 
@@ -252,17 +245,12 @@
       background: #0f172a;
     }
 
-    .nav-toggle-line::before {
-      top: -5px;
-    }
-
-    .nav-toggle-line::after {
-      top: 5px;
-    }
+    .nav-toggle-line::before { top: -5px; }
+    .nav-toggle-line::after  { top:  5px; }
 
     .nav-menu-mobile {
       display: none;
-      border-top: 1px solid rgba(209, 213, 219, 0.7);
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
       background: rgba(248, 250, 252, 0.98);
       backdrop-filter: blur(14px);
     }
@@ -287,40 +275,40 @@
     }
 
     /* =========================
-       Hero
+       HERO（超シンプル・高級寄せ）
        ========================= */
     .hero {
-      padding: 46px 0 60px;
+      padding: 52px 0 48px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 40px;
       align-items: center;
     }
 
-    .badge {
+    .hero-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 4px 10px 5px;
       border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.96);
       color: #e5e7eb;
       font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
       margin-bottom: 10px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.9);
     }
 
-    .badge-dot {
+    .hero-pill-dot {
       width: 6px;
       height: 6px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.45);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.5);
     }
 
     .hero-eyebrow {
@@ -330,74 +318,40 @@
     }
 
     .hero-title {
-      font-size: 30px;
-      line-height: 1.35;
       margin: 0 0 10px;
       font-weight: 500;
       letter-spacing: 0.01em;
       color: var(--color-main);
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.3;
     }
 
-    .hero-title-strong {
+    .hero-title strong {
       font-weight: 600;
     }
 
-    .hero-subtitle {
+    .hero-sub {
       font-size: 14px;
       color: var(--color-sub);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
       margin-bottom: 14px;
+      max-width: 520px;
     }
 
-    .hero-lead {
-      font-size: 13px;
-      color: var(--color-sub);
-      margin-bottom: 16px;
-      max-width: 580px;
-    }
-
-    .hero-usps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .hero-usp-pill {
+    .hero-chips {
       display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.97);
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      color: #e5e7eb;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
-      white-space: normal;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+      max-width: 520px;
     }
 
-    .hero-usp-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #04111f;
-      flex-shrink: 0;
-    }
-
-    .hero-usp-title {
+    .hero-chip {
       font-size: 11px;
-      font-weight: 500;
-    }
-
-    .hero-usp-sub {
-      font-size: 10px;
-      color: #cbd5f5;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      background: var(--color-surface-soft);
+      border: 1px solid var(--color-border);
+      color: var(--color-muted);
     }
 
     .hero-actions {
@@ -410,30 +364,30 @@
 
     .btn-primary {
       border-radius: var(--radius-pill);
-      padding: 9px 18px;
+      padding: 10px 20px;
       border: none;
-      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
-      color: #02101e;
+      background: linear-gradient(135deg, #0ea5e9, #0369a1);
+      color: #f9fafb;
       font-size: 13px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      box-shadow: 0 18px 42px rgba(14, 165, 233, 0.7);
+      box-shadow: 0 20px 50px rgba(14, 165, 233, 0.8);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 24px 56px rgba(14, 165, 233, 0.85);
+      box-shadow: 0 26px 70px rgba(14, 165, 233, 0.95);
     }
 
     .btn-secondary {
       border-radius: var(--radius-pill);
-      padding: 8px 14px;
-      border: 1px solid rgba(148, 163, 184, 0.95);
-      background: rgba(241, 245, 249, 0.95);
+      padding: 9px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(248, 250, 252, 0.95);
       color: var(--color-sub);
       font-size: 12px;
       display: inline-flex;
@@ -452,21 +406,21 @@
     .hero-note {
       font-size: 11px;
       color: var(--color-muted);
-      max-width: 520px;
+      max-width: 480px;
     }
 
-    /* 右側パネル */
+    /* 右側パネル：色も情報量も絞る */
     .hero-right {
       position: relative;
     }
 
     .hero-panel {
-      border-radius: var(--radius-xl);
-      background: rgba(10, 16, 32, 0.96);
+      border-radius: 26px;
+      background: radial-gradient(circle at 0 0, #111827, #020617);
+      border: 1px solid rgba(30, 64, 175, 0.7);
       box-shadow: var(--shadow-strong);
-      border: 1px solid rgba(51, 65, 85, 0.8);
       color: #e5e7eb;
-      padding: 16px;
+      padding: 18px 18px 16px;
       position: relative;
       overflow: hidden;
     }
@@ -475,9 +429,9 @@
       content: "";
       position: absolute;
       inset: -30%;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 60%);
-      opacity: 0.9;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.35), transparent 60%);
       pointer-events: none;
+      opacity: 0.9;
     }
 
     .hero-panel-inner {
@@ -489,12 +443,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       font-size: 11px;
       color: #9ca3af;
     }
 
-    .hero-panel-title-main {
+    .hero-panel-title {
       font-size: 12px;
       font-weight: 500;
       color: #e5e7eb;
@@ -508,9 +462,8 @@
       padding: 3px 8px;
       border-radius: var(--radius-pill);
       border: 1px solid rgba(148, 163, 184, 0.85);
-      background: rgba(9, 9, 18, 0.95);
+      background: rgba(9, 9, 18, 0.96);
       font-size: 10px;
-      color: #e5e7eb;
     }
 
     .hero-panel-tag-dot {
@@ -522,17 +475,17 @@
     }
 
     .hero-panel-body {
-      border-radius: 18px;
-      border: 1px solid rgba(71, 85, 105, 0.9);
-      background: radial-gradient(circle at 0 0, #111827, #020617);
-      padding: 12px;
       display: grid;
-      grid-template-columns: 1.05fr 0.9fr;
-      gap: 10px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: radial-gradient(circle at 0 0, #020617, #020617);
+      padding: 12px;
       font-size: 11px;
     }
 
-    .hero-panel-column-title {
+    .hero-panel-col-title {
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -540,40 +493,39 @@
       margin-bottom: 6px;
     }
 
-    .mini-flow {
+    .hero-mini-flow {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
 
-    .mini-flow-row {
+    .hero-mini-row {
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .mini-node {
-      padding: 4px 7px;
+    .hero-node {
+      padding: 4px 8px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      background: rgba(9, 9, 18, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(9, 9, 18, 0.98);
       display: inline-flex;
       align-items: center;
       gap: 4px;
       white-space: nowrap;
     }
 
-    .mini-node-label {
+    .hero-node-label {
       font-size: 10px;
-      color: #e5e7eb;
     }
 
-    .mini-node-tag {
+    .hero-node-tag {
       font-size: 9px;
       color: #a5b4fc;
     }
 
-    .mini-flow-arrow {
+    .hero-arrow {
       width: 14px;
       height: 1px;
       border-radius: 999px;
@@ -581,7 +533,7 @@
       position: relative;
     }
 
-    .mini-flow-arrow::after {
+    .hero-arrow::after {
       content: "";
       position: absolute;
       right: -2px;
@@ -594,48 +546,47 @@
       transform: rotate(-45deg);
     }
 
-    .hero-panel-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .hero-metrics {
+      display: flex;
+      flex-direction: column;
       gap: 8px;
-      margin-top: 10px;
     }
 
-    .metric-card {
+    .hero-metric-card {
       border-radius: 12px;
       background: rgba(15, 23, 42, 0.98);
-      border: 1px solid rgba(71, 85, 105, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.9);
       padding: 8px 9px;
     }
 
-    .metric-label {
+    .hero-metric-label {
       font-size: 9px;
       color: #9ca3af;
       margin-bottom: 3px;
     }
 
-    .metric-value {
+    .hero-metric-value {
       font-size: 14px;
       font-weight: 600;
     }
 
-    .metric-tag {
+    .hero-metric-tag {
       font-size: 9px;
       color: #a5b4fc;
     }
 
     .hero-panel-footer {
-      margin-top: 10px;
+      margin-top: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
       font-size: 10px;
       color: #9ca3af;
+      flex-wrap: wrap;
     }
 
-    .hero-panel-footer-pill {
+    .hero-panel-pill {
       padding: 4px 9px;
       border-radius: var(--radius-pill);
       border: 1px solid rgba(148, 163, 184, 0.85);
@@ -647,618 +598,78 @@
     }
 
     /* =========================
-       セクション共通
+       3つの強み（ヒーロー直下に白カードで）
        ========================= */
-    .section-header {
-      margin-bottom: 26px;
+    .strengths {
+      padding: 10px 0 60px;
     }
 
-    .section-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--color-muted);
-      margin-bottom: 8px;
-    }
-
-    .section-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      font-size: 20px;
-      margin: 0;
-      font-weight: 500;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--color-sub);
-      max-width: 380px;
-    }
-
-    /* =========================
-       Vision
-       ========================= */
-    .vision-grid {
+    .strengths-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-      gap: 22px;
-      align-items: flex-start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .vision-main {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--color-border-subtle);
-      background: linear-gradient(135deg, #ffffff, #f5f7fb);
+    .strength-card {
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
       box-shadow: var(--shadow-soft);
-      padding: 20px 20px 18px;
-      font-size: 13px;
+      padding: 14px 14px 12px;
+      font-size: 12px;
       color: var(--color-sub);
     }
 
-    .vision-title {
-      font-size: 14px;
-      margin: 0 0 8px;
-      font-weight: 500;
+    .strength-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
       color: var(--color-main);
     }
 
-    .vision-cols {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      font-size: 12px;
-    }
-
-    .vision-cols h4 {
-      font-size: 12px;
-      margin: 0 0 4px;
-      font-weight: 600;
-    }
-
-    .vision-chip {
+    .strength-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 9px;
-      border-radius: var(--radius-pill);
-      background: rgba(226, 232, 240, 0.9);
-      margin-top: 12px;
-      font-size: 11px;
-      color: var(--color-main);
-    }
-
-    .vision-chip-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #0ea5e9, #22c55e);
-    }
-
-    .vision-right {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .vision-card {
-      border-radius: 20px;
-      border: 1px solid rgba(30, 64, 175, 0.5);
-      background: radial-gradient(circle at 0 0, #1e293b, #020617);
-      color: #e5e7eb;
-      padding: 14px 14px 12px;
-      box-shadow: 0 20px 46px rgba(15, 23, 42, 0.85);
-      font-size: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .vision-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 58%);
-      pointer-events: none;
-      opacity: 0.95;
-    }
-
-    .vision-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .vision-card-title {
-      font-size: 12px;
-      margin: 0 0 4px;
-      font-weight: 500;
-    }
-
-    .vision-card-body {
-      font-size: 11px;
-      color: #dbeafe;
-    }
-
-    .vision-pill-row {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .vision-pill {
       font-size: 10px;
       padding: 3px 7px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.85);
-      background: rgba(15, 23, 42, 0.96);
-      color: #dbeafe;
-    }
-
-    .vision-metric {
-      border-radius: 18px;
-      border: 1px solid rgba(51, 65, 85, 0.95);
-      background: radial-gradient(circle at 0 0, #020617, #020617);
-      color: #e5e7eb;
-      padding: 12px 13px 11px;
-      font-size: 12px;
-      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.9);
-    }
-
-    .vision-metric-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 4px;
-    }
-
-    .vision-metric-label {
-      font-size: 11px;
-      color: #9ca3af;
-    }
-
-    .vision-metric-value {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .vision-metric-tag {
-      font-size: 10px;
-      color: #a5b4fc;
-    }
-
-    .vision-metric-bar {
-      margin-top: 6px;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(30, 64, 175, 0.7);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .vision-metric-bar-fill {
-      position: absolute;
-      inset: 0;
-      width: 72%;
-      background: linear-gradient(90deg, #22c55e, #a3e635, #eab308);
-    }
-
-    .vision-note {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-top: 6px;
-    }
-
-    .vision-os {
-      border-radius: 18px;
-      border: 1px solid rgba(191, 219, 254, 0.9);
-      background: radial-gradient(circle at 0 0, #e5f2ff, #f9fafb);
-      padding: 12px 13px 11px;
-      font-size: 12px;
-      color: var(--color-sub);
-    }
-
-    .vision-os-title {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--color-muted);
-      margin-bottom: 6px;
-    }
-
-    .vision-os-grid {
-      margin-top: 8px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px;
-      font-size: 11px;
-    }
-
-    .vision-os-chip {
-      padding: 5px 6px;
-      border-radius: 11px;
-      border: 1px solid rgba(191, 219, 254, 0.9);
-      background: #ffffff;
-    }
-
-    /* =========================
-       3-Layer Overview
-       ========================= */
-    .layers {
-      padding-top: 52px;
-    }
-
-    .layers-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: 24px;
-      align-items: center;
-    }
-
-    .layers-diagram-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .layers-diagram {
-      width: min(320px, 100%);
-      aspect-ratio: 1 / 1;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #e3f2ff, #f5f7fb);
-      border: 1px solid rgba(191, 219, 254, 0.95);
-      box-shadow: 0 22px 56px rgba(15, 23, 42, 0.28);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .layer-circle {
-      position: absolute;
-      inset: 16%;
-      border-radius: inherit;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 70%);
-    }
-
-    .layer-circle.mid {
-      inset: 31%;
-      border-color: rgba(148, 163, 184, 0.7);
-      background: radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.18), transparent 72%);
-    }
-
-    .layer-circle.inner {
-      inset: 47%;
-      border-color: rgba(15, 23, 42, 0.4);
-      background: radial-gradient(circle at 50% 50%, #0f172a, #020617);
-      box-shadow:
-        0 0 0 1px rgba(148, 163, 184, 0.4),
-        0 0 28px rgba(15, 23, 42, 0.8);
-    }
-
-    .layer-dot {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #22c55e, #a3e635);
-      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.35);
-    }
-
-    .layer-dot.dot-1 { top: 14%; left: 54%; }
-    .layer-dot.dot-2 { bottom: 18%; left: 26%; }
-    .layer-dot.dot-3 { bottom: 30%; right: 16%; }
-
-    .layer-label {
-      position: absolute;
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.96);
-      color: #e5e7eb;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      white-space: nowrap;
-    }
-
-    .layer-label span.tag {
-      font-size: 10px;
-      color: #a5b4fc;
-    }
-
-    .layer-label.label-1 { top: 10%; right: 6%; }
-    .layer-label.label-2 { bottom: 14%; left: 7%; }
-    .layer-label.label-3 { bottom: 30%; right: 5%; }
-
-    .layer-center {
-      position: absolute;
-      inset: 47%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #e5e7eb;
-      gap: 3px;
-    }
-
-    .layer-center-title {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #9ca3af;
-    }
-
-    .layer-center-main {
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .layers-right {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--color-border-subtle);
-      background: linear-gradient(145deg, #ffffff, #f5f7fb);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 18px 16px;
-      font-size: 13px;
-      color: var(--color-sub);
-    }
-
-    .layers-right-grid {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      font-size: 11px;
-    }
-
-    .layer-card {
-      border-radius: 14px;
-      border: 1px solid var(--color-border-subtle);
-      background: #ffffff;
-      padding: 10px 10px 9px;
-    }
-
-    .layer-card-title {
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .layer-card-pill {
-      font-size: 10px;
-      color: var(--color-muted);
-      margin-bottom: 4px;
-    }
-
-    .layer-card-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .layer-card-list li {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 3px;
-    }
-
-    .layer-card-bullet {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-    }
-
-    .layers-legend {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 10px;
-      color: var(--color-muted);
-    }
-
-    .layers-legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 8px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--color-border-subtle);
-      background: #ffffff;
-    }
-
-    .layers-legend-swatch {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-    }
-
-    .layers-legend-swatch.goal { background: linear-gradient(135deg, #0ea5e9, #6366f1); }
-    .layers-legend-swatch.project { background: linear-gradient(135deg, #22c55e, #84cc16); }
-    .layers-legend-swatch.task { background: linear-gradient(135deg, #fb923c, #facc15); }
-
-    /* =========================
-       What We Can Automate
-       ========================= */
-    .automation {
-      padding-top: 52px;
-    }
-
-    .automation-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
-      gap: 22px;
-      align-items: flex-start;
-    }
-
-    .automation-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .automation-card {
-      border-radius: 18px;
-      border: 1px solid var(--color-border-subtle);
-      background: #ffffff;
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
-      padding: 12px 11px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      font-size: 11px;
-    }
-
-    .automation-card-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 1px;
-    }
-
-    .automation-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
-      border: 1px solid rgba(59, 130, 246, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #02101f;
-      flex-shrink: 0;
-    }
-
-    .automation-title {
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .automation-tag {
-      font-size: 10px;
-      color: var(--color-muted);
-    }
-
-    .automation-body {
-      font-size: 11px;
-      color: var(--color-sub);
-    }
-
-    .automation-pill-row {
-      margin-top: 3px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .automation-pill {
-      font-size: 10px;
-      padding: 3px 6px;
-      border-radius: var(--radius-pill);
       background: var(--color-surface-soft);
-      border: 1px solid var(--color-border-subtle);
+      border: 1px solid var(--color-border);
+      margin-bottom: 6px;
       color: var(--color-muted);
     }
 
-    .automation-meta {
-      border-radius: 20px;
-      border: 1px solid rgba(30, 64, 175, 0.55);
-      background: radial-gradient(circle at 0 0, #020617, #020617);
-      color: #e5e7eb;
-      padding: 14px 15px 12px;
-      font-size: 12px;
-      box-shadow: 0 20px 52px rgba(15, 23, 42, 0.9);
-    }
-
-    .automation-meta-title {
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .automation-meta-body {
-      font-size: 11px;
-      color: #cbd5f5;
-      margin-bottom: 8px;
-    }
-
-    .automation-meta-list {
-      margin: 0 0 8px;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1.1fr 1.1fr;
-      gap: 4px 10px;
+    .strength-body {
       font-size: 11px;
     }
 
-    .automation-meta-list li {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .automation-meta-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #0ea5e9, #22c55e);
-    }
-
-    .automation-meta-note {
+    .strength-foot {
+      margin-top: 6px;
       font-size: 10px;
-      color: #9ca3af;
-    }
-
-    .automation-meta-pill-row {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .automation-meta-pill {
-      font-size: 10px;
-      padding: 4px 7px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      background: rgba(9, 9, 18, 0.96);
-      color: #e5e7eb;
+      color: var(--color-muted);
     }
 
     /* =========================
        レスポンシブ
        ========================= */
     @media (max-width: 960px) {
-      .hero-grid,
-      .vision-grid,
-      .layers-grid,
-      .automation-layout {
+      .hero-grid {
         grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
       }
 
       .hero-right {
         order: -1;
       }
 
-      .vision-cols {
-        grid-template-columns: minmax(0, 1fr);
+      .strengths-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+    }
 
-      .layers-right-grid,
-      .automation-grid {
+    @media (max-width: 840px) {
+      .strengths-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -1267,66 +678,40 @@
       .nav-links {
         display: none;
       }
-
       .nav-toggle {
         display: inline-flex;
       }
-
       section {
         padding: 44px 0;
       }
-
       .hero {
         padding-top: 32px;
       }
-
+      .hero-grid {
+        gap: 26px;
+      }
       .hero-title {
-        font-size: 26px;
+        font-size: clamp(24px, 7vw, 30px);
       }
-
-      .hero-usps {
+      .strengths-grid {
         grid-template-columns: minmax(0, 1fr);
-      }
-
-      .layers-diagram {
-        width: 260px;
-      }
-
-      .layers-right-grid,
-      .automation-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .section-title-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-lead {
-        font-size: 12px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- =====================
-         ナビ
-         ===================== -->
+    <!-- ナビ -->
     <header class="nav">
       <div class="container nav-inner">
         <div class="nav-left">
-          <div class="brand-mark">
-            <div class="brand-mark-inner"></div>
-          </div>
+          <div class="brand-mark"><div class="brand-mark-inner"></div></div>
           <div class="brand-text">
             <div class="brand-name">AIF STUDIO</div>
             <div class="brand-tagline">AI Automation &amp; Future Studio</div>
           </div>
         </div>
-        <nav class="nav-links" aria-label="Main navigation">
+        <nav class="nav-links">
           <a href="#hero" class="nav-link">トップ</a>
           <a href="#vision" class="nav-link">ビジョン</a>
           <a href="#layers" class="nav-link">レイヤー構造</a>
@@ -1339,7 +724,7 @@
         </nav>
         <div class="nav-right">
           <div class="nav-pill">日本から、未来を照らす。</div>
-          <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く">
+          <button class="nav-toggle" id="nav-toggle">
             <div class="nav-toggle-line"></div>
           </button>
         </div>
@@ -1360,56 +745,34 @@
     </header>
 
     <main>
-      <!-- =====================
-           HERO
-           ===================== -->
+      <!-- HERO -->
       <section id="hero" class="hero">
         <div class="container">
           <div class="hero-grid">
             <div class="hero-left">
-              <div class="badge">
-                <span class="badge-dot"></span>
+              <div class="hero-pill">
+                <span class="hero-pill-dot"></span>
                 <span>AI業務自動化エージェント構築会社</span>
               </div>
               <div class="hero-eyebrow">
-                メール・請求・日報・フォロー営業までを AI が肩代わり
+                メール・請求・日報・フォロー営業などの「作業」を、AIワーカーに任せる。
               </div>
               <h1 class="hero-title">
-                御社の<span class="hero-title-strong">「人がすべきでない仕事」</span>を、<br />
-                AIワーカーがまとめて引き受けます。
+                御社の<strong>「人がすべきでない仕事」</strong>を、<br />
+                AIワーカーが静かに引き受けます。
               </h1>
-              <div class="hero-subtitle">
-                AI BUSINESS PROCESS AUTOMATION STUDIO
-              </div>
-              <p class="hero-lead">
-                問い合わせメールの返信、請求書処理、PDFからの転記、営業フォロー、日報・議事録作成。<br />
-                AIF STUDIO は、これらの
-                <strong>定型業務をAIと自動化で代行する「外部AIチーム」</strong>です。<br />
-                PoCから本番運用まで、<strong>1〜2週間で“動くAIワーカー”</strong>を立ち上げます。
+              <p class="hero-sub">
+                問い合わせ対応、請求処理、PDF転記、営業フォロー、日報・議事録…。<br />
+                AIF STUDIO は、これらの定型業務を AI と自動化で肩代わりする
+                <strong>「外部AIチーム」</strong> です。
               </p>
 
-              <div class="hero-usps">
-                <div class="hero-usp-pill">
-                  <div class="hero-usp-icon">⧉</div>
-                  <div>
-                    <div class="hero-usp-title">AI × 自動化 × コンサルを一気通貫</div>
-                    <div class="hero-usp-sub">戦略整理から設計・実装・改善まで伴走</div>
-                  </div>
-                </div>
-                <div class="hero-usp-pill">
-                  <div class="hero-usp-icon">⚡</div>
-                  <div>
-                    <div class="hero-usp-title">1〜2週間で「動くAIワーカー」</div>
-                    <div class="hero-usp-sub">まずは1業務から小さく検証</div>
-                  </div>
-                </div>
-                <div class="hero-usp-pill">
-                  <div class="hero-usp-icon">⇱</div>
-                  <div>
-                    <div class="hero-usp-title">小さく始めて横展開できる構造</div>
-                    <div class="hero-usp-sub">テンプレ化して他部門・他拠点へ展開</div>
-                  </div>
-                </div>
+              <div class="hero-chips">
+                <span class="hero-chip">問い合わせメール</span>
+                <span class="hero-chip">請求・支払処理</span>
+                <span class="hero-chip">PDF抽出・転記</span>
+                <span class="hero-chip">営業フォロー</span>
+                <span class="hero-chip">日報・議事録</span>
               </div>
 
               <div class="hero-actions">
@@ -1423,8 +786,8 @@
               </div>
 
               <div class="hero-note">
-                ※ まずは「今の業務の愚痴」からで大丈夫です。<br />
-                「どこから自動化すべきか分からない」という状態から、一緒に整理していきます。
+                まずは「今の業務の愚痴」からで大丈夫です。<br />
+                どこから手を付けるべきか分からない状態から、一緒に棚卸ししていきます。
               </div>
             </div>
 
@@ -1433,7 +796,7 @@
                 <div class="hero-panel-inner">
                   <div class="hero-panel-header">
                     <div>
-                      <div class="hero-panel-title-main">AI業務自動化ダッシュボード（イメージ）</div>
+                      <div class="hero-panel-title">AI業務自動化ダッシュボード（イメージ）</div>
                       <div>Gmail / Slack / Sheets / Notion を一枚で可視化</div>
                     </div>
                     <div class="hero-panel-tag">
@@ -1441,537 +804,112 @@
                       <span>LIVE POC</span>
                     </div>
                   </div>
-
                   <div class="hero-panel-body">
                     <div>
-                      <div class="hero-panel-column-title">Automation Flows</div>
-                      <div class="mini-flow">
-                        <div class="mini-flow-row">
-                          <div class="mini-node">
-                            <span class="mini-node-label">Gmail</span>
-                            <span class="mini-node-tag">問い合わせ</span>
+                      <div class="hero-panel-col-title">AUTOMATION FLOWS</div>
+                      <div class="hero-mini-flow">
+                        <div class="hero-mini-row">
+                          <div class="hero-node">
+                            <span class="hero-node-label">Gmail</span>
+                            <span class="hero-node-tag">問い合わせ</span>
                           </div>
-                          <div class="mini-flow-arrow"></div>
-                          <div class="mini-node">
-                            <span class="mini-node-label">AI</span>
-                            <span class="mini-node-tag">要約 &amp; 分類</span>
+                          <div class="hero-arrow"></div>
+                          <div class="hero-node">
+                            <span class="hero-node-label">AI</span>
+                            <span class="hero-node-tag">要約 &amp; 分類</span>
                           </div>
-                          <div class="mini-flow-arrow"></div>
-                          <div class="mini-node">
-                            <span class="mini-node-label">Slack</span>
-                            <span class="mini-node-tag">承認</span>
-                          </div>
-                        </div>
-
-                        <div class="mini-flow-row">
-                          <div class="mini-node">
-                            <span class="mini-node-label">PDF</span>
-                            <span class="mini-node-tag">請求書</span>
-                          </div>
-                          <div class="mini-flow-arrow"></div>
-                          <div class="mini-node">
-                            <span class="mini-node-label">AI</span>
-                            <span class="mini-node-tag">データ抽出</span>
-                          </div>
-                          <div class="mini-flow-arrow"></div>
-                          <div class="mini-node">
-                            <span class="mini-node-label">Sheets</span>
-                            <span class="mini-node-tag">台帳更新</span>
+                          <div class="hero-arrow"></div>
+                          <div class="hero-node">
+                            <span class="hero-node-label">Slack</span>
+                            <span class="hero-node-tag">承認</span>
                           </div>
                         </div>
-
-                        <div class="mini-flow-row">
-                          <div class="mini-node">
-                            <span class="mini-node-label">Leads</span>
-                            <span class="mini-node-tag">3日未返信</span>
+                        <div class="hero-mini-row">
+                          <div class="hero-node">
+                            <span class="hero-node-label">PDF</span>
+                            <span class="hero-node-tag">請求書</span>
                           </div>
-                          <div class="mini-flow-arrow"></div>
-                          <div class="mini-node">
-                            <span class="mini-node-label">AI</span>
-                            <span class="mini-node-tag">フォロー文生成</span>
+                          <div class="hero-arrow"></div>
+                          <div class="hero-node">
+                            <span class="hero-node-label">AI</span>
+                            <span class="hero-node-tag">データ抽出</span>
                           </div>
-                          <div class="mini-flow-arrow"></div>
-                          <div class="mini-node">
-                            <span class="mini-node-label">Gmail</span>
-                            <span class="mini-node-tag">自動送信</span>
+                          <div class="hero-arrow"></div>
+                          <div class="hero-node">
+                            <span class="hero-node-label">Sheets</span>
+                            <span class="hero-node-tag">台帳更新</span>
                           </div>
                         </div>
                       </div>
                     </div>
-
                     <div>
-                      <div class="hero-panel-column-title">Impact Snapshot</div>
-                      <div class="hero-panel-metrics">
-                        <div class="metric-card">
-                          <div class="metric-label">削減工数 / 月</div>
-                          <div class="metric-value">▲72h</div>
-                          <div class="metric-tag">メール・請求・日報の自動化</div>
+                      <div class="hero-panel-col-title">IMPACT SNAPSHOT</div>
+                      <div class="hero-metrics">
+                        <div class="hero-metric-card">
+                          <div class="hero-metric-label">削減工数 / 月（イメージ）</div>
+                          <div class="hero-metric-value">▲40〜80h</div>
+                          <div class="hero-metric-tag">メール・請求・日報・フォローの組み合わせ</div>
                         </div>
-                        <div class="metric-card">
-                          <div class="metric-label">PoC継続率</div>
-                          <div class="metric-value">92%</div>
-                          <div class="metric-tag">効果が出た企業の継続意向</div>
+                        <div class="hero-metric-card">
+                          <div class="hero-metric-label">PoC継続率</div>
+                          <div class="hero-metric-value">92%</div>
+                          <div class="hero-metric-tag">効果が出た企業の継続意向</div>
                         </div>
-                      </div>
-                      <div class="hero-panel-footer">
-                        <div class="hero-panel-footer-pill">
-                          ● 人がすべきでない業務をゼロへ
-                        </div>
-                        <div>AIワーカー数：3 / 部署</div>
                       </div>
                     </div>
                   </div>
+                  <div class="hero-panel-footer">
+                    <div class="hero-panel-pill">
+                      ● 人がすべきでない業務をゼロへ
+                    </div>
+                    <div>AIワーカー数：3 / 部署（例）</div>
+                  </div>
                 </div>
               </div>
-            </div> <!-- hero-right -->
-          </div>
+            </div>
+          </div> <!-- hero-grid -->
         </div>
       </section>
 
-      <!-- =====================
-           OUR VISION
-           ===================== -->
-      <section id="vision">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">Our Vision</div>
-            <div class="section-title-row">
-              <h2 class="section-title">人がすべきでない仕事を、AIワーカーに任せる社会へ。</h2>
-              <p class="section-subtitle">
-                日本の中小企業における「メール・転記・確認・報告」などの定型業務を、
-                AIと自動化技術でゼロに近づける。それが AIF STUDIO の存在理由です。
-              </p>
+      <!-- 3つの強み（白カード） -->
+      <section class="strengths">
+        <div class="container strengths-grid">
+          <article class="strength-card">
+            <div class="strength-badge">Strength 01</div>
+            <h3 class="strength-title">AI × 自動化 × コンサルを一気通貫</h3>
+            <div class="strength-body">
+              単なるツール導入ではなく、業務整理・要件定義・設計・実装・運用までを
+              一つのチームで伴走します。
             </div>
-          </div>
-
-          <div class="vision-grid">
-            <div class="vision-main">
-              <h3 class="vision-title">AIF STUDIO のミッション</h3>
-              <p>
-                <strong>「人がすべきでない業務をゼロにし、本来価値に直結する仕事へ集中できる社会をつくる」</strong><br /><br />
-                現場はいつも忙しいのに、成長に直結しない「作業」に追われている。<br />
-                私たちは、<strong>AI × 自動化 × コンサル × システム構築</strong> を一体として提供し、
-                経営・現場・バックオフィスをつなぐ “AIワークOS” を一社ずつ設計していきます。
-              </p>
-              <div class="vision-cols">
-                <div>
-                  <h4>Why Now ─ なぜ今、AI業務自動化なのか</h4>
-                  <p>
-                    少子高齢化・採用難・残業規制…。<br />
-                    「人を増やす」だけでは事業が伸びない時代に、<strong>AIワーカー</strong>は
-                    新たなチームメンバーとして、静かに・24時間・正確に仕事をこなします。
-                  </p>
-                </div>
-                <div>
-                  <h4>Work OS 思想 ─ 業務をレイヤーで捉える</h4>
-                  <p>
-                    すべての業務を「目標」「プロジェクト」「タスク」のレイヤーに分解し、
-                    AIと自動化が介入するポイントを設計することで、
-                    <strong>“戦略と現場” が一枚の構造図として見える</strong>ようにします。
-                  </p>
-                </div>
-              </div>
-              <div class="vision-chip">
-                <span class="vision-chip-dot"></span>
-                <span>業務をレイヤー構造化し、テンプレートとして横展開できるAIワークOSをつくる。</span>
-              </div>
+            <div class="strength-foot">
+              「課題整理だけ」「実装だけ」の切り売りではなく、結果が出るまで伴走。
             </div>
+          </article>
 
-            <div class="vision-right">
-              <div class="vision-card">
-                <div class="vision-card-inner">
-                  <div class="vision-card-title">典型的な“ムダな時間”を、AIワーカーに置き換える。</div>
-                  <div class="vision-card-body">
-                    ・メール返信のために、毎朝1〜2時間が消える<br />
-                    ・月末の請求処理で、経理が数日つかまる<br />
-                    ・営業のフォロー漏れで、せっかくの見込み客が流れる<br />
-                    ・会議は行われるのに、議事録もToDoも残らない<br /><br />
-                    これらをまとめて、<strong>「AIワーカーに任せられる仕事」</strong>に変換していくのが、AIF STUDIO の仕事です。
-                  </div>
-                  <div class="vision-pill-row">
-                    <div class="vision-pill">メール・チャット対応</div>
-                    <div class="vision-pill">請求 / 見積フロー</div>
-                    <div class="vision-pill">営業フォロー / リマインド</div>
-                    <div class="vision-pill">日報・議事録・ナレッジ整理</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="vision-metric">
-                <div class="vision-metric-header">
-                  <div>
-                    <div class="vision-metric-label">PoC 1案件あたりの平均削減工数（イメージ）</div>
-                    <div class="vision-metric-tag">メール・請求・日報・フォローの組み合わせ</div>
-                  </div>
-                  <div class="vision-metric-value">▲40〜80h / 月</div>
-                </div>
-                <div class="vision-metric-bar">
-                  <div class="vision-metric-bar-fill"></div>
-                </div>
-                <div class="vision-note">
-                  「体感」ではなく、<strong>実際の送受信数・処理数・ログ</strong>から削減時間を算出し、
-                  経営と一緒に ROI を確認します。
-                </div>
-              </div>
-
-              <div class="vision-os">
-                <div class="vision-os-title">AIF Work OS</div>
-                <div>
-                  業務をレイヤーで整理し、AIワーカーを配置するための
-                  <strong>「自社専用の業務OS」</strong> を共に設計します。
-                </div>
-                <div class="vision-os-grid">
-                  <div class="vision-os-chip">① 目標・KPIの言語化</div>
-                  <div class="vision-os-chip">② プロジェクトと業務の棚卸し</div>
-                  <div class="vision-os-chip">③ AI &amp; 自動化の適用ポイント設計</div>
-                  <div class="vision-os-chip">④ PoCで1〜2業務から検証</div>
-                  <div class="vision-os-chip">⑤ テンプレ化して他部門へ展開</div>
-                  <div class="vision-os-chip">⑥ ダッシュボードで継続的に可視化</div>
-                </div>
-              </div>
+          <article class="strength-card">
+            <div class="strength-badge">Strength 02</div>
+            <h3 class="strength-title">1〜2週間で“動くAIワーカー”を立ち上げ</h3>
+            <div class="strength-body">
+              まずは既存業務から1テーマを選び、小さくPoCを実施。
+              効果を確認してから、他部門へ横展開していきます。
             </div>
-          </div>
+            <div class="strength-foot">
+              「とりあえず全社展開」ではなく、リスクの小さいところから検証。
+            </div>
+          </article>
+
+          <article class="strength-card">
+            <div class="strength-badge">Strength 03</div>
+            <h3 class="strength-title">将来のサービス追加にも耐えるアーキテクチャ</h3>
+            <div class="strength-body">
+              一度きりの自動化ではなく、後から業務やツールを追加できるよう、
+              シナリオとデータ構造を最初から設計します。
+            </div>
+            <div class="strength-foot">
+              「今だけ動くスクリプト」ではなく、拡張前提の業務OSを一緒につくる。
+            </div>
+          </article>
         </div>
       </section>
 
-      <!-- =====================
-           3-LAYER OVERVIEW
-           ===================== -->
-      <section id="layers" class="layers">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">3-Layer Overview</div>
-            <div class="section-title-row">
-              <h2 class="section-title">目標・プロジェクト・タスクを AI が貫通する「3レイヤー構造」</h2>
-              <p class="section-subtitle">
-                「目標」「ボード」「タスク」を分離しつつ、それらを AI と自動化でつなぐことで、
-                <strong>“戦略と現場” が一枚の構造図として見える</strong>ように設計します。
-              </p>
-            </div>
-          </div>
-
-          <div class="layers-grid">
-            <div class="layers-diagram-wrap" aria-hidden="true">
-              <div class="layers-diagram">
-                <div class="layer-circle outer"></div>
-                <div class="layer-circle mid"></div>
-                <div class="layer-circle inner"></div>
-
-                <div class="layer-dot dot-1"></div>
-                <div class="layer-dot dot-2"></div>
-                <div class="layer-dot dot-3"></div>
-
-                <div class="layer-label label-1">
-                  Goal Layer
-                  <span class="tag">目標・KPI</span>
-                </div>
-                <div class="layer-label label-2">
-                  Project Layer
-                  <span class="tag">案件・部門</span>
-                </div>
-                <div class="layer-label label-3">
-                  Task Layer
-                  <span class="tag">日々の業務</span>
-                </div>
-
-                <div class="layer-center">
-                  <div class="layer-center-title">AI WORK OS</div>
-                  <div class="layer-center-main">AIF STUDIO</div>
-                  <div style="font-size:9px;color:#9ca3af;">AI × Automation × Consulting</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="layers-right">
-              <p>
-                AIF STUDIO では、すべての自動化案件をこの <strong>「3レイヤー」</strong> で整理します。
-                単なるツール導入ではなく、<strong>戦略（Goal）→ プロジェクト（Project）→ タスク（Task）</strong>の一貫性を重視します。
-              </p>
-              <div class="layers-right-grid">
-                <div class="layer-card">
-                  <div class="layer-card-title">Goal Layer</div>
-                  <div class="layer-card-pill">経営が見るレイヤー</div>
-                  <ul class="layer-card-list">
-                    <li><span class="layer-card-bullet"></span><span>売上・利益・粗利率</span></li>
-                    <li><span class="layer-card-bullet"></span><span>残業時間・生産性</span></li>
-                    <li><span class="layer-card-bullet"></span><span>リード獲得数・受注率</span></li>
-                    <li><span class="layer-card-bullet"></span><span>工数削減時間・人件費削減額</span></li>
-                  </ul>
-                </div>
-
-                <div class="layer-card">
-                  <div class="layer-card-title">Project Layer</div>
-                  <div class="layer-card-pill">部門長・PMが見るレイヤー</div>
-                  <ul class="layer-card-list">
-                    <li><span class="layer-card-bullet"></span><span>営業プロジェクト</span></li>
-                    <li><span class="layer-card-bullet"></span><span>バックオフィス効率化PJ</span></li>
-                    <li><span class="layer-card-bullet"></span><span>顧客対応品質向上PJ</span></li>
-                    <li><span class="layer-card-bullet"></span><span>AIチャットボット構築PJ</span></li>
-                  </ul>
-                </div>
-
-                <div class="layer-card">
-                  <div class="layer-card-title">Task Layer</div>
-                  <div class="layer-card-pill">現場が毎日触るレイヤー</div>
-                  <ul class="layer-card-list">
-                    <li><span class="layer-card-bullet"></span><span>メール返信・テンプレ送信</span></li>
-                    <li><span class="layer-card-bullet"></span><span>PDF入力・転記作業</span></li>
-                    <li><span class="layer-card-bullet"></span><span>日報・議事録・ToDo作成</span></li>
-                    <li><span class="layer-card-bullet"></span><span>フォローリマインド・顧客管理</span></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div style="margin-top:10px;font-size:11px;color:var(--color-muted);">
-                この3レイヤーを分けて考えることで、
-                <strong>「どのレイヤーの、どの業務をAIワーカーに任せるか」</strong>を明確にしながら PoC を設計できます。
-              </div>
-
-              <div class="layers-legend">
-                <div class="layers-legend-item">
-                  <span class="layers-legend-swatch goal"></span>
-                  <span>Goal：経営指標とAIの影響度を紐づける</span>
-                </div>
-                <div class="layers-legend-item">
-                  <span class="layers-legend-swatch project"></span>
-                  <span>Project：部門別に自動化テーマを整理</span>
-                </div>
-                <div class="layers-legend-item">
-                  <span class="layers-legend-swatch task"></span>
-                  <span>Task：現場の「クリック」をAIが肩代わり</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =====================
-           WHAT WE CAN AUTOMATE
-           ===================== -->
-      <section id="automation" class="automation">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-eyebrow">What We Can Automate</div>
-            <div class="section-title-row">
-              <h2 class="section-title">AIF STUDIO が自動化できる業務一覧（代表例）</h2>
-              <p class="section-subtitle">
-                「AIFって何ができるの？」に、一度で答えるための一覧です。<br />
-                実際には、これらを組み合わせて <strong>“自社専用のAIワーカー”</strong> を設計します。
-              </p>
-            </div>
-          </div>
-
-          <div class="automation-layout">
-            <div class="automation-grid">
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">✉️</div>
-                  <div>
-                    <div class="automation-title">メール自動振り分け＆返信案生成</div>
-                    <div class="automation-tag">Gmail / 代表アドレス</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  問い合わせ・営業メール・採用応募などをAIが分類し、
-                  <strong>返信ドラフト</strong>を自動生成。承認後ワンクリックで送信できます。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">問い合わせ対応</div>
-                  <div class="automation-pill">採用窓口</div>
-                  <div class="automation-pill">テンプレ返信</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">📄</div>
-                  <div>
-                    <div class="automation-title">見積・請求書処理の自動化</div>
-                    <div class="automation-tag">PDF / Excel / クラウド請求</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  PDFやメールから請求情報を抽出し、
-                  <strong>台帳への転記・金額チェック・ステータス更新</strong>を自動化します。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">PDF→台帳転記</div>
-                  <div class="automation-pill">支払期日管理</div>
-                  <div class="automation-pill">入金チェック補助</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">🤝</div>
-                  <div>
-                    <div class="automation-title">リード管理＆自動フォロー</div>
-                    <div class="automation-tag">営業リスト / CRM 連携</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  「3日返信なし」「見積送付後7日経過」などの条件で、
-                  AIがフォロー文を生成し、自動でフォローします。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">ステータス管理</div>
-                  <div class="automation-pill">フォロー漏れ防止</div>
-                  <div class="automation-pill">ステップ配信</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">📝</div>
-                  <div>
-                    <div class="automation-title">日報・議事録・レポート生成</div>
-                    <div class="automation-tag">Slack / Teams / 会議ログ</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  会議ログやチャットから、<strong>議事録・ToDo・要点</strong>を自動生成。
-                  日報のたたき台もAIが毎日用意します。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">議事録自動生成</div>
-                  <div class="automation-pill">日報ドラフト</div>
-                  <div class="automation-pill">タスク抽出</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">🔍</div>
-                  <div>
-                    <div class="automation-title">社内ナレッジ検索 &amp; QA Bot</div>
-                    <div class="automation-tag">Notion / Drive / マニュアル</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  社内マニュアル・議事録・FAQを横断検索し、
-                  <strong>「社内専用ChatGPT」</strong>として回答するQAボットを構築します。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">ナレッジ検索</div>
-                  <div class="automation-pill">RAG</div>
-                  <div class="automation-pill">内製FAQボット</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">📊</div>
-                  <div>
-                    <div class="automation-title">KPI・ダッシュボード自動更新</div>
-                    <div class="automation-tag">Sheets / BI / スプレッドシート</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  各システムからデータを集約し、
-                  日次・週次で<strong>KPIシートやダッシュボード</strong>を更新します。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">売上・粗利集計</div>
-                  <div class="automation-pill">リード / 商談管理</div>
-                  <div class="automation-pill">工数・コスト可視化</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">💬</div>
-                  <div>
-                    <div class="automation-title">社内・社外チャットBot</div>
-                    <div class="automation-tag">Slack / LINE / Webチャット</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  社内からの質問や、Webサイト・LINEからの問い合わせに、
-                  AIが一次対応。難しい内容だけ人へエスカレーションします。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">一次受けAI</div>
-                  <div class="automation-pill">エスカレーション設計</div>
-                  <div class="automation-pill">営業時間外対応</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">📞</div>
-                  <div>
-                    <div class="automation-title">電話業務の半自動化（オプション）</div>
-                    <div class="automation-tag">受電ログ / AI音声</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  まずは<strong>コールログの自動要約・分類</strong>から着手し、
-                  段階的にAI音声や自動応答との連携を検討します。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">受電要約</div>
-                  <div class="automation-pill">対応履歴整理</div>
-                  <div class="automation-pill">AI音声PoC</div>
-                </div>
-              </div>
-
-              <div class="automation-card">
-                <div class="automation-card-header">
-                  <div class="automation-icon">⚙️</div>
-                  <div>
-                    <div class="automation-title">業務横断のシナリオ設計</div>
-                    <div class="automation-tag">Make / Zapier / GAS</div>
-                  </div>
-                </div>
-                <div class="automation-body">
-                  単発の自動化ではなく、<strong>「業務シナリオ」単位</strong>で設計。
-                  部門をまたいだルートや例外処理まで含めて構築します。
-                </div>
-                <div class="automation-pill-row">
-                  <div class="automation-pill">Make / Zapier</div>
-                  <div class="automation-pill">GAS / Apps Script</div>
-                  <div class="automation-pill">Slack / Gmail / Sheets</div>
-                </div>
-              </div>
-            </div>
-
-            <aside class="automation-meta">
-              <div class="automation-meta-title">ここに載っていない業務も、遠慮なくご相談ください。</div>
-              <div class="automation-meta-body">
-                AIF STUDIO は、<strong>「この業務もAIでできる？」</strong>という段階から一緒に整理します。<br />
-                まずは業務を分解し、「AIに向く部分」と「人が担うべき部分」を切り分けるところから始めます。
-              </div>
-              <ul class="automation-meta-list">
-                <li>
-                  <span class="automation-meta-dot"></span>
-                  <span>Slack / Gmail / Sheets / Notion / Drive / LINE</span>
-                </li>
-                <li>
-                  <span class="automation-meta-dot"></span>
-                  <span>既存SaaS（会計、人事、CRM、MA 等）との連携</span>
-                </li>
-                <li>
-                  <span class="automation-meta-dot"></span>
-                  <span>社内ルール・稟議フローに合わせた承認プロセス</span>
-                </li>
-                <li>
-                  <span class="automation-meta-dot"></span>
-                  <span>PoC→本番運用を見据えたログ設計・権限設計</span>
-                </li>
-              </ul>
-              <div class="automation-meta-note">
-                <strong>「これも自動化できますか？」</strong>という相談ベースで問題ありません。<br />
-                無料ヒアリングでは、現状の業務フローを一緒に洗い出し、
-                <strong>最初に着手すべき“インパクトが大きく、リスクが小さい業務”</strong>を特定します。
-              </div>
-              <div class="automation-meta-pill-row">
-                <div class="automation-meta-pill">業務棚卸しから伴走</div>
-                <div class="automation-meta-pill">PoC前提のスモールスタート</div>
-                <div class="automation-meta-pill">将来の横展開を見据えた設計</div>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-      <!-- ここまでが PART1 -->
+      <!-- ここから下に Vision / レイヤー / 業務一覧 などを続けてOK -->
