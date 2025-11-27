@@ -21,7 +21,7 @@
       --color-sub: #334155;
       --color-muted: #64748b;
       --color-border: #e2e8f0;
-      --color-border-soft: #edf2ff;
+      --color-border-soft: #dbeafe;
       --color-surface: #ffffff;
       --color-surface-soft: #f8fafc;
       --color-blue: #0ea5e9;
@@ -56,7 +56,6 @@
     }
 
     a { color: inherit; text-decoration: none; }
-
     img { max-width: 100%; display: block; }
 
     .page {
@@ -89,11 +88,18 @@
       margin-bottom: 4px;
     }
 
+    .section-highlight {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--color-main);
+    }
+
     .section-lead {
       font-size: 13px;
       color: var(--color-sub);
-      margin-bottom: 24px;
-      max-width: 620px;
+      margin-bottom: 20px;
+      max-width: 640px;
     }
 
     /* ========== NAV ========== */
@@ -292,9 +298,7 @@
     }
 
     /* ========== HERO ========== */
-    .hero-wrapper {
-      padding-top: 88px;
-    }
+    .hero-wrapper { padding-top: 88px; }
 
     .hero {
       padding: 72px 0 56px;
@@ -427,7 +431,7 @@
       margin: 0 auto;
     }
 
-    /* ========== HERO BOARD（概念図＋KPI） ========== */
+    /* HERO BOARD */
     .hero-board {
       margin-top: 40px;
       display: grid;
@@ -487,16 +491,16 @@
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.4);
     }
 
-    /* 概念図：PC横並び / モバイル縦並び */
+    /* 概念図：1段の流れを強調 */
     .flow-schema {
-      border-radius: 16px;
-      background: linear-gradient(135deg, #f8fafc, #eff6ff);
+      border-radius: 18px;
+      background: radial-gradient(circle at 0 0, #e0f2fe, #f8fafc 40%, #edf2ff 100%);
       border: 1px solid var(--color-border-soft);
-      padding: 12px 14px;
+      padding: 14px 16px;
       display: flex;
       align-items: stretch;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
     }
 
     .schema-step {
@@ -514,24 +518,25 @@
     }
 
     .schema-node {
-      padding: 7px 9px;
-      border-radius: var(--radius-md);
+      padding: 9px 11px;
+      border-radius: 14px;
       border: 1px solid rgba(203, 213, 225, 0.9);
       background: #ffffff;
-      font-size: 11px;
+      font-size: 12px;
       display: flex;
       align-items: flex-start;
-      gap: 6px;
+      gap: 7px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
     }
 
     .schema-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 7px;
+      width: 20px;
+      height: 20px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 11px;
       color: #ffffff;
       flex-shrink: 0;
     }
@@ -541,17 +546,18 @@
     .schema-icon.auto  { background: #3b82f6; }
     .schema-icon.human { background: #94a3b8; }
 
-    .schema-text-main  { font-size: 11px; color: var(--color-sub); }
-    .schema-text-sub   { font-size: 10px; color: var(--color-muted); }
+    .schema-text-main  { font-size: 12px; color: var(--color-sub); }
+    .schema-text-sub   { font-size: 11px; color: var(--color-muted); }
 
     .schema-arrow {
-      width: 26px;
+      width: 34px;
       align-self: center;
-      height: 3px;
+      height: 4px;
       border-radius: 999px;
       background: linear-gradient(90deg, #0ea5e9, #22c55e);
       position: relative;
       flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
     }
 
     .schema-arrow::after {
@@ -559,8 +565,8 @@
       position: absolute;
       right: -4px;
       top: -4px;
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-left: 2px solid #22c55e;
       border-bottom: 2px solid #22c55e;
       transform: rotate(-45deg);
@@ -611,9 +617,7 @@
       color: #15803d;
     }
 
-    .kpi-trend span:first-child {
-      font-size: 12px;
-    }
+    .kpi-trend span:first-child { font-size: 12px; }
 
     .kpi-caption {
       font-size: 9px;
@@ -631,15 +635,13 @@
     }
 
     /* ========== VISION ========== */
-    .vision {
-      padding-top: 56px;
-    }
+    .vision { padding-top: 56px; }
 
     .vision-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 24px;
-      align-items: flex-start;
+      gap: 20px;
+      align-items: stretch;
     }
 
     .vision-box {
@@ -647,34 +649,24 @@
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       box-shadow: var(--shadow-soft);
-      padding: 18px 18px 16px;
+      padding: 16px 16px 14px;
       font-size: 13px;
       color: var(--color-sub);
     }
 
+    .vision-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--color-main);
+    }
+
     .vision-list {
       padding-left: 18px;
-      margin: 10px 0 0;
+      margin: 6px 0 0;
     }
 
     .vision-list li {
       margin-bottom: 4px;
-    }
-
-    .vision-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-      font-size: 11px;
-    }
-
-    .vision-tag {
-      padding: 3px 8px;
-      border-radius: var(--radius-pill);
-      background: var(--color-surface-soft);
-      border: 1px solid var(--color-border);
-      color: var(--color-muted);
     }
 
     /* ========== LAYERS ========== */
@@ -754,19 +746,19 @@
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       box-shadow: var(--shadow-soft);
-      padding: 18px 18px 16px;
+      padding: 16px 16px 14px;
       font-size: 13px;
       color: var(--color-sub);
     }
 
     .layers-list {
-      margin-top: 10px;
+      margin-top: 8px;
       padding-left: 18px;
     }
 
     .layers-list li { margin-bottom: 4px; }
 
-    /* ========== AUTOMATION (できること) ========== */
+    /* ========== AUTOMATION ========== */
     .automation-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -789,11 +781,18 @@
       color: var(--color-main);
     }
 
+    .automation-list {
+      padding-left: 16px;
+      margin: 4px 0 0;
+    }
+
+    .automation-list li { margin-bottom: 3px; }
+
     .automation-tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      margin-top: 4px;
+      margin-top: 5px;
       font-size: 10px;
       color: var(--color-muted);
     }
@@ -805,7 +804,7 @@
       border: 1px solid var(--color-border);
     }
 
-    /* ========== FLOWS 3本 ========== */
+    /* ========== FLOWS ========== */
     .flows-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -857,7 +856,7 @@
     }
 
     .flow-foot {
-      margin-top: 6px;
+      margin-top: 4px;
       font-size: 10px;
       color: var(--color-muted);
     }
@@ -955,13 +954,8 @@
       overflow: hidden;
     }
 
-    .faq-item {
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .faq-item:last-child {
-      border-bottom: none;
-    }
+    .faq-item { border-bottom: 1px solid var(--color-border); }
+    .faq-item:last-child { border-bottom: none; }
 
     .faq-question {
       padding: 10px 14px;
@@ -989,13 +983,8 @@
       display: none;
     }
 
-    .faq-item.open .faq-answer {
-      display: block;
-    }
-
-    .faq-item.open .faq-toggle {
-      transform: rotate(45deg);
-    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
 
     /* ========== CONTACT ========== */
     .contact-card {
@@ -1031,9 +1020,7 @@
       font-size: 12px;
     }
 
-    .field-label {
-      color: var(--color-muted);
-    }
+    .field-label { color: var(--color-muted); }
 
     .field-input {
       border-radius: 10px;
@@ -1078,33 +1065,17 @@
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 960px) {
-      .hero-board {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .vision-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .layers-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .pricing-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .contact-card {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .hero-board { grid-template-columns: minmax(0, 1fr); }
+      .vision-layout { grid-template-columns: minmax(0, 1fr); }
+      .layers-layout { grid-template-columns: minmax(0, 1fr); }
+      .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-card { grid-template-columns: minmax(0, 1fr); }
     }
 
     @media (max-width: 840px) {
-      .automation-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .flows-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .steps-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .automation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flows-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 720px) {
@@ -1140,18 +1111,10 @@
         transform: rotate(45deg);
       }
 
-      .automation-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .flows-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .pricing-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .steps-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .automation-grid { grid-template-columns: minmax(0, 1fr); }
+      .flows-grid { grid-template-columns: minmax(0, 1fr); }
+      .pricing-grid { grid-template-columns: minmax(0, 1fr); }
+      .steps-grid { grid-template-columns: minmax(0, 1fr); }
       .brand-sub { white-space: normal; }
     }
   </style>
@@ -1218,7 +1181,7 @@
             それ以外は、AIワーカーが静かに引き受けます。
           </h1>
           <p class="hero-sub">
-            問い合わせ対応・請求処理・PDF転記・営業フォロー・日報・議事録…。<br />
+            問い合わせ対応・請求処理・PDF転記・営業フォロー・日報・議事録…。  
             AIF STUDIO は、こうした定型業務を AI と自動化で肩代わりする
             <strong>「外部AIチーム」</strong>です。
           </p>
@@ -1344,30 +1307,22 @@
       <div class="container">
         <div class="section-eyebrow">OUR VISION</div>
         <h2 class="section-title">人がすべきでない仕事をゼロにする。</h2>
-        <p class="section-lead">
-          AIF STUDIO は、日本の中小企業における「人がやらなくていいのに残っている仕事」をAIと自動化でなくしていく、
-          小さな外部AIチームです。
+        <p class="section-highlight">
+          「メール・転記・請求処理・日報」などの”作業”をAIワーカーに任せ、人は価値の高い仕事だけに集中できる状態をつくります。
         </p>
         <div class="vision-layout">
           <div class="vision-box">
-            <strong>なぜ今、AI業務自動化なのか</strong>
+            <div class="vision-title">なぜ今、AI業務自動化なのか</div>
             <ul class="vision-list">
-              <li>人手不足なのに、メール返信・転記・請求処理など「なくならない仕事」が毎日溜まる。</li>
-              <li>現場は忙しく、改善プロジェクトを立ち上げる余白もない。</li>
-              <li>大企業向けシステムは高額で、SMBにはオーバースペックになりがち。</li>
+              <li>人手不足なのに、毎日同じような定型業務が増え続けている。</li>
+              <li>現場は忙しく、改善プロジェクトを立ち上げる余白がない。</li>
             </ul>
-            <div class="vision-tags">
-              <span class="vision-tag">業務のレイヤーを整理</span>
-              <span class="vision-tag">AIワーカーという考え方</span>
-              <span class="vision-tag">PoCから小さく検証</span>
-            </div>
           </div>
           <div class="vision-box">
-            <strong>AIF STUDIO が提供するもの</strong>
+            <div class="vision-title">AIF STUDIO が担う役割</div>
             <ul class="vision-list">
-              <li>現場ヒアリング〜業務整理〜AIワーカー設計を一気通貫で支援。</li>
-              <li>メール・PDF・スプレッドシート・Slack・社内ツールをつなぐ自動化フローを構築。</li>
-              <li>PoCで成果指標（削減時間・ミス削減・継続意向）を可視化し、本番運用へつなげる。</li>
+              <li>御社のチームの一員として、AIワーカーと自動化フローを設計・運用。</li>
+              <li>PoCで成果を可視化し、「続ける価値があるか」を一緒に判断します。</li>
             </ul>
           </div>
         </div>
@@ -1379,8 +1334,8 @@
       <div class="container">
         <div class="section-eyebrow">LAYERED APPROACH</div>
         <h2 class="section-title">目標・プロジェクト・タスクの3レイヤーで考える。</h2>
-        <p class="section-lead">
-          いきなり全社最適を狙うのではなく、「目標」「案件」「日々のタスク」に分けて、それぞれでAIと自動化が効くポイントを整理します。
+        <p class="section-highlight">
+          いきなり全社最適を狙うのではなく、「目標」「案件」「日々のタスク」に分けて、どこから自動化するとインパクトが大きいかを整理します。
         </p>
         <div class="layers-layout">
           <div class="layer-circle">
@@ -1402,15 +1357,12 @@
             </div>
           </div>
           <div class="layers-text-card">
-            <strong>3レイヤーごとにAIワーカーを配置する。</strong>
+            <strong>レイヤーごとにAIワーカーを配置していく。</strong>
             <ul class="layers-list">
-              <li><b>Goal：</b> 経営・部門のKPIを定義し、レポートやダッシュボードを自動生成。</li>
+              <li><b>Goal：</b> 経営・部門のKPIを自動集計し、レポートやダッシュボードを自動生成。</li>
               <li><b>Project：</b> 案件ごとの問い合わせ・見積・タスク進捗をAIが整理。</li>
               <li><b>Task：</b> メール返信・PDF転記・日報・議事録など、最も時間を使っている定型業務をAIワーカーに任せる。</li>
             </ul>
-            <p style="font-size:12px;color:var(--color-muted);margin-top:8px;">
-              こうして「どのレイヤーのどの業務を、どの順番で自動化するか」を一枚の構造図として見える化します。
-            </p>
           </div>
         </div>
       </div>
@@ -1421,16 +1373,15 @@
       <div class="container">
         <div class="section-eyebrow">WHAT WE CAN AUTOMATE</div>
         <h2 class="section-title">AIF STUDIO が引き受けられる業務例。</h2>
-        <p class="section-lead">
-          「ここまで任せていいの？」と思ってもらうために、あえて広めに書いています。実プロジェクトでは、ここから優先度順にスコープを絞っていきます。
+        <p class="section-highlight">
+          「ここまで任せていいの？」と思ってもらうために、あえて広めに書いています。実案件ではこの中から”今一番効くところ”を一緒に選びます。
         </p>
         <div class="automation-grid">
           <div class="automation-card">
             <div class="automation-title">メール関連</div>
-            <ul class="vision-list">
+            <ul class="automation-list">
               <li>問い合わせ・資料請求の一次返信</li>
               <li>営業メールの要約・分類・ステータス更新</li>
-              <li>採用応募メールの整理・シート転記</li>
             </ul>
             <div class="automation-tag-row">
               <span class="automation-tag">Gmail</span>
@@ -1439,10 +1390,9 @@
           </div>
           <div class="automation-card">
             <div class="automation-title">見積・請求・支払処理</div>
-            <ul class="vision-list">
+            <ul class="automation-list">
               <li>PDF請求書からのデータ抽出</li>
               <li>スプレッドシートへの自動転記</li>
-              <li>支払ステータスの更新・リマインド送信</li>
             </ul>
             <div class="automation-tag-row">
               <span class="automation-tag">PDF抽出</span>
@@ -1451,10 +1401,9 @@
           </div>
           <div class="automation-card">
             <div class="automation-title">営業・顧客フォロー</div>
-            <ul class="vision-list">
+            <ul class="automation-list">
               <li>リードのステータス管理</li>
-              <li>フォロータイミングの自動検知</li>
-              <li>フォロー文面の自動生成・送信</li>
+              <li>フォロータイミングの自動検知＆送信</li>
             </ul>
             <div class="automation-tag-row">
               <span class="automation-tag">CRM連携（相談）</span>
@@ -1463,10 +1412,9 @@
           </div>
           <div class="automation-card">
             <div class="automation-title">日報・議事録・ナレッジ</div>
-            <ul class="vision-list">
+            <ul class="automation-list">
               <li>Slackや録音データから議事録生成</li>
               <li>日報テンプレへの自動整形</li>
-              <li>ナレッジ検索用の要約蓄積</li>
             </ul>
             <div class="automation-tag-row">
               <span class="automation-tag">Slack</span>
@@ -1475,10 +1423,9 @@
           </div>
           <div class="automation-card">
             <div class="automation-title">社内Bot・問い合わせ対応</div>
-            <ul class="vision-list">
+            <ul class="automation-list">
               <li>社内規程・マニュアルへのQAボット</li>
               <li>よくある問い合わせの自動回答</li>
-              <li>オペレーターへのスムーズなエスカレーション</li>
             </ul>
             <div class="automation-tag-row">
               <span class="automation-tag">RAG</span>
@@ -1487,10 +1434,9 @@
           </div>
           <div class="automation-card">
             <div class="automation-title">電話業務の自動化（相談）</div>
-            <ul class="vision-list">
+            <ul class="automation-list">
               <li>一次受付・ヒアリングの自動化</li>
               <li>要約のSlack通知・シート記録</li>
-              <li>有人対応とのハイブリッド設計</li>
             </ul>
             <div class="automation-tag-row">
               <span class="automation-tag">音声認識</span>
@@ -1506,9 +1452,9 @@
       <div class="container">
         <div class="section-eyebrow">AUTOMATION FLOW EXAMPLES</div>
         <h2 class="section-title">よくあるフロー例 3本。</h2>
-        <p class="section-lead">
-          実際には御社の業務に合わせてカスタマイズしますが、雰囲気が伝わる代表例を3つ挙げています。
-        </p>
+      <p class="section-highlight">
+        「何がどこを通って、どこに記録されるか」をざっくり掴めるレベルで載せています。実際には御社の業務に合わせてカスタマイズします。
+      </p>
         <div class="flows-grid">
           <div class="flow-card">
             <div class="flow-label">Flow 01</div>
@@ -1552,7 +1498,7 @@
       <div class="container">
         <div class="section-eyebrow">IMPLEMENTATION FLOW</div>
         <h2 class="section-title">4ステップで、小さく始めて大きく育てる。</h2>
-        <p class="section-lead">
+        <p class="section-highlight">
           まずは2〜3業務に絞ったPoCからスタートし、成果が出たら横展開していく進め方を基本としています。
         </p>
         <div class="steps-grid">
@@ -1585,8 +1531,8 @@
       <div class="container">
         <div class="section-eyebrow">PRICING &amp; POC</div>
         <h2 class="section-title">PoCから本番運用まで、段階的に。</h2>
-        <p class="section-lead">
-          実際のお見積りは、業務範囲とシナリオ数に応じて個別にご提示します。ここではイメージが湧くように、代表的なパターンを書いています。
+        <p class="section-highlight">
+          正式なお見積りは業務範囲とシナリオ数に応じて個別にご提示します。ここでは「だいたいどのくらいか」を掴むための目安です。
         </p>
         <div class="pricing-grid">
           <div class="pricing-card">
@@ -1631,9 +1577,9 @@
       <div class="container">
         <div class="section-eyebrow">FAQ</div>
         <h2 class="section-title">よくあるご質問。</h2>
-        <div class="section-lead">
+        <p class="section-highlight">
           権限・セキュリティ・導入までの流れなど、最初に聞かれることをまとめています。
-        </div>
+        </p>
         <div class="faq-list" id="faq-list">
           <div class="faq-item">
             <div class="faq-question">
@@ -1686,7 +1632,7 @@
       <div class="container">
         <div class="section-eyebrow">CONTACT</div>
         <h2 class="section-title">まずは、業務の「愚痴」から聞かせてください。</h2>
-        <p class="section-lead">
+        <p class="section-highlight">
           まだ導入するか決めていない段階でも問題ありません。「ここが大変」「ここがモヤモヤする」という話をざっくばらんに伺ったうえで、
           AIと自動化でどこまで解決できそうかを一緒に検討します。
         </p>
