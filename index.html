@@ -167,7 +167,7 @@
       padding: 52px 0;
     }
 
-    /* Hero：1カラムに変更 */
+    /* Hero：1カラム */
     .hero {
       padding-top: 20px;
     }
@@ -488,82 +488,6 @@
       color: #1d4ed8;
     }
 
-    /* More services (accordion) */
-    .accordion {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .accordion-item {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      background: #ffffff;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .accordion-header {
-      width: 100%;
-      padding: 10px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: transparent;
-      color: var(--text-main);
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-    }
-
-    .accordion-header span:first-child {
-      text-align: left;
-    }
-
-    .accordion-icon {
-      font-size: 1.1rem;
-      color: var(--text-soft);
-      transition: transform 0.2s ease-out;
-    }
-
-    .accordion-item.open .accordion-icon {
-      transform: rotate(45deg);
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 14px;
-      border-top: 1px solid #e5e7eb;
-      transition: max-height 0.24s ease-out, padding-top 0.24s ease-out, padding-bottom 0.24s ease-out;
-    }
-
-    .accordion-item.open .accordion-content {
-      padding-top: 6px;
-      padding-bottom: 8px;
-    }
-
-    .accordion-content ul {
-      list-style: none;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .accordion-content li {
-      position: relative;
-      padding-left: 14px;
-      margin-bottom: 4px;
-    }
-
-    .accordion-content li::before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 0.82rem;
-      color: var(--accent-strong);
-    }
-
     /* 円の図：業務レイヤー */
     .layers-grid {
       display: grid;
@@ -582,21 +506,21 @@
 
     .layer-diagram {
       position: relative;
-      width: 260px;
-      height: 260px;
+      width: 280px;
+      height: 280px;
       margin: 0 auto 10px;
     }
 
     .layer-ring {
       position: absolute;
       border-radius: 999px;
-      border: 1px solid #d1d5db;
+      border: 1px solid #e5e7eb;
       background: radial-gradient(circle at top, #eef2ff, #ffffff);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       color: #1f2937;
     }
 
@@ -605,14 +529,15 @@
     }
 
     .layer-ring.middle {
-      inset: 32px;
+      inset: 34px;
     }
 
     .layer-ring.inner {
-      inset: 72px;
+      inset: 80px;
       background: #2563eb;
       color: #f9fafb;
       font-weight: 600;
+      font-size: 0.9rem;
     }
 
     .layer-caption {
@@ -697,6 +622,75 @@
       font-size: 0.9rem;
       color: var(--text-soft);
       margin-top: 8px;
+    }
+
+    /* Gmail→Slack→Sheets フロー図 */
+    .scenario-card {
+      border-radius: 22px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .scenario-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .scenario-node {
+      flex: 1 1 0;
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .scenario-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      margin: 0 auto 6px;
+      border: 1px solid #dbeafe;
+      background: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1d4ed8;
+    }
+
+    .scenario-label-main {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .scenario-label-sub {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .scenario-arrow {
+      flex: 0 0 32px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #cbd5f5, #1d4ed8);
+      position: relative;
+    }
+
+    .scenario-arrow::after {
+      content: "";
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 5px 0 5px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent #1d4ed8;
     }
 
     /* Pricing */
@@ -871,6 +865,22 @@
         margin: 0 auto;
         background: linear-gradient(to bottom, #c7d2fe, #1d4ed8);
       }
+      .scenario-flow {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .scenario-arrow {
+        width: 2px;
+        height: 26px;
+        margin: 0 auto;
+        background: linear-gradient(to bottom, #cbd5f5, #1d4ed8);
+      }
+      .scenario-arrow::after {
+        right: 50%;
+        top: auto;
+        bottom: -6px;
+        transform: translateX(50%) rotate(90deg);
+      }
     }
 
     @media (max-width: 640px) {
@@ -890,8 +900,8 @@
         grid-template-columns: minmax(0, 1fr);
       }
       .layer-diagram {
-        width: 220px;
-        height: 220px;
+        width: 240px;
+        height: 240px;
       }
     }
   </style>
@@ -911,6 +921,7 @@
         <nav class="nav-links">
           <a href="#services">サービス</a>
           <a href="#layers">全体像</a>
+          <a href="#scenario">フロー図</a>
           <a href="#flow">導入フロー</a>
           <a href="#pricing">料金</a>
           <a href="#contact">お問い合わせ</a>
@@ -924,7 +935,7 @@
 
     <main>
       <div class="max-w">
-        <!-- Hero（カードなし） -->
+        <!-- Hero -->
         <section class="hero">
           <div>
             <div class="badge">
@@ -1131,7 +1142,7 @@
             <div class="section-eyebrow">Overview</div>
             <div class="section-title">AIFが自動化する「業務の層」を、ひと目で。</div>
             <p class="section-desc">
-              目標・プロセス・タスクの3層で業務を整理し、AIが入るポイントを決めます。
+              目標・プロジェクト・タスクの3層で業務を整理し、AIが入るポイントを決めます。
               monday.com のような円グラフレイアウトで、全体像を直感的に伝えます。
             </p>
           </div>
@@ -1139,8 +1150,8 @@
           <div class="layers-grid">
             <div class="layer-diagram-card">
               <div class="layer-diagram">
-                <div class="layer-ring outer">日々のタスク<br>（メール・入力・報告）</div>
-                <div class="layer-ring middle">業務プロセス・ワークフロー</div>
+                <div class="layer-ring outer">タスク</div>
+                <div class="layer-ring middle">プロジェクト・タイムライン</div>
                 <div class="layer-ring inner">目標・目的</div>
               </div>
               <div class="layer-caption">
@@ -1150,14 +1161,64 @@
 
             <ul class="layer-list">
               <li><span>① 目標・目的</span> … 何を達成したいのか（売上・工数削減・レスの速さなど）</li>
-              <li><span>② プロセス</span> … 目標達成のためのステップ（営業フロー、請求フローなど）</li>
+              <li><span>② プロジェクト・タイムライン</span> … 目標達成のための計画・進行管理</li>
               <li><span>③ タスク</span> … 実際の作業（メール返信、転記、資料作成など）</li>
               <li>この円の図をベースに、「どの層をAIに任せるか」を一緒に設計します。</li>
             </ul>
           </div>
         </section>
 
-        <!-- Flow -->
+        <!-- Gmail → AI → Slack → Sheets フロー図 -->
+        <section id="scenario" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Automation Example</div>
+            <div class="section-title">メール1通から始まる、AI業務自動化フロー。</div>
+            <p class="section-desc">
+              代表がイメージしやすいように、よくある「問い合わせメール対応」を例にしたフロー図です。
+              実際は、ここに御社専用の条件や承認フローをのせていきます。
+            </p>
+          </div>
+
+          <div class="scenario-card">
+            <div class="scenario-flow">
+              <div class="scenario-node">
+                <div class="scenario-circle">Gmail</div>
+                <div class="scenario-label-main">問い合わせ受信</div>
+                <div class="scenario-label-sub">専用ラベル / アドレスに集約</div>
+              </div>
+
+              <div class="scenario-arrow"></div>
+
+              <div class="scenario-node">
+                <div class="scenario-circle">AI</div>
+                <div class="scenario-label-main">分類・要約・優先度判定</div>
+                <div class="scenario-label-sub">件名・本文から内容を自動読み取り</div>
+              </div>
+
+              <div class="scenario-arrow"></div>
+
+              <div class="scenario-node">
+                <div class="scenario-circle">Slack</div>
+                <div class="scenario-label-main">承認・コメント</div>
+                <div class="scenario-label-sub">担当者が◯/修正をワンクリック</div>
+              </div>
+
+              <div class="scenario-arrow"></div>
+
+              <div class="scenario-node">
+                <div class="scenario-circle">Sheets</div>
+                <div class="scenario-label-main">台帳更新・KPI反映</div>
+                <div class="scenario-label-sub">リード一覧や集計表を自動更新</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="flow-note" style="text-align:center; margin-top:12px;">
+            この1本のフローを起点に、「請求書」「採用」「サポート」など、横方向に増やしていくイメージです。
+          </p>
+        </section>
+
+        <!-- Flow（4ステップ） -->
         <section id="flow" class="reveal">
           <div class="section-header">
             <div class="section-eyebrow">Implementation Flow</div>
@@ -1326,25 +1387,10 @@
     );
     revealEls.forEach((el) => observer.observe(el));
 
-    // アコーディオン
-    document.querySelectorAll(".accordion-header").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const item = btn.parentElement;
-        const content = item.querySelector(".accordion-content");
-        const isOpen = item.classList.toggle("open");
-        if (isOpen) {
-          content.style.maxHeight = content.scrollHeight + "px";
-        } else {
-          content.style.maxHeight = "0";
-        }
-      });
-    });
-
     // 年表示＋初期アニメ起動
     window.addEventListener("load", () => {
       const yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-
       typeOnce();
     });
   </script>
