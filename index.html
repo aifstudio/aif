@@ -11,19 +11,20 @@
 
   <style>
     :root {
-      --bg: #030712;
-      --bg-alt: #020617;
-      --card-bg: rgba(15, 23, 42, 0.85);
-      --border-subtle: rgba(148, 163, 184, 0.25);
+      --bg: #f3f4f6;
+      --bg-alt: #e5e7eb;
+      --page-bg: #f9fafb;
+      --card-bg: #ffffff;
+      --border-subtle: #e5e7eb;
       --accent: #0ea5e9;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --accent-strong: #22d3ee;
-      --accent-gold: #fbbf24;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --danger: #fb7185;
+      --accent-soft: rgba(56, 189, 248, 0.08);
+      --accent-strong: #0284c7;
+      --accent-gold: #f59e0b;
+      --text: #111827;
+      --muted: #6b7280;
+      --danger: #dc2626;
       --radius-xl: 18px;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -35,7 +36,7 @@
     body {
       font-family: "Inter", "Noto Sans JP", sans-serif;
       font-size: 16px;
-      background: radial-gradient(circle at top, #020617 0, #020617 25%, #020617 40%, #000 75%);
+      background: var(--page-bg);
       color: var(--text);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
@@ -50,9 +51,9 @@
     .page {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.08), transparent 50%),
-        radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.12), transparent 45%),
-        linear-gradient(145deg, #020617 0%, #020617 50%, #000 100%);
+        radial-gradient(circle at 10% -20%, rgba(56, 189, 248, 0.16), transparent 55%),
+        radial-gradient(circle at 90% 120%, rgba(59, 130, 246, 0.18), transparent 55%),
+        linear-gradient(to bottom, #f9fafb 0%, #f3f4f6 40%, #eef2ff 100%);
     }
 
     .max-w {
@@ -65,43 +66,43 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.45), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      backdrop-filter: blur(14px);
+      background: rgba(249, 250, 251, 0.9);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
+      padding: 10px 0;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    /* ここに自分のロゴPNGを置く想定（aif-logo.png） */
     .logo-img {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       object-fit: contain;
       display: block;
+      background: #e5e7eb;
     }
 
     .logo-text-main {
       font-weight: 700;
-      letter-spacing: 0.1em;
-      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      color: #e5f4ff;
+      color: #0f172a;
     }
 
     .logo-text-sub {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
@@ -109,7 +110,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--muted);
     }
 
@@ -124,9 +125,10 @@
       left: 0;
       bottom: -4px;
       width: 0;
-      height: 1px;
+      height: 2px;
+      border-radius: 999px;
       background: linear-gradient(to right, var(--accent), var(--accent-strong));
-      transition: width 0.2s ease-out;
+      transition: width 0.18s ease-out;
     }
 
     .nav-links a:hover::after {
@@ -134,48 +136,49 @@
     }
 
     .nav-cta {
-      padding: 9px 18px;
+      padding: 8px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.25), rgba(15, 23, 42, 0.2));
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      background: #f0f9ff;
       font-size: 0.9rem;
-      color: #e0faff;
+      color: #0f172a;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       cursor: pointer;
-      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
-      box-shadow: 0 12px 35px rgba(8, 47, 73, 0.65);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out, background 0.15s;
+      box-shadow: 0 8px 18px rgba(59, 130, 246, 0.12);
     }
 
     .nav-cta:hover {
       transform: translateY(-1px);
       border-color: var(--accent-strong);
-      box-shadow: 0 18px 45px rgba(8, 47, 73, 0.95);
+      background: #e0f2fe;
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.18);
     }
 
     .nav-badge {
       font-size: 0.78rem;
       padding: 2px 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: white;
+      border: 1px solid rgba(148, 163, 184, 0.35);
     }
 
     main {
-      padding-bottom: 80px;
+      padding-bottom: 70px;
     }
 
     section {
-      padding: 60px 0;
+      padding: 56px 0;
     }
 
     /* Hero */
     .hero {
-      padding: 70px 0 40px;
+      padding: 60px 0 28px;
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
-      gap: 42px;
+      gap: 40px;
       align-items: center;
     }
 
@@ -183,59 +186,48 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 5px 12px 5px 6px;
+      padding: 5px 12px 5px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), rgba(15, 23, 42, 0.9));
-      font-size: 0.86rem;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      background: #f9fafb;
+      font-size: 0.85rem;
       color: var(--muted);
       margin-bottom: 16px;
     }
 
     .badge-dot {
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 10%, #e0f2fe, #0ea5e9 60%, #1d4ed8 90%);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.9);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .badge-dot::after {
-      content: "";
-      position: absolute;
-      inset: 5px;
-      border-radius: inherit;
-      background: radial-gradient(circle at 30% 15%, rgba(248, 250, 252, 0.95), transparent 55%);
-      mix-blend-mode: screen;
+      background: radial-gradient(circle at 30% 10%, #0ea5e9, #3b82f6);
     }
 
     .badge-kv {
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: #e0f2ff;
+      color: #0369a1;
     }
 
     .hero-title {
-      font-size: clamp(2.6rem, 3.7vw, 3.3rem);
-      line-height: 1.15;
-      letter-spacing: 0.05em;
-      margin-bottom: 20px;
+      font-size: clamp(2.3rem, 3.2vw, 3rem);
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+      color: #0f172a;
     }
 
     .hero-title span.gradient {
-      background: linear-gradient(120deg, #f9fafb, #e0f2fe, #7dd3fc, #22d3ee);
+      background: linear-gradient(120deg, #0f172a, #0284c7, #22c55e);
       -webkit-background-clip: text;
       color: transparent;
     }
 
     .hero-sub-typing {
       font-family: "Inter", "Noto Sans JP", sans-serif;
-      font-size: 0.98rem;
-      color: #bae6fd;
-      margin-bottom: 10px;
+      font-size: 0.96rem;
+      color: #0369a1;
+      margin-bottom: 8px;
       min-height: 1.5em;
       white-space: nowrap;
       overflow: hidden;
@@ -249,87 +241,88 @@
     }
 
     .hero-sub {
-      font-size: 1.02rem;
+      font-size: 1rem;
       color: var(--muted);
       max-width: 540px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .hero-sub strong {
-      color: #e5f4ff;
+      color: #0f172a;
     }
 
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
-      margin-bottom: 26px;
+      margin-bottom: 20px;
     }
 
     .btn-primary {
-      padding: 12px 24px;
+      padding: 11px 24px;
       border-radius: 999px;
       border: none;
-      background: radial-gradient(circle at top, #38bdf8, #0ea5e9, #0369a1);
+      background: linear-gradient(to right, #0ea5e9, #0284c7);
       color: #f9fafb;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 16px 40px rgba(8, 47, 73, 0.9);
+      gap: 8px;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
       transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, filter 0.16s;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 22px 55px rgba(8, 47, 73, 1);
+      filter: brightness(1.03);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.38);
     }
 
     .btn-secondary {
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: white;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      transition: border-color 0.16s, color 0.16s, background 0.16s;
+      transition: border-color 0.16s, color 0.16s, background 0.16s, box-shadow 0.16s;
     }
 
     .btn-secondary:hover {
-      border-color: rgba(209, 213, 219, 0.9);
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(55, 65, 81, 0.8);
+      color: #111827;
+      background: #f9fafb;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     }
 
     .hero-notes {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .hero-notes span {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
     }
 
     .hero-notes span i {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: #22c55e;
     }
 
@@ -341,27 +334,15 @@
     .floating-card {
       position: absolute;
       inset: 0;
-      border-radius: 22px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.16), rgba(15, 23, 42, 0.96));
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
       box-shadow: var(--shadow-soft);
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       overflow: hidden;
-    }
-
-    .floating-card::before {
-      content: "";
-      position: absolute;
-      top: -35%;
-      right: -25%;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.4), transparent 55%);
-      filter: blur(6px);
-      opacity: 0.6;
     }
 
     .fc-header {
@@ -373,19 +354,19 @@
     }
 
     .fc-title {
-      font-size: 0.9rem;
-      letter-spacing: 0.16em;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #e5f4ff;
+      color: #0f172a;
     }
 
     .fc-badge {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(240, 249, 255, 0.25);
-      color: #e0f2fe;
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      color: #166534;
     }
 
     .fc-grid {
@@ -396,32 +377,30 @@
     }
 
     .fc-block {
-      border-radius: 14px;
-      padding: 10px 11px;
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.92));
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      position: relative;
-      overflow: hidden;
+      border-radius: 12px;
+      padding: 9px 10px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
     }
 
     .fc-block small {
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       color: var(--muted);
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .metric {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 600;
       color: var(--accent-strong);
       display: flex;
       align-items: baseline;
-      gap: 4px;
+      gap: 3px;
     }
 
     .metric span {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--muted);
       font-weight: 400;
     }
@@ -434,19 +413,19 @@
     }
 
     .fc-status span {
-      font-size: 0.8rem;
-      padding: 3px 9px;
+      font-size: 0.76rem;
+      padding: 3px 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      color: #e0f2fe;
+      background: #eef2ff;
+      border: 1px solid rgba(129, 140, 248, 0.5);
+      color: #3730a3;
     }
 
     .fc-log {
       margin-top: 6px;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       color: var(--muted);
-      max-height: 90px;
+      max-height: 92px;
       overflow-y: auto;
       z-index: 1;
     }
@@ -458,9 +437,9 @@
     }
 
     .fc-log-time {
-      font-size: 0.82rem;
-      color: rgba(148, 163, 184, 0.9);
-      width: 46px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      width: 42px;
       flex-shrink: 0;
     }
 
@@ -468,80 +447,45 @@
       flex: 1;
     }
 
-    .fc-pill-row {
-      margin-top: 4px;
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .fc-pill {
-      font-size: 0.8rem;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      color: #e5e7eb;
-    }
-
-    .fc-orbit {
-      position: absolute;
-      inset: -40px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.18);
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    .fc-orbit-dot {
-      position: absolute;
-      top: 20%;
-      left: 76%;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #38bdf8;
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.9);
-    }
-
     /* Section titles */
     .section-header {
-      margin-bottom: 26px;
+      margin-bottom: 22px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .section-eyebrow {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
     .section-title {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
+      color: #0f172a;
     }
 
     .section-desc {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: var(--muted);
-      max-width: 580px;
+      max-width: 640px;
     }
 
     /* Problem → solution */
     .problem-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .card {
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.88));
+      background: var(--card-bg);
       padding: 18px;
       box-shadow: var(--shadow-soft);
     }
@@ -550,27 +494,28 @@
       display: flex;
       gap: 10px;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .card-chip {
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       padding: 2px 10px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--muted);
+      background: #f9fafb;
     }
 
     .card-title {
-      font-size: 1.02rem;
+      font-size: 0.98rem;
       font-weight: 600;
     }
 
     .problem-list,
     .solution-list {
       list-style: none;
-      margin-top: 8px;
-      font-size: 0.98rem;
+      margin-top: 6px;
+      font-size: 0.94rem;
       color: var(--muted);
     }
 
@@ -578,19 +523,19 @@
     .solution-list li {
       display: flex;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
     .problem-list li span.icon {
-      margin-top: 3px;
-      font-size: 0.96rem;
+      margin-top: 1px;
+      font-size: 0.9rem;
       color: var(--danger);
     }
 
     .solution-list li span.icon {
-      margin-top: 3px;
-      font-size: 0.96rem;
-      color: #22c55e;
+      margin-top: 1px;
+      font-size: 0.9rem;
+      color: #16a34a;
     }
 
     /* Services */
@@ -603,42 +548,44 @@
     .service-card {
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
-      padding: 18px 16px 16px;
-      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), rgba(15, 23, 42, 0.96));
+      padding: 16px 14px 14px;
+      background: var(--card-bg);
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-soft);
     }
 
     .service-tag {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       padding: 3px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid var(--border-subtle);
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      background: #f9fafb;
     }
 
     .service-title {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 600;
       margin-bottom: 4px;
+      color: #0f172a;
     }
 
     .service-desc {
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .service-list {
       list-style: none;
       font-size: 0.9rem;
       color: var(--muted);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .service-list li {
@@ -648,7 +595,7 @@
     }
 
     .service-list li span.icon {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--accent-strong);
       margin-top: 2px;
     }
@@ -657,23 +604,149 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--muted);
     }
 
     .service-meta strong {
-      font-size: 0.96rem;
-      color: #e5e7eb;
+      font-size: 0.94rem;
+      color: #111827;
     }
 
     .pill-soft {
       padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #f9fafb;
+      border: 1px solid var(--border-subtle);
     }
 
-    /* More services (accordion) */
+    /* Capabilities (業務カタログ) */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .catalog-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: var(--card-bg);
+      padding: 14px 14px 12px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .catalog-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+
+    .catalog-sub {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .catalog-list {
+      list-style: none;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .catalog-list li {
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .catalog-list li::before {
+      content: "・";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      color: var(--accent-strong);
+    }
+
+    /* System flow (全体業務フロー) */
+    .sysflow-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 20px;
+    }
+
+    .sysflow-steps {
+      list-style: none;
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .sysflow-step {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+
+    .sysflow-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.86rem;
+      color: #1d4ed8;
+      flex-shrink: 0;
+    }
+
+    .sysflow-label {
+      font-size: 0.95rem;
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    .sysflow-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .sysflow-map {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: var(--card-bg);
+      padding: 14px 14px 10px;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .sysflow-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .sysflow-chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      font-size: 0.82rem;
+      color: #111827;
+    }
+
+    .sysflow-arrow {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    /* Accordion */
     .accordion {
       display: flex;
       flex-direction: column;
@@ -683,19 +756,20 @@
     .accordion-item {
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9));
+      background: var(--card-bg);
       overflow: hidden;
+      box-shadow: var(--shadow-soft);
     }
 
     .accordion-header {
       width: 100%;
-      padding: 11px 16px;
+      padding: 10px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: transparent;
+      background: #f9fafb;
       color: var(--text);
-      font-size: 0.98rem;
+      font-size: 0.94rem;
       border: none;
       cursor: pointer;
     }
@@ -717,7 +791,7 @@
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      padding: 0 16px;
+      padding: 0 14px;
       transition: max-height 0.25s ease-out, padding-top 0.25s ease-out, padding-bottom 0.25s ease-out;
     }
 
@@ -728,14 +802,14 @@
 
     .accordion-content ul {
       list-style: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--muted);
     }
 
     .accordion-content li {
       position: relative;
-      padding-left: 16px;
-      margin-bottom: 5px;
+      padding-left: 14px;
+      margin-bottom: 4px;
     }
 
     .accordion-content li::before {
@@ -743,82 +817,83 @@
       position: absolute;
       left: 0;
       top: 0;
-      font-size: 0.86rem;
+      font-size: 0.8rem;
       color: var(--accent-strong);
     }
 
-    /* Flow */
+    /* Implementation flow (導入フロー) */
     .flow-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .flow-steps {
       list-style: none;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--muted);
     }
 
     .flow-step {
       display: flex;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .flow-step-num {
       width: 24px;
       height: 24px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.98);
-      border: 1px solid rgba(56, 189, 248, 0.7);
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.9rem;
-      color: #e0f2fe;
+      color: #15803d;
       flex-shrink: 0;
     }
 
     .flow-step-title {
-      font-size: 1rem;
-      color: #e5e7eb;
+      font-size: 0.96rem;
+      color: #0f172a;
       font-weight: 500;
     }
 
     .flow-note {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .flow-metrics {
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
-      padding: 18px 16px 16px;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.17), rgba(15, 23, 42, 0.94));
+      padding: 16px 14px 14px;
+      background: var(--card-bg);
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
       align-items: center;
       text-align: center;
+      box-shadow: var(--shadow-soft);
     }
 
     .metric-block small {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--muted);
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .metric-block strong {
-      font-size: 1.12rem;
-      color: #e0f2fe;
+      font-size: 1.08rem;
+      color: #0f172a;
     }
 
     .metric-block span {
       font-size: 0.9rem;
-      color: #bae6fd;
+      color: #0369a1;
       margin-left: 3px;
     }
 
@@ -826,62 +901,63 @@
     .pricing-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .pricing-card {
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(250, 250, 250, 0.16);
-      padding: 18px 18px 14px;
-      background: radial-gradient(circle at top left, rgba(234, 179, 8, 0.2), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(248, 250, 252, 0.3);
+      padding: 16px 16px 14px;
+      background: linear-gradient(to bottom right, #fef9c3, #fefce8);
       box-shadow: var(--shadow-soft);
     }
 
     .pricing-title {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 4px;
+      color: #78350f;
     }
 
     .pricing-price {
-      font-size: 1.55rem;
+      font-size: 1.45rem;
       font-weight: 700;
-      color: #fef9c3;
-      margin-bottom: 4px;
+      color: #92400e;
+      margin-bottom: 3px;
     }
 
     .pricing-price span {
-      font-size: 1rem;
-      color: #fef9c3;
+      font-size: 0.96rem;
+      color: #92400e;
       font-weight: 500;
     }
 
     .pricing-note {
-      font-size: 0.96rem;
-      color: var(--muted);
-      margin-bottom: 8px;
+      font-size: 0.94rem;
+      color: #854d0e;
+      margin-bottom: 7px;
     }
 
     .pricing-list {
-      font-size: 0.96rem;
-      color: var(--muted);
+      font-size: 0.92rem;
+      color: #92400e;
       list-style: none;
     }
 
     .pricing-list li {
       display: flex;
-      gap: 6px;
-      margin-bottom: 5px;
+      gap: 5px;
+      margin-bottom: 4px;
     }
 
     .pricing-list li span.icon {
-      font-size: 0.96rem;
-      color: var(--accent-gold);
+      font-size: 0.9rem;
+      color: #f97316;
       margin-top: 2px;
     }
 
     .pricing-side-note {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--muted);
     }
 
@@ -889,10 +965,10 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.88);
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
       font-size: 0.9rem;
       margin-top: 6px;
     }
@@ -901,13 +977,13 @@
     .contact-card {
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
-      padding: 18px 18px 16px;
-      background: radial-gradient(circle at top left, rgba(34, 211, 238, 0.15), rgba(15, 23, 42, 0.96));
+      padding: 16px 16px 14px;
+      background: var(--card-bg);
       box-shadow: var(--shadow-soft);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
     }
 
@@ -916,7 +992,7 @@
     }
 
     .contact-main p {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       color: var(--muted);
     }
 
@@ -924,27 +1000,27 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 16px;
+      padding: 8px 16px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(56, 189, 248, 0.7);
-      font-size: 0.96rem;
-      color: #e0f2fe;
+      background: #0ea5e9;
+      border: 1px solid #0284c7;
+      font-size: 0.94rem;
+      color: #f9fafb;
       margin-top: 8px;
       transition: background 0.16s, transform 0.16s, box-shadow 0.16s;
     }
 
     .mailto-link:hover {
-      background: rgba(15, 23, 42, 0.98);
+      background: #0284c7;
       transform: translateY(-1px);
-      box-shadow: 0 14px 40px rgba(8, 47, 73, 0.85);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.35);
     }
 
     footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.85));
-      padding: 14px 0 16px;
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(209, 213, 219, 0.9);
+      background: #f9fafb;
+      padding: 12px 0 14px;
+      font-size: 0.88rem;
       color: var(--muted);
     }
 
@@ -957,18 +1033,18 @@
     }
 
     .footer-tagline {
-      font-size: 0.92rem;
-      color: #e0f2fe;
+      font-size: 0.9rem;
+      color: #111827;
     }
 
     .footer-tagline span {
-      color: #facc15;
+      color: #ea580c;
     }
 
-    /* Scroll reveal */
+    /* Scroll reveal（淡め） */
     .reveal {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(14px);
       transition: opacity 0.4s ease-out, transform 0.4s ease-out;
     }
 
@@ -989,11 +1065,13 @@
 
       .problem-grid,
       .flow-grid,
-      .pricing-grid {
+      .pricing-grid,
+      .sysflow-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .services-grid {
+      .services-grid,
+      .catalog-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -1005,11 +1083,11 @@
     @media (max-width: 640px) {
       header {
         position: static;
-        background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.96));
+        background: #f9fafb;
       }
 
       .nav {
-        padding: 10px 0 8px;
+        padding: 8px 0 6px;
       }
 
       .nav-links {
@@ -1017,10 +1095,11 @@
       }
 
       .hero {
-        padding-top: 32px;
+        padding-top: 28px;
       }
 
-      .services-grid {
+      .services-grid,
+      .catalog-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
@@ -1044,8 +1123,9 @@
         </div>
         <nav class="nav-links">
           <a href="#services">サービス</a>
-          <a href="#more-services">できること</a>
-          <a href="#flow">導入フロー</a>
+          <a href="#catalog">対応業務</a>
+          <a href="#sysflow">業務フロー</a>
+          <a href="#flow">導入プロセス</a>
           <a href="#pricing">料金</a>
           <a href="#contact">お問い合わせ</a>
           <button class="nav-cta" onclick="scrollToSection('contact')">
@@ -1064,9 +1144,9 @@
             <div class="badge">
               <div class="badge-dot"></div>
               <div>
-                <div class="badge-kv">Japan · AI Automation Agency</div>
-                <div style="font-size: 0.9rem; color: var(--muted);">
-                  メール・事務・営業を、自律するAIワーカーに。
+                <div class="badge-kv">Japan · AI Automation Studio</div>
+                <div style="font-size: 0.86rem; color: var(--muted);">
+                  メール・事務・営業を、“一人分のAIワーカー” に。
                 </div>
               </div>
             </div>
@@ -1079,10 +1159,10 @@
             <div class="hero-sub-typing" id="typing"></div>
 
             <p class="hero-sub">
-              AIF Studioは、既存の業務を“分析 → 分解 → 自動化”し、
+              AIF Studioは、既存の業務を“分析 → 分解 → 自動化”し、<br />
               <strong>メール・事務・営業・バックオフィスをAIワーカーに置き換える</strong>
               専門チームです。<br />
-              モデル開発ではなく、<strong>今すぐ動くAIシステム</strong>を構築します。
+              モデル開発ではなく、<strong>今すぐ現場で動くAIシステム</strong>を一緒に作ります。
             </p>
 
             <div class="hero-cta-row">
@@ -1106,12 +1186,12 @@
             <div class="floating-card reveal">
               <div class="fc-header">
                 <div class="fc-title">AIF Autonomous Worker</div>
-                <div class="fc-badge">稼働中 · 24/7</div>
+                <div class="fc-badge">稼働イメージ · 24/7</div>
               </div>
 
               <div class="fc-grid">
                 <div class="fc-block">
-                  <small>今日だけで削減した時間</small>
+                  <small>今日だけで削減した時間（イメージ）</small>
                   <div class="metric">
                     <span id="metric-hours">0</span>時間
                     <span>（人手換算）</span>
@@ -1122,14 +1202,14 @@
                   </div>
                 </div>
                 <div class="fc-block">
-                  <small>推定コスト削減額</small>
+                  <small>推定コスト削減額（イメージ）</small>
                   <div class="metric">
                     ¥<span id="metric-cost">0</span>
                     <span>/ 月</span>
                   </div>
-                  <div class="fc-pill-row">
-                    <div class="fc-pill">人件費</div>
-                    <div class="fc-pill">教育コスト</div>
+                  <div class="fc-status" style="margin-top: 4px;">
+                    <span>人件費</span>
+                    <span>教育コスト</span>
                   </div>
                 </div>
               </div>
@@ -1149,12 +1229,8 @@
                 </div>
                 <div class="fc-log-line">
                   <div class="fc-log-time">16:21</div>
-                  <div class="fc-log-text">社内ナレッジから回答を検索 → 問い合わせ対応を自動回答</div>
+                  <div class="fc-log-text">社内ナレッジから回答を検索 → 問い合わせ対応を自動提案</div>
                 </div>
-              </div>
-
-              <div class="fc-orbit">
-                <div class="fc-orbit-dot"></div>
               </div>
             </div>
           </div>
@@ -1166,8 +1242,9 @@
             <div class="section-eyebrow">Problem → Solution</div>
             <div class="section-title">AIが「何を」置き換え、あなたは「何に」集中できるか。</div>
             <p class="section-desc">
-              AIFが見ているのは、ツール導入ではなく「人がやらなくていい作業を、どこまでAIに任せられるか」です。
-              現場の業務を解像度高く分解し、AIに向いている部分だけを切り出して自動化します。
+              AIFが見ているのは、ツール導入ではなく
+              <strong>「人がやらなくていい作業を、どこまでAIに渡せるか」</strong>です。<br />
+              現場の業務を細かく分解し、AIが得意な部分から順番に自動化していきます。
             </p>
           </div>
 
@@ -1180,7 +1257,7 @@
               <ul class="problem-list">
                 <li>
                   <span class="icon">×</span>
-                  <div>毎日同じようなメールを、言い回しだけ変えて書き直している</div>
+                  <div>毎日似たような問い合わせメールなのに、毎回ゼロから文章を考えている</div>
                 </li>
                 <li>
                   <span class="icon">×</span>
@@ -1188,15 +1265,15 @@
                 </li>
                 <li>
                   <span class="icon">×</span>
-                  <div>報告書や議事録を書くだけで、会議時間の2倍以上かかっている</div>
+                  <div>報告書や議事録を書くために、会議時間以上の時間が溶けている</div>
                 </li>
                 <li>
                   <span class="icon">×</span>
-                  <div>属人化した「この人しか分からない仕事」が増え続けている</div>
+                  <div>「この人しか分からない仕事」が増え続けて、属人化が進んでいる</div>
                 </li>
                 <li>
                   <span class="icon">×</span>
-                  <div>AIを触ってみたが、日常業務のどこに効かせればよいか分からない</div>
+                  <div>AIツールを触ってみたものの、日常業務のどこに効かせればいいか分からない</div>
                 </li>
               </ul>
             </div>
@@ -1209,23 +1286,23 @@
               <ul class="solution-list">
                 <li>
                   <span class="icon">✓</span>
-                  <div>問い合わせメールを自動で分類・要約し、返信案まで生成してくれる</div>
+                  <div>問い合わせメールを自動で分類・要約し、返信案まで作成してくれる</div>
                 </li>
                 <li>
                   <span class="icon">✓</span>
-                  <div>PDF・スプレッドシート・Webの情報を横断し、必要な項目だけ抽出して整理</div>
+                  <div>PDFやスプレッドシートから必要な項目だけを抽出し、一覧に整理してくれる</div>
                 </li>
                 <li>
                   <span class="icon">✓</span>
-                  <div>会議音声から議事録とToDoを自動生成、Slackやメールで共有</div>
+                  <div>会議音声から議事録とToDoを自動生成し、Slackやメールで共有してくれる</div>
                 </li>
                 <li>
                   <span class="icon">✓</span>
-                  <div>社内ナレッジをRAGで統合し、「聞く前にAIに聞く」が当たり前になる</div>
+                  <div>社内ナレッジをまとめて、まずはAIに聞けば答えが返ってくる状態をつくる</div>
                 </li>
                 <li>
                   <span class="icon">✓</span>
-                  <div>マクロ・RPAでは難しかった“グレーな判断”を、生成AIが補完してくれる</div>
+                  <div>マクロやRPAでは難しかった“グレーな判断”を、生成AIが補完してくれる</div>
                 </li>
               </ul>
             </div>
@@ -1238,9 +1315,9 @@
             <div class="section-eyebrow">Services</div>
             <div class="section-title">AI業務自動化エージェントで、日常業務を丸ごとリプレイス。</div>
             <p class="section-desc">
-              AIFは「AIモデルを作る会社」ではなく、
+              AIFは「AIモデルを作る会社」ではなく、<br />
               <strong>既存のLLMを使って、御社専用のAIワーカー・チャットボット・自動化シナリオを構築する会社</strong>
-              です。
+              です。現場で実際に動くところまで伴走します。
             </p>
           </div>
 
@@ -1248,7 +1325,7 @@
             <div class="service-card">
               <div class="service-tag">
                 <span>AI Worker</span>
-                <span style="font-size: 0.86rem; color: #bbf7d0;">事務・営業・CS向け</span>
+                <span style="font-size: 0.8rem; color: #16a34a;">事務・営業・CS向け</span>
               </div>
               <div class="service-title">自律AIワーカー構築</div>
               <p class="service-desc">
@@ -1256,7 +1333,7 @@
               </p>
               <ul class="service-list">
                 <li><span class="icon">▸</span><div>メール分類・要約・返信案の自動生成</div></li>
-                <li><span class="icon">▸</span><div>議事録・日報・レポートの自動生成</div></li>
+                <li><span class="icon">▸</span><div>議事録・日報・週次レポートの自動生成</div></li>
                 <li><span class="icon">▸</span><div>スプレッドシート・各種SaaSとの自動連携</div></li>
               </ul>
               <div class="service-meta">
@@ -1271,14 +1348,14 @@
             <div class="service-card">
               <div class="service-tag">
                 <span>Chatbot / RAG</span>
-                <span style="font-size: 0.86rem; color: #bfdbfe;">社内・顧客向け</span>
+                <span style="font-size: 0.8rem; color: #2563eb;">社内・顧客向け</span>
               </div>
               <div class="service-title">AIチャットボット & ナレッジ検索</div>
               <p class="service-desc">
                 社内マニュアル・FAQ・顧客情報をまとめて、チャット1つで検索できる環境をつくります。
               </p>
               <ul class="service-list">
-                <li><span class="icon">▸</span><div>社内規程・手順書のRAG化</div></li>
+                <li><span class="icon">▸</span><div>社内規程・手順書のRAG化（AI検索）</div></li>
                 <li><span class="icon">▸</span><div>顧客向けFAQボット（Web / LINE）</div></li>
                 <li><span class="icon">▸</span><div>問い合わせ履歴からの自動回答提案</div></li>
               </ul>
@@ -1294,7 +1371,7 @@
             <div class="service-card">
               <div class="service-tag">
                 <span>Automation</span>
-                <span style="font-size: 0.86rem; color: #a5b4fc;">Make / API連携</span>
+                <span style="font-size: 0.8rem; color: #4f46e5;">Make / API連携</span>
               </div>
               <div class="service-title">業務自動化シナリオ構築</div>
               <p class="service-desc">
@@ -1316,6 +1393,210 @@
           </div>
         </section>
 
+        <!-- Capabilities: 全部できますカタログ -->
+        <section id="catalog" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Capabilities</div>
+            <div class="section-title">AIFがAIで“代わりにできること”一覧。</div>
+            <p class="section-desc">
+              「こういうのも、ああいうのもできますか？」に先回りして、<br />
+              <strong>パソコン1台とAIFがいれば代替できる業務</strong>を、領域ごとに整理しました。
+            </p>
+          </div>
+
+          <div class="catalog-grid">
+            <div class="catalog-card">
+              <div class="catalog-title">① 事務・バックオフィス</div>
+              <div class="catalog-sub">日々の“裏方仕事”をAIワーカーに。</div>
+              <ul class="catalog-list">
+                <li>PDF・画像からのデータ抽出／スプレッドシート整形</li>
+                <li>見積書・請求書の自動作成／送付補助</li>
+                <li>入金チェック → 管理表更新 → アラート通知</li>
+                <li>日報・議事録・報告書の自動ドラフト生成</li>
+                <li>顧客台帳・案件リストの自動更新・名寄せ</li>
+              </ul>
+            </div>
+
+            <div class="catalog-card">
+              <div class="catalog-title">② 営業まわり</div>
+              <div class="catalog-sub">営業アシスタント1〜2名分をAIで。</div>
+              <ul class="catalog-list">
+                <li>問い合わせメールの分類・要約・返信案作成</li>
+                <li>リードの温度感スコアリング（A〜Cなど）</li>
+                <li>3日/7日/14日後のフォロー自動送信</li>
+                <li>営業日報の要約・次アクション提案</li>
+                <li>KPI集計・週次営業レポートの自動生成</li>
+              </ul>
+            </div>
+
+            <div class="catalog-card">
+              <div class="catalog-title">③ Web / チャット</div>
+              <div class="catalog-sub">“窓口”もAIに任せられるように。</div>
+              <ul class="catalog-list">
+                <li>サービスLP・簡易Webサイトの自動生成</li>
+                <li>よくある質問に答えるFAQチャットボット</li>
+                <li>条件を聞き出す見込み客ヒアリングボット</li>
+                <li>問い合わせ内容の自動整理 → 担当者割り振り</li>
+                <li>Webフォーム → Sheets/Slackへの自動連携</li>
+              </ul>
+            </div>
+
+            <div class="catalog-card">
+              <div class="catalog-title">④ 業種別カスタマイズ</div>
+              <div class="catalog-sub">業種ごとの“あるある業務”にも対応。</div>
+              <ul class="catalog-list">
+                <li>クリニック・薬局：初診案内・問診要約・予約前ヒアリング</li>
+                <li>建設：現場レポート・日報・見積補助・施主向け進捗共有</li>
+                <li>不動産：内見予約ボット・修繕受付・物件提案チャット</li>
+                <li>士業：PDFからの仕訳案生成・顧問先向け案内文</li>
+                <li>EC：注文管理・顧客対応Bot・商品説明文生成</li>
+              </ul>
+            </div>
+
+            <div class="catalog-card">
+              <div class="catalog-title">⑤ 経営・レポート</div>
+              <div class="catalog-sub">数字とレポート作業も、AIに任せる。</div>
+              <ul class="catalog-list">
+                <li>売上・工数・案件数などKPIの自動集計</li>
+                <li>週次・月次レポートの自動ドラフト生成</li>
+                <li>異常値検知 → Slack/メールでアラート</li>
+                <li>営業/広告の簡易分析レポート</li>
+                <li>会議用のサマリー資料作成</li>
+              </ul>
+            </div>
+
+            <div class="catalog-card">
+              <div class="catalog-title">⑥ 自動化プラットフォーム連携</div>
+              <div class="catalog-sub">“バラバラなツール”を1つの流れに。</div>
+              <ul class="catalog-list">
+                <li>Gmail / Slack / Google Workspace / Notionとの連携</li>
+                <li>Make/Zapierによるワークフロー構築</li>
+                <li>GASでの細かい自動処理（整形・変換など）</li>
+                <li>各種SaaS・APIとの連携フロー設計</li>
+                <li>既存システムを活かした“つなぎ込み”だけの導入も可</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- System flow: 全体の業務フロー -->
+        <section id="sysflow" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Operation Flow</div>
+            <div class="section-title">AIFがつくる「全体の業務フロー」のイメージ。</div>
+            <p class="section-desc">
+              個別の自動化ではなく、<strong>会社の仕事全体がひとつの流れで動く状態</strong>を目指します。<br />
+              代表的なフローを、できるだけシンプルに図にしました。
+            </p>
+          </div>
+
+          <div class="sysflow-grid">
+            <div>
+              <ol class="sysflow-steps">
+                <li class="sysflow-step">
+                  <div class="sysflow-num">1</div>
+                  <div>
+                    <div class="sysflow-label">問い合わせ・メール対応の自動化</div>
+                    <div class="sysflow-note">
+                      メールやフォームの内容をAIが分類・要約し、テンプレではなく“文脈に合った返信案”を出します。
+                    </div>
+                  </div>
+                </li>
+                <li class="sysflow-step">
+                  <div class="sysflow-num">2</div>
+                  <div>
+                    <div class="sysflow-label">Web / チャットからの情報収集</div>
+                    <div class="sysflow-note">
+                      Webサイトやチャットボットから集まった情報を、自動でデータベース化。後続の業務にそのまま流します。
+                    </div>
+                  </div>
+                </li>
+                <li class="sysflow-step">
+                  <div class="sysflow-num">3</div>
+                  <div>
+                    <div class="sysflow-label">現場・会議の記録とタスク化</div>
+                    <div class="sysflow-note">
+                      会議音声や現場レポートから要点とタスクを抽出し、SlackやToDoリストに自動登録します。
+                    </div>
+                  </div>
+                </li>
+                <li class="sysflow-step">
+                  <div class="sysflow-num">4</div>
+                  <div>
+                    <div class="sysflow-label">書類・PDFからのデータ抽出と帳票作成</div>
+                    <div class="sysflow-note">
+                      請求書・見積書・契約書などから必要情報を取り出し、管理表や帳票を自動で更新します。
+                    </div>
+                  </div>
+                </li>
+                <li class="sysflow-step">
+                  <div class="sysflow-num">5</div>
+                  <div>
+                    <div class="sysflow-label">週次・月次レポートの自動生成</div>
+                    <div class="sysflow-note">
+                      集まったデータをもとにKPIを集計し、「今どんな状態か」をひと目で分かるレポートにします。
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="sysflow-map">
+              <div style="font-size: 0.88rem; font-weight: 600; color: #0f172a; margin-bottom: 6px;">
+                全体フローのイメージ
+              </div>
+              <div class="sysflow-row">
+                <span class="sysflow-chip">① 問い合わせ / メール</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">AIで分類・要約</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">Slack承認</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">自動返信 / DB登録</span>
+              </div>
+              <div class="sysflow-row">
+                <span class="sysflow-chip">② Web / チャット</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">ヒアリング＆入力補助</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">シート/CRMへ保存</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">KPIに反映</span>
+              </div>
+              <div class="sysflow-row">
+                <span class="sysflow-chip">③ 現場・会議</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">AI議事録・要約</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">タスク抽出</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">Slack / ToDo共有</span>
+              </div>
+              <div class="sysflow-row">
+                <span class="sysflow-chip">④ PDF / 書類</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">AI抽出</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">管理表更新</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">請求・見積に反映</span>
+              </div>
+              <div class="sysflow-row">
+                <span class="sysflow-chip">⑤ 集計・レポート</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">KPI自動集計</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">週次・月次レポート</span>
+                <span class="sysflow-arrow">→</span>
+                <span class="sysflow-chip">経営判断に活用</span>
+              </div>
+              <p style="font-size: 0.86rem; color: var(--muted); margin-top: 4px;">
+                ※ 実際には、御社のツール・フローに合わせてこの図をカスタマイズしていきます。
+              </p>
+            </div>
+          </div>
+        </section>
+
         <!-- More services (accordion) -->
         <section id="more-services" class="reveal">
           <div class="section-header">
@@ -1327,7 +1608,6 @@
           </div>
 
           <div class="accordion">
-            <!-- 1. 議事録 / レポートAI -->
             <div class="accordion-item">
               <button class="accordion-header">
                 <span>議事録AI・レポート自動生成</span>
@@ -1342,7 +1622,6 @@
               </div>
             </div>
 
-            <!-- 2. PDF / データ抽出AI -->
             <div class="accordion-item">
               <button class="accordion-header">
                 <span>PDF・Excel・画像からのデータ抽出</span>
@@ -1357,7 +1636,6 @@
               </div>
             </div>
 
-            <!-- 3. 予約 / 問い合わせ / CS -->
             <div class="accordion-item">
               <button class="accordion-header">
                 <span>予約受付・問い合わせ・カスタマーサポート</span>
@@ -1372,7 +1650,6 @@
               </div>
             </div>
 
-            <!-- 4. 採用 / 人事AI -->
             <div class="accordion-item">
               <button class="accordion-header">
                 <span>採用・人事まわりのAIアシスタント</span>
@@ -1381,13 +1658,12 @@
               <div class="accordion-content">
                 <ul>
                   <li>応募メール・履歴書の要点自動サマリ</li>
-                  <li>一次スクリーニングの基準チェック</li>
+                  <li>一次スクリーニングの基準チェック補助</li>
                   <li>候補者への定型連絡の自動作成</li>
                 </ul>
               </div>
             </div>
 
-            <!-- 5. マーケティング / コンテンツAI -->
             <div class="accordion-item">
               <button class="accordion-header">
                 <span>マーケティング・コンテンツ生成</span>
@@ -1404,13 +1680,13 @@
           </div>
         </section>
 
-        <!-- Flow -->
+        <!-- Implementation Flow -->
         <section id="flow" class="reveal">
           <div class="section-header">
             <div class="section-eyebrow">Implementation Flow</div>
             <div class="section-title">PoCから本番運用まで、“最短距離”だけを通る。</div>
             <p class="section-desc">
-              AIFは机上のコンサルではなく、「明日から動く仕組み」をつくる実装パートナーです。
+              AIFは机上のコンサルではなく、<strong>「明日から動く仕組み」</strong>をつくる実装パートナーです。<br />
               まずは小さなPoCで効果を見てから、範囲を広げていきます。
             </p>
           </div>
@@ -1478,7 +1754,8 @@
             <div class="section-eyebrow">Pricing</div>
             <div class="section-title">「AIコンサル費」ではなく、「業務削減の投資」として。</div>
             <p class="section-desc">
-              AIFの料金は、AIモデル開発ではなく「既存の業務をどれだけ削れるか」をベースに決めています。
+              AIFの料金は、AIモデル開発ではなく<br />
+              <strong>「既存の業務をどれだけ削れるか」</strong>をベースに決めています。<br />
               小さなPoCから始め、費用対効果を確認しながらスケールします。
             </p>
           </div>
@@ -1534,14 +1811,14 @@
                 メールで相談する
                 <span>→</span>
               </a>
-              <p style="font-size: 0.9rem; color: var(--muted); margin-top: 6px;">
+              <p style="font-size: 0.86rem; color: var(--muted); margin-top: 4px;">
                 ※ info@example.com を、あなたのメールアドレスに変更してください。
               </p>
             </div>
           </div>
         </section>
       </div>
-    </main> 
+    </main>
 
     <footer>
       <div class="max-w footer-inner">
@@ -1564,7 +1841,7 @@
       });
     }
 
-    // タイピング：1回だけ打ち切って終了（ループしない）
+    // タイピング：1回だけ打ち切り
     const typingEl = document.getElementById("typing");
     const typingText = "AIが、御社の“裏方仕事”をまるごと引き受けます。";
     let charIndex = 0;
