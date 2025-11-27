@@ -12,7 +12,6 @@
   <style>
     :root {
       --bg: #f3f4f6;
-      --bg-main: #f9fafb;
       --card-bg: #ffffff;
       --border-subtle: #e5e7eb;
       --accent: #0ea5e9;
@@ -420,7 +419,7 @@
       max-width: 640px;
     }
 
-    /* Problem / Solution */
+    /* Board wrapper */
     .board {
       border-radius: 22px;
       background: var(--card-bg);
@@ -429,6 +428,7 @@
       box-shadow: var(--shadow-soft);
     }
 
+    /* Problem / Solution */
     .problem-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.25fr);
@@ -570,6 +570,45 @@
       background: #eff6ff;
       border: 1px solid #dbeafe;
       color: #1d4ed8;
+    }
+
+    /* Use cases */
+    .usecase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .usecase-card {
+      border-radius: 14px;
+      border: 1px dashed #e5e7eb;
+      background: #ffffff;
+      padding: 10px 10px 8px;
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .usecase-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: #111827;
+    }
+
+    .usecase-list {
+      list-style: none;
+    }
+
+    .usecase-list li {
+      margin-bottom: 3px;
+      display: flex;
+      gap: 4px;
+    }
+
+    .usecase-list li span.icon {
+      font-size: 0.75rem;
+      margin-top: 3px;
+      color: #4b5563;
     }
 
     /* 円の図：業務レイヤー */
@@ -971,6 +1010,9 @@
       .layers-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+      .usecase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 720px) {
@@ -984,6 +1026,9 @@
         padding: 40px 0;
       }
       .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .usecase-grid {
         grid-template-columns: minmax(0, 1fr);
       }
       .layer-diagram {
@@ -1012,6 +1057,7 @@
         </div>
         <nav class="nav-links">
           <a href="#services">サービス</a>
+          <a href="#usecases">対応領域</a>
           <a href="#layers">全体像</a>
           <a href="#scenario">フロー図</a>
           <a href="#flow">導入フロー</a>
@@ -1089,12 +1135,12 @@
 
               <div class="hero-mini-board">
                 <div class="hero-mini-title">
-                  <span class="dot" style="background:#f97316;"></span> AIF STUDIO がやること
+                  <span class="dot" style="background:#f97316;"></span> AIF STUDIO ができること
                 </div>
                 <ul class="hero-mini-list">
-                  <li><span class="icon">✓</span><div>現場業務のヒアリング＆AI化ポイント整理</div></li>
-                  <li><span class="icon">✓</span><div>Gmail / Slack / Sheets / 既存SaaSの連携設計</div></li>
-                  <li><span class="icon">✓</span><div>PoC構築〜運用までを伴走サポート</div></li>
+                  <li><span class="icon">✓</span><div>Gmail / Slack / Sheets / Notion / CRM など主要SaaSとの連携</div></li>
+                  <li><span class="icon">✓</span><div>Make・GAS・API・RAG を組み合わせたAIエージェント設計</div></li>
+                  <li><span class="icon">✓</span><div>医療・BPO・士業・スタートアップなど業界別の業務設計</div></li>
                 </ul>
               </div>
             </div>
@@ -1256,6 +1302,80 @@
                 <div class="pill-soft">シナリオテンプレで高速導入</div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <!-- Use cases / 対応領域 -->
+        <section id="usecases" class="reveal">
+          <div class="section-header">
+            <div class="section-eyebrow">Use Cases</div>
+            <div class="section-title">「この業務もAIワーカーに任せられる？」に答える一覧。</div>
+            <p class="section-desc">
+              下記はあくまで一例です。<strong>メール・スプレッドシート・SaaS・API</strong>が存在すれば、多くのバックオフィス・営業・BPO業務に対応可能です。
+            </p>
+          </div>
+
+          <div class="board">
+            <div class="usecase-grid">
+              <div class="usecase-card">
+                <div class="usecase-title">問い合わせ・インサイドセールス</div>
+                <ul class="usecase-list">
+                  <li><span class="icon">•</span><div>問い合わせ一次対応（分類／要約／返信案）</div></li>
+                  <li><span class="icon">•</span><div>リード情報の自動登録（Gmail→CRM／Sheets）</div></li>
+                  <li><span class="icon">•</span><div>未返信リードへの自動フォロー</div></li>
+                </ul>
+              </div>
+
+              <div class="usecase-card">
+                <div class="usecase-title">請求・経理・バックオフィス</div>
+                <ul class="usecase-list">
+                  <li><span class="icon">•</span><div>請求書PDFからの項目抽出と台帳更新</div></li>
+                  <li><span class="icon">•</span><div>入金消込ステータスの自動更新</div></li>
+                  <li><span class="icon">•</span><div>経費精算の一次チェック・分類</div></li>
+                </ul>
+              </div>
+
+              <div class="usecase-card">
+                <div class="usecase-title">人事・採用・労務</div>
+                <ul class="usecase-list">
+                  <li><span class="icon">•</span><div>応募メールの仕分けと候補者リスト作成</div></li>
+                  <li><span class="icon">•</span><div>面談メモの要約・評価シート更新</div></li>
+                  <li><span class="icon">•</span><div>社内向け人事・労務FAQボット</div></li>
+                </ul>
+              </div>
+
+              <div class="usecase-card">
+                <div class="usecase-title">カスタマーサポート</div>
+                <ul class="usecase-list">
+                  <li><span class="icon">•</span><div>メール／フォーム／チャットの一次回答案生成</div></li>
+                  <li><span class="icon">•</span><div>よくある問い合わせのFAQ化・RAG連携</div></li>
+                  <li><span class="icon">•</span><div>クレームの要約とエスカレーション整理</div></li>
+                </ul>
+              </div>
+
+              <div class="usecase-card">
+                <div class="usecase-title">医療・士業向けBPO</div>
+                <ul class="usecase-list">
+                  <li><span class="icon">•</span><div>医療機関・薬局向けの事務BPOフロー自動化</div></li>
+                  <li><span class="icon">•</span><div>顧問先からの問い合わせ整理とタスク化</div></li>
+                  <li><span class="icon">•</span><div>レポート・報告書雛形の自動生成</div></li>
+                </ul>
+              </div>
+
+              <div class="usecase-card">
+                <div class="usecase-title">経営ダッシュボード / KPIモニタリング</div>
+                <ul class="usecase-list">
+                  <li><span class="icon">•</span><div>複数SaaSからの指標集約（売上・工数・広告）</div></li>
+                  <li><span class="icon">•</span><div>週次レポートの自動生成とSlack共有</div></li>
+                  <li><span class="icon">•</span><div>異常値検知時のアラート＋原因候補整理</div></li>
+                </ul>
+              </div>
+            </div>
+
+            <p style="font-size:0.86rem;color:var(--text-soft);margin-top:10px;">
+              ※「うちのこの業務でもいける？」という相談ベースからで大丈夫です。  
+              現場の導線を一緒に分解し、AIとノーコードでどこまで任せられるかを設計します。
+            </p>
           </div>
         </section>
 
