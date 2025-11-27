@@ -6,27 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="AIF STUDIOは、日本の中小企業向けにAI×業務自動化×コンサル×システム構築を一気通貫で行う“AI業務自動化エージェント構築会社”です。"
+    content="AIF STUDIOは、日本の中小企業向けにAI×業務自動化×コンサル×システム構築を一気通貫で提供する“AI業務自動化エージェント構築会社”です。"
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
     rel="stylesheet"
   />
+
   <style>
+    /* =========================
+       基本設定
+       ========================= */
     :root {
-      --color-bg: #f5f7fb;
+      --bg-gradient: radial-gradient(circle at 0 0, #e6f2ff 0, #f4f7fb 45%, #e8edf7 100%);
+      --color-bg: #f4f7fb;
       --color-surface: #ffffff;
-      --color-surface-soft: #f2f4f8;
-      --color-primary: #00c6ff;
-      --color-primary-deep: #0052cc;
-      --color-accent-gold: #f5d168;
-      --color-text-main: #111827;
-      --color-text-soft: #4b5563;
-      --color-text-muted: #6b7280;
-      --color-border-subtle: #e5e7eb;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --color-surface-soft: #f1f5f9;
+      --color-border-subtle: #e2e8f0;
+      --color-border-strong: #cbd5e1;
+      --color-main: #0f172a;
+      --color-sub: #334155;
+      --color-muted: #64748b;
+      --color-blue: #0ea5e9;
+      --color-blue-deep: #075985;
+      --color-gold: #f5d565;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+      --shadow-strong: 0 26px 70px rgba(15, 23, 42, 0.24);
       --radius-lg: 20px;
       --radius-xl: 26px;
       --radius-pill: 999px;
@@ -34,7 +41,7 @@
       --nav-height: 64px;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -45,24 +52,23 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: "Noto Sans JP", "Inter", system-ui, -apple-system,
-        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-gradient);
+      color: var(--color-main);
+      font-family: "Noto Sans JP", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 14px;
-      line-height: 1.65;
-      background:
-        radial-gradient(circle at top left, #e0f2ff 0, #f5f7fb 48%, #edf1f7 80%);
-      color: var(--color-text-main);
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     img {
       max-width: 100%;
       height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .page {
@@ -78,8 +84,13 @@
       padding: 0 20px;
     }
 
-    /* ================= NAV ================= */
+    section {
+      padding: 60px 0;
+    }
 
+    /* =========================
+       ナビゲーション
+       ========================= */
     .nav {
       position: sticky;
       top: 0;
@@ -87,11 +98,11 @@
       backdrop-filter: blur(20px);
       background: linear-gradient(
         to bottom,
-        rgba(247, 249, 252, 0.96),
-        rgba(247, 249, 252, 0.9),
-        rgba(247, 249, 252, 0.94)
+        rgba(244, 247, 252, 0.98),
+        rgba(244, 247, 252, 0.94),
+        rgba(244, 247, 252, 0.9)
       );
-      border-bottom: 1px solid rgba(209, 213, 219, 0.65);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
     }
 
     .nav-inner {
@@ -99,7 +110,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
     }
 
     .nav-left {
@@ -111,19 +122,14 @@
     .brand-mark {
       width: 30px;
       height: 30px;
-      border-radius: 16px;
-      background: conic-gradient(
-        from 210deg,
-        #00c6ff,
-        #0052cc,
-        #0b1020,
-        #00c6ff
-      );
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.28),
-        0 12px 28px rgba(15, 23, 42, 0.22);
+      border-radius: 18px;
+      background: conic-gradient(from 200deg, #0ea5e9, #0f172a, #0ea5e9);
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.5),
+        0 14px 30px rgba(15, 23, 42, 0.55);
       position: relative;
       overflow: hidden;
     }
@@ -133,15 +139,15 @@
       position: absolute;
       inset: 4px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.75);
     }
 
     .brand-mark-inner {
       width: 11px;
       height: 11px;
       border-radius: 999px;
-      background: radial-gradient(circle at 32% 18%, #ffffff, #e5f3ff, #0b1120);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.75);
+      background: radial-gradient(circle at 30% 20%, #ffffff, #dbeafe, #020617);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
     }
 
     .brand-text {
@@ -152,14 +158,14 @@
 
     .brand-name {
       font-size: 15px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       font-weight: 600;
     }
 
     .brand-tagline {
       font-size: 11px;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
     }
 
     .nav-links {
@@ -167,7 +173,7 @@
       align-items: center;
       gap: 18px;
       font-size: 13px;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
     }
 
     .nav-link {
@@ -181,23 +187,23 @@
 
     .nav-link:hover {
       border-color: rgba(148, 163, 184, 0.7);
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--color-text-main);
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--color-main);
     }
 
-    .nav-link-strong {
+    .nav-link-cta {
       border-radius: var(--radius-pill);
       padding: 7px 14px;
-      background: linear-gradient(135deg, #00c6ff, #38bdf8);
+      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
+      border: none;
       color: #04111f;
       font-weight: 600;
-      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.45);
-      border: none;
+      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.5);
     }
 
-    .nav-link-strong:hover {
+    .nav-link-cta:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.6);
+      box-shadow: 0 18px 40px rgba(14, 165, 233, 0.7);
     }
 
     .nav-right {
@@ -208,11 +214,11 @@
 
     .nav-pill {
       font-size: 11px;
-      padding: 3px 10px 4px;
+      padding: 4px 10px 5px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--color-text-muted);
-      background: radial-gradient(circle at 0 0, #e5f3ff, #f8fafc);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(248, 250, 252, 0.95);
+      color: var(--color-muted);
     }
 
     .nav-toggle {
@@ -220,8 +226,8 @@
       width: 32px;
       height: 32px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: #ffffff;
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -229,9 +235,9 @@
 
     .nav-toggle-line {
       width: 16px;
-      height: 1.5px;
+      height: 2px;
       border-radius: 999px;
-      background: #111827;
+      background: #0f172a;
       position: relative;
     }
 
@@ -239,11 +245,11 @@
     .nav-toggle-line::after {
       content: "";
       position: absolute;
-      width: 16px;
-      height: 1.5px;
-      border-radius: 999px;
-      background: #111827;
       left: 0;
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #0f172a;
     }
 
     .nav-toggle-line::before {
@@ -257,7 +263,7 @@
     .nav-menu-mobile {
       display: none;
       border-top: 1px solid rgba(209, 213, 219, 0.7);
-      background: rgba(247, 249, 252, 0.98);
+      background: rgba(248, 250, 252, 0.98);
       backdrop-filter: blur(14px);
     }
 
@@ -267,29 +273,29 @@
       flex-direction: column;
       gap: 8px;
       font-size: 13px;
-      color: var(--color-text-soft);
+      color: var(--color-sub);
     }
 
     .nav-menu-mobile a {
-      padding: 6px 10px;
+      padding: 6px 8px;
       border-radius: 10px;
       transition: background 0.15s ease;
     }
 
     .nav-menu-mobile a:hover {
       background: rgba(226, 232, 240, 0.9);
-      color: var(--color-text-main);
     }
 
-    /* ================= HERO ================= */
-
+    /* =========================
+       Hero
+       ========================= */
     .hero {
-      padding: 40px 0 52px;
+      padding: 46px 0 60px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
       gap: 40px;
       align-items: center;
     }
@@ -300,13 +306,13 @@
       gap: 8px;
       padding: 4px 10px 5px;
       border-radius: var(--radius-pill);
-      background: rgba(9, 15, 30, 0.82);
+      background: rgba(15, 23, 42, 0.9);
       color: #e5e7eb;
       font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 14px;
-      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.7);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+      margin-bottom: 10px;
     }
 
     .badge-dot {
@@ -314,137 +320,125 @@
       height: 6px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.35);
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.45);
     }
 
     .hero-eyebrow {
       font-size: 13px;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
       margin-bottom: 8px;
     }
 
     .hero-title {
-      font-size: clamp(26px, 3.2vw, 32px);
-      line-height: 1.32;
-      letter-spacing: 0.01em;
+      font-size: 30px;
+      line-height: 1.35;
       margin: 0 0 10px;
       font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--color-main);
     }
 
-    .hero-title span.highlight-main {
-      background: linear-gradient(120deg, #00c6ff, #38bdf8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 600;
-    }
-
-    .hero-title span.highlight-sub {
-      background: linear-gradient(120deg, #f5d168, #fbbf24);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-title-strong {
       font-weight: 600;
     }
 
     .hero-subtitle {
-      font-size: 18px;
-      margin: 0 0 12px;
-      color: var(--color-text-soft);
-      letter-spacing: 0.18em;
+      font-size: 14px;
+      color: var(--color-sub);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
     .hero-lead {
       font-size: 13px;
-      color: var(--color-text-soft);
-      line-height: 1.8;
-      margin-bottom: 18px;
+      color: var(--color-sub);
+      margin-bottom: 16px;
+      max-width: 580px;
     }
 
     .hero-usps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
     .hero-usp-pill {
-      font-size: 11px;
-      padding: 8px 10px;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.75);
-      color: #e5e7eb;
       display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.75);
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      color: #e5e7eb;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+      white-space: normal;
     }
 
     .hero-usp-icon {
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 999px;
-      background: radial-gradient(circle at 0 0, #e5f3ff, #0ea5e9);
+      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      color: #0b1120;
+      font-size: 12px;
+      color: #04111f;
       flex-shrink: 0;
     }
 
     .hero-usp-title {
       font-size: 11px;
+      font-weight: 500;
     }
 
     .hero-usp-sub {
       font-size: 10px;
-      color: #9ca3af;
+      color: #cbd5f5;
     }
 
     .hero-actions {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 10px;
       margin-bottom: 10px;
-      flex-wrap: wrap;
     }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       border-radius: var(--radius-pill);
       padding: 9px 18px;
       border: none;
-      background: radial-gradient(circle at 0 0, #e5f3ff, #0ea5e9);
-      color: #04111f;
+      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
+      color: #02101e;
       font-size: 13px;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       cursor: pointer;
-      box-shadow: 0 16px 38px rgba(56, 189, 248, 0.65);
+      box-shadow: 0 18px 42px rgba(14, 165, 233, 0.7);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 22px 50px rgba(56, 189, 248, 0.85);
+      box-shadow: 0 24px 56px rgba(14, 165, 233, 0.85);
     }
 
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       border-radius: var(--radius-pill);
       padding: 8px 14px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      background: rgba(242, 244, 248, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.95);
+      background: rgba(241, 245, 249, 0.95);
+      color: var(--color-sub);
       font-size: 12px;
-      color: var(--color-text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       cursor: pointer;
       transition: background 0.15s ease, border-color 0.15s ease;
     }
@@ -452,26 +446,27 @@
     .btn-secondary:hover {
       background: #ffffff;
       border-color: rgba(148, 163, 184, 1);
-      color: var(--color-text-main);
+      color: var(--color-main);
     }
 
     .hero-note {
       font-size: 11px;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
+      max-width: 520px;
     }
 
+    /* 右側パネル */
     .hero-right {
       position: relative;
     }
 
     .hero-panel {
-      border-radius: 26px;
-      background:
-        radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95));
-      box-shadow: 0 26px 70px rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-xl);
+      background: rgba(10, 16, 32, 0.96);
+      box-shadow: var(--shadow-strong);
+      border: 1px solid rgba(51, 65, 85, 0.8);
       color: #e5e7eb;
-      padding: 16px 16px 14px;
-      border: 1px solid rgba(148, 163, 184, 0.48);
+      padding: 16px;
       position: relative;
       overflow: hidden;
     }
@@ -479,9 +474,9 @@
     .hero-panel::before {
       content: "";
       position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.26), transparent 60%);
-      opacity: 0.8;
+      inset: -30%;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 60%);
+      opacity: 0.9;
       pointer-events: none;
     }
 
@@ -501,8 +496,8 @@
 
     .hero-panel-title-main {
       font-size: 12px;
-      color: #e5e7eb;
       font-weight: 500;
+      color: #e5e7eb;
       margin-bottom: 2px;
     }
 
@@ -511,11 +506,11 @@
       align-items: center;
       gap: 6px;
       padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(9, 12, 24, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      background: rgba(9, 9, 18, 0.95);
       font-size: 10px;
-      color: #cbd5f5;
+      color: #e5e7eb;
     }
 
     .hero-panel-tag-dot {
@@ -523,24 +518,24 @@
       height: 6px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.5);
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.6);
     }
 
     .hero-panel-body {
       border-radius: 18px;
-      background: radial-gradient(circle at 0 0, #151c30, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 12px 12px 10px;
+      border: 1px solid rgba(71, 85, 105, 0.9);
+      background: radial-gradient(circle at 0 0, #111827, #020617);
+      padding: 12px;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.05fr 0.9fr;
       gap: 10px;
       font-size: 11px;
     }
 
     .hero-panel-column-title {
       font-size: 10px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: #9ca3af;
       margin-bottom: 6px;
     }
@@ -559,9 +554,9 @@
 
     .mini-node {
       padding: 4px 7px;
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       border: 1px solid rgba(148, 163, 184, 0.8);
-      background: rgba(9, 12, 24, 0.98);
+      background: rgba(9, 9, 18, 0.96);
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -576,14 +571,13 @@
     .mini-node-tag {
       font-size: 9px;
       color: #a5b4fc;
-      opacity: 0.9;
     }
 
     .mini-flow-arrow {
       width: 14px;
       height: 1px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #38bdf8, transparent);
+      background: linear-gradient(90deg, #0ea5e9, transparent);
       position: relative;
     }
 
@@ -591,12 +585,12 @@
       content: "";
       position: absolute;
       right: -2px;
-      top: -2px;
+      top: -3px;
       width: 5px;
       height: 5px;
       border-radius: 1px;
-      border-left: 1px solid #38bdf8;
-      border-bottom: 1px solid #38bdf8;
+      border-left: 1px solid #0ea5e9;
+      border-bottom: 1px solid #0ea5e9;
       transform: rotate(-45deg);
     }
 
@@ -609,8 +603,8 @@
 
     .metric-card {
       border-radius: 12px;
-      background: radial-gradient(circle at 0 0, #020617, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(71, 85, 105, 0.9);
       padding: 8px 9px;
     }
 
@@ -623,7 +617,6 @@
     .metric-value {
       font-size: 14px;
       font-weight: 600;
-      color: #e5e7eb;
     }
 
     .metric-tag {
@@ -636,44 +629,35 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
       font-size: 10px;
       color: #9ca3af;
-      gap: 10px;
-      flex-wrap: wrap;
     }
 
     .hero-panel-footer-pill {
       padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(9, 12, 24, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      background: rgba(9, 9, 18, 0.96);
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-size: 10px;
+      color: #e5e7eb;
     }
 
-    .hero-panel-footer-pill span {
-      color: #22c55e;
-      font-size: 10px;
-    }
-
-    /* ============ SECTION BASE ============ */
-
-    section {
-      padding: 56px 0;
-    }
-
+    /* =========================
+       セクション共通
+       ========================= */
     .section-header {
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .section-eyebrow {
       font-size: 11px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
       margin-bottom: 8px;
     }
 
@@ -693,40 +677,35 @@
 
     .section-subtitle {
       font-size: 13px;
-      color: var(--color-text-soft);
-      max-width: 360px;
-      line-height: 1.7;
+      color: var(--color-sub);
+      max-width: 380px;
     }
 
-    /* ============ VISION ============ */
-
+    /* =========================
+       Vision
+       ========================= */
     .vision-grid {
       display: grid;
-      grid-template-columns: 1.18fr 0.9fr;
-      gap: 20px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 22px;
       align-items: flex-start;
     }
 
     .vision-main {
       border-radius: var(--radius-xl);
-      padding: 20px 20px 18px;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.97),
-          rgba(243, 246, 251, 0.97)
-        );
-      border: 1px solid rgba(209, 213, 219, 0.95);
+      border: 1px solid var(--color-border-subtle);
+      background: linear-gradient(135deg, #ffffff, #f5f7fb);
       box-shadow: var(--shadow-soft);
+      padding: 20px 20px 18px;
       font-size: 13px;
-      color: var(--color-text-soft);
+      color: var(--color-sub);
     }
 
-    .vision-block-title {
+    .vision-title {
       font-size: 14px;
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       font-weight: 500;
-      color: var(--color-text-main);
+      color: var(--color-main);
     }
 
     .vision-cols {
@@ -737,43 +716,56 @@
       font-size: 12px;
     }
 
+    .vision-cols h4 {
+      font-size: 12px;
+      margin: 0 0 4px;
+      font-weight: 600;
+    }
+
     .vision-chip {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 11px;
       padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(226, 232, 240, 0.85);
-      color: #0f172a;
-      margin-top: 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(226, 232, 240, 0.9);
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--color-main);
     }
 
     .vision-chip-dot {
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #00c6ff, #38bdf8);
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+    }
+
+    .vision-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .vision-card {
       border-radius: 20px;
-      padding: 14px 14px 12px;
-      background: rgba(15, 23, 42, 0.97);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      border: 1px solid rgba(30, 64, 175, 0.5);
+      background: radial-gradient(circle at 0 0, #1e293b, #020617);
       color: #e5e7eb;
+      padding: 14px 14px 12px;
+      box-shadow: 0 20px 46px rgba(15, 23, 42, 0.85);
+      font-size: 12px;
       position: relative;
       overflow: hidden;
-      font-size: 12px;
     }
 
     .vision-card::before {
       content: "";
       position: absolute;
       inset: -40%;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.26), transparent 55%);
-      opacity: 0.95;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 58%);
       pointer-events: none;
+      opacity: 0.95;
     }
 
     .vision-card-inner {
@@ -789,8 +781,7 @@
 
     .vision-card-body {
       font-size: 11px;
-      color: #cbd5f5;
-      line-height: 1.7;
+      color: #dbeafe;
     }
 
     .vision-pill-row {
@@ -803,33 +794,27 @@
     .vision-pill {
       font-size: 10px;
       padding: 3px 7px;
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       border: 1px solid rgba(148, 163, 184, 0.85);
       background: rgba(15, 23, 42, 0.96);
       color: #dbeafe;
     }
 
-    .vision-right {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
     .vision-metric {
       border-radius: 18px;
-      padding: 12px 13px 11px;
-      background: rgba(15, 23, 42, 0.97);
       border: 1px solid rgba(51, 65, 85, 0.95);
+      background: radial-gradient(circle at 0 0, #020617, #020617);
       color: #e5e7eb;
-      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.8);
+      padding: 12px 13px 11px;
       font-size: 12px;
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.9);
     }
 
     .vision-metric-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 4px;
     }
 
@@ -861,7 +846,7 @@
       position: absolute;
       inset: 0;
       width: 72%;
-      background: linear-gradient(90deg, #22c55e, #a3e635, #fbbf24);
+      background: linear-gradient(90deg, #22c55e, #a3e635, #eab308);
     }
 
     .vision-note {
@@ -872,18 +857,18 @@
 
     .vision-os {
       border-radius: 18px;
-      padding: 12px 13px 11px;
-      background: radial-gradient(circle at 0 0, #e3f1ff, #f9fafb);
       border: 1px solid rgba(191, 219, 254, 0.9);
+      background: radial-gradient(circle at 0 0, #e5f2ff, #f9fafb);
+      padding: 12px 13px 11px;
       font-size: 12px;
-      color: var(--color-text-soft);
+      color: var(--color-sub);
     }
 
     .vision-os-title {
       font-size: 11px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
       margin-bottom: 6px;
     }
 
@@ -899,11 +884,12 @@
       padding: 5px 6px;
       border-radius: 11px;
       border: 1px solid rgba(191, 219, 254, 0.9);
-      background: rgba(255, 255, 255, 0.96);
+      background: #ffffff;
     }
 
-    /* ============ 3-LAYER OVERVIEW ============ */
-
+    /* =========================
+       3-Layer Overview
+       ========================= */
     .layers {
       padding-top: 52px;
     }
@@ -923,37 +909,36 @@
 
     .layers-diagram {
       width: min(320px, 100%);
-      aspect-ratio: 1/1;
+      aspect-ratio: 1 / 1;
       border-radius: 999px;
-      background:
-        radial-gradient(circle at 30% 0, #e1f0ff, #f3f6fc, #e5edf7);
-      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.3);
-      border: 1px solid rgba(191, 219, 254, 0.9);
+      background: radial-gradient(circle at 30% 0, #e3f2ff, #f5f7fb);
+      border: 1px solid rgba(191, 219, 254, 0.95);
+      box-shadow: 0 22px 56px rgba(15, 23, 42, 0.28);
       position: relative;
       overflow: hidden;
     }
 
     .layer-circle {
       position: absolute;
-      inset: 15%;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.12), transparent 68%);
+      inset: 16%;
+      border-radius: inherit;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 70%);
     }
 
     .layer-circle.mid {
-      inset: 30%;
+      inset: 31%;
       border-color: rgba(148, 163, 184, 0.7);
-      background: radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.18), transparent 70%);
+      background: radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.18), transparent 72%);
     }
 
     .layer-circle.inner {
-      inset: 46%;
-      border-color: rgba(15, 23, 42, 0.32);
+      inset: 47%;
+      border-color: rgba(15, 23, 42, 0.4);
       background: radial-gradient(circle at 50% 50%, #0f172a, #020617);
       box-shadow:
-        0 0 0 1px rgba(148, 163, 184, 0.45),
-        0 0 28px rgba(15, 23, 42, 0.85);
+        0 0 0 1px rgba(148, 163, 184, 0.4),
+        0 0 28px rgba(15, 23, 42, 0.8);
     }
 
     .layer-dot {
@@ -965,22 +950,22 @@
       box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.35);
     }
 
-    .layer-dot.dot-1 { top: 14%; left: 52%; }
-    .layer-dot.dot-2 { bottom: 18%; left: 25%; }
+    .layer-dot.dot-1 { top: 14%; left: 54%; }
+    .layer-dot.dot-2 { bottom: 18%; left: 26%; }
     .layer-dot.dot-3 { bottom: 30%; right: 16%; }
 
     .layer-label {
       position: absolute;
       font-size: 11px;
       padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.96);
       color: #e5e7eb;
-      border: 1px solid rgba(148, 163, 184, 0.85);
-      white-space: nowrap;
+      border: 1px solid rgba(148, 163, 184, 0.9);
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      white-space: nowrap;
     }
 
     .layer-label span.tag {
@@ -994,19 +979,19 @@
 
     .layer-center {
       position: absolute;
-      inset: 46%;
+      inset: 47%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      flex-direction: column;
-      gap: 3px;
       color: #e5e7eb;
+      gap: 3px;
     }
 
     .layer-center-title {
       font-size: 10px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #9ca3af;
     }
@@ -1016,13 +1001,70 @@
       font-weight: 600;
     }
 
+    .layers-right {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border-subtle);
+      background: linear-gradient(145deg, #ffffff, #f5f7fb);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      font-size: 13px;
+      color: var(--color-sub);
+    }
+
+    .layers-right-grid {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .layer-card {
+      border-radius: 14px;
+      border: 1px solid var(--color-border-subtle);
+      background: #ffffff;
+      padding: 10px 10px 9px;
+    }
+
+    .layer-card-title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .layer-card-pill {
+      font-size: 10px;
+      color: var(--color-muted);
+      margin-bottom: 4px;
+    }
+
+    .layer-card-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .layer-card-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+
+    .layer-card-bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+    }
+
     .layers-legend {
-      margin-top: 14px;
+      margin-top: 12px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       font-size: 10px;
-      color: var(--color-text-soft);
+      color: var(--color-muted);
     }
 
     .layers-legend-item {
@@ -1030,9 +1072,9 @@
       align-items: center;
       gap: 6px;
       padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(209, 213, 219, 0.9);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border-subtle);
+      background: #ffffff;
     }
 
     .layers-legend-swatch {
@@ -1046,70 +1088,9 @@
     .layers-legend-swatch.project { background: linear-gradient(135deg, #22c55e, #84cc16); }
     .layers-legend-swatch.task { background: linear-gradient(135deg, #fb923c, #facc15); }
 
-    .layers-right {
-      border-radius: 22px;
-      padding: 18px 18px 16px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.97),
-          rgba(244, 247, 253, 0.97)
-        );
-      border: 1px solid rgba(209, 213, 219, 0.95);
-      box-shadow: var(--shadow-soft);
-      font-size: 13px;
-      color: var(--color-text-soft);
-    }
-
-    .layers-right-grid {
-      margin-top: 8px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .layer-card {
-      border-radius: 14px;
-      padding: 10px 10px 9px;
-      border: 1px solid rgba(209, 213, 219, 0.95);
-      background: rgba(255, 255, 255, 0.98);
-      font-size: 11px;
-    }
-
-    .layer-card-title {
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .layer-card-pill {
-      font-size: 10px;
-      color: var(--color-text-muted);
-      margin-bottom: 5px;
-    }
-
-    .layer-card-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .layer-card-list li {
-      margin-bottom: 3px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .layer-card-bullet {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-    }
-
-    /* ============ WHAT WE CAN AUTOMATE ============ */
-
+    /* =========================
+       What We Can Automate
+       ========================= */
     .automation {
       padding-top: 52px;
     }
@@ -1129,10 +1110,10 @@
 
     .automation-card {
       border-radius: 18px;
+      border: 1px solid var(--color-border-subtle);
+      background: #ffffff;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
       padding: 12px 11px 10px;
-      background: rgba(255, 255, 255, 0.97);
-      border: 1px solid rgba(209, 213, 219, 0.95);
-      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -1150,13 +1131,13 @@
       width: 20px;
       height: 20px;
       border-radius: 999px;
-      background: radial-gradient(circle at 0 0, #e5f3ff, #0ea5e9);
+      background: radial-gradient(circle at 0 0, #e0f2fe, #0ea5e9);
       border: 1px solid rgba(59, 130, 246, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      color: #04111f;
+      color: #02101f;
       flex-shrink: 0;
     }
 
@@ -1167,58 +1148,56 @@
 
     .automation-tag {
       font-size: 10px;
-      color: var(--color-text-muted);
+      color: var(--color-muted);
     }
 
     .automation-body {
       font-size: 11px;
-      color: var(--color-text-soft);
-      line-height: 1.7;
+      color: var(--color-sub);
     }
 
     .automation-pill-row {
+      margin-top: 3px;
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      margin-top: 3px;
     }
 
     .automation-pill {
       font-size: 10px;
       padding: 3px 6px;
-      border-radius: 999px;
-      background: rgba(241, 245, 249, 0.95);
-      border: 1px solid rgba(209, 213, 219, 0.95);
-      color: var(--color-text-muted);
+      border-radius: var(--radius-pill);
+      background: var(--color-surface-soft);
+      border: 1px solid var(--color-border-subtle);
+      color: var(--color-muted);
     }
 
     .automation-meta {
       border-radius: 20px;
-      padding: 14px 15px 12px;
-      background: radial-gradient(circle at 0 0, #0b1020, #020617);
-      border: 1px solid rgba(55, 65, 81, 0.95);
+      border: 1px solid rgba(30, 64, 175, 0.55);
+      background: radial-gradient(circle at 0 0, #020617, #020617);
       color: #e5e7eb;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.9);
+      padding: 14px 15px 12px;
       font-size: 12px;
+      box-shadow: 0 20px 52px rgba(15, 23, 42, 0.9);
     }
 
     .automation-meta-title {
       font-size: 13px;
-      margin-bottom: 6px;
       font-weight: 500;
+      margin-bottom: 6px;
     }
 
     .automation-meta-body {
       font-size: 11px;
       color: #cbd5f5;
-      line-height: 1.7;
       margin-bottom: 8px;
     }
 
     .automation-meta-list {
-      list-style: none;
-      padding: 0;
       margin: 0 0 8px;
+      padding: 0;
+      list-style: none;
       display: grid;
       grid-template-columns: 1.1fr 1.1fr;
       gap: 4px 10px;
@@ -1235,7 +1214,7 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #00c6ff, #22c55e);
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
     }
 
     .automation-meta-note {
@@ -1253,27 +1232,25 @@
     .automation-meta-pill {
       font-size: 10px;
       padding: 4px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.85);
-      background: rgba(9, 12, 24, 0.96);
-      color: #dbeafe;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(9, 9, 18, 0.96);
+      color: #e5e7eb;
     }
 
-    /* ============ MEDIA QUERIES ============ */
-
+    /* =========================
+       レスポンシブ
+       ========================= */
     @media (max-width: 960px) {
-      .hero-grid {
+      .hero-grid,
+      .vision-grid,
+      .layers-grid,
+      .automation-layout {
         grid-template-columns: minmax(0, 1fr);
       }
 
       .hero-right {
         order: -1;
-      }
-
-      .vision-grid,
-      .layers-grid,
-      .automation-layout {
-        grid-template-columns: minmax(0, 1fr);
       }
 
       .vision-cols {
@@ -1295,8 +1272,16 @@
         display: inline-flex;
       }
 
+      section {
+        padding: 44px 0;
+      }
+
       .hero {
-        padding-top: 28px;
+        padding-top: 32px;
+      }
+
+      .hero-title {
+        font-size: 26px;
       }
 
       .hero-usps {
@@ -1314,20 +1299,22 @@
     }
 
     @media (max-width: 640px) {
-      section {
-        padding: 40px 0;
-      }
-
       .section-title-row {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .hero-lead {
+        font-size: 12px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- ============ NAV ============ -->
+    <!-- =====================
+         ナビ
+         ===================== -->
     <header class="nav">
       <div class="container nav-inner">
         <div class="nav-left">
@@ -1348,11 +1335,11 @@
           <a href="#implementation" class="nav-link">導入フロー</a>
           <a href="#pricing" class="nav-link">料金・PoC</a>
           <a href="#faq" class="nav-link">FAQ</a>
-          <a href="#contact" class="nav-link nav-link-strong">無料ヒアリング</a>
+          <a href="#contact" class="nav-link nav-link-cta">無料ヒアリング</a>
         </nav>
         <div class="nav-right">
           <div class="nav-pill">日本から、未来を照らす。</div>
-          <button class="nav-toggle" aria-label="メニューを開く">
+          <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く">
             <div class="nav-toggle-line"></div>
           </button>
         </div>
@@ -1373,7 +1360,9 @@
     </header>
 
     <main>
-      <!-- ============ HERO ============ -->
+      <!-- =====================
+           HERO
+           ===================== -->
       <section id="hero" class="hero">
         <div class="container">
           <div class="hero-grid">
@@ -1382,29 +1371,35 @@
                 <span class="badge-dot"></span>
                 <span>AI業務自動化エージェント構築会社</span>
               </div>
-              <div class="hero-eyebrow">AI × 自動化 × コンサル × システム構築を一気通貫で</div>
+              <div class="hero-eyebrow">
+                メール・請求・日報・フォロー営業までを AI が肩代わり
+              </div>
               <h1 class="hero-title">
-                <span class="highlight-main">日本から、未来を照らす。</span><br />
-                AIワーカーが<span class="highlight-sub">人がすべきでない仕事</span>を引き受ける世界へ。
+                御社の<span class="hero-title-strong">「人がすべきでない仕事」</span>を、<br />
+                AIワーカーがまとめて引き受けます。
               </h1>
-              <div class="hero-subtitle">AI BUSINESS PROCESS AUTOMATION STUDIO</div>
+              <div class="hero-subtitle">
+                AI BUSINESS PROCESS AUTOMATION STUDIO
+              </div>
               <p class="hero-lead">
-                AIF STUDIO は、中小企業向けに「メール返信・請求処理・KPI集計・フォロー営業」などの
-                定型業務をAIと自動化で肩代わりする<strong>外部AIチーム</strong>です。<br />
+                問い合わせメールの返信、請求書処理、PDFからの転記、営業フォロー、日報・議事録作成。<br />
+                AIF STUDIO は、これらの
+                <strong>定型業務をAIと自動化で代行する「外部AIチーム」</strong>です。<br />
                 PoCから本番運用まで、<strong>1〜2週間で“動くAIワーカー”</strong>を立ち上げます。
               </p>
+
               <div class="hero-usps">
                 <div class="hero-usp-pill">
                   <div class="hero-usp-icon">⧉</div>
                   <div>
-                    <div class="hero-usp-title">AI × 自動化 × コンサル</div>
-                    <div class="hero-usp-sub">戦略〜設計〜実装まで一気通貫</div>
+                    <div class="hero-usp-title">AI × 自動化 × コンサルを一気通貫</div>
+                    <div class="hero-usp-sub">戦略整理から設計・実装・改善まで伴走</div>
                   </div>
                 </div>
                 <div class="hero-usp-pill">
                   <div class="hero-usp-icon">⚡</div>
                   <div>
-                    <div class="hero-usp-title">1〜2週間で動くAIワーカー</div>
+                    <div class="hero-usp-title">1〜2週間で「動くAIワーカー」</div>
                     <div class="hero-usp-sub">まずは1業務から小さく検証</div>
                   </div>
                 </div>
@@ -1412,10 +1407,11 @@
                   <div class="hero-usp-icon">⇱</div>
                   <div>
                     <div class="hero-usp-title">小さく始めて横展開できる構造</div>
-                    <div class="hero-usp-sub">テンプレ化して他部門へ展開</div>
+                    <div class="hero-usp-sub">テンプレ化して他部門・他拠点へ展開</div>
                   </div>
                 </div>
               </div>
+
               <div class="hero-actions">
                 <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
                   無料ヒアリングを予約
@@ -1425,9 +1421,10 @@
                   実際のフローを見る
                 </button>
               </div>
+
               <div class="hero-note">
                 ※ まずは「今の業務の愚痴」からで大丈夫です。<br />
-                「どこから自動化すべきか分からない」という状態から一緒に整理します。
+                「どこから自動化すべきか分からない」という状態から、一緒に整理していきます。
               </div>
             </div>
 
@@ -1437,13 +1434,14 @@
                   <div class="hero-panel-header">
                     <div>
                       <div class="hero-panel-title-main">AI業務自動化ダッシュボード（イメージ）</div>
-                      <div style="font-size:10px;color:#9ca3af;">Gmail / Slack / Sheets / Notion を一枚で可視化</div>
+                      <div>Gmail / Slack / Sheets / Notion を一枚で可視化</div>
                     </div>
                     <div class="hero-panel-tag">
                       <span class="hero-panel-tag-dot"></span>
                       <span>LIVE POC</span>
                     </div>
                   </div>
+
                   <div class="hero-panel-body">
                     <div>
                       <div class="hero-panel-column-title">Automation Flows</div>
@@ -1464,6 +1462,7 @@
                             <span class="mini-node-tag">承認</span>
                           </div>
                         </div>
+
                         <div class="mini-flow-row">
                           <div class="mini-node">
                             <span class="mini-node-label">PDF</span>
@@ -1480,6 +1479,7 @@
                             <span class="mini-node-tag">台帳更新</span>
                           </div>
                         </div>
+
                         <div class="mini-flow-row">
                           <div class="mini-node">
                             <span class="mini-node-label">Leads</span>
@@ -1498,6 +1498,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div>
                       <div class="hero-panel-column-title">Impact Snapshot</div>
                       <div class="hero-panel-metrics">
@@ -1514,7 +1515,7 @@
                       </div>
                       <div class="hero-panel-footer">
                         <div class="hero-panel-footer-pill">
-                          <span>●</span> 人がすべきでない業務をゼロへ
+                          ● 人がすべきでない業務をゼロへ
                         </div>
                         <div>AIワーカー数：3 / 部署</div>
                       </div>
@@ -1522,12 +1523,14 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> <!-- hero-right -->
           </div>
         </div>
       </section>
 
-      <!-- ============ OUR VISION ============ -->
+      <!-- =====================
+           OUR VISION
+           ===================== -->
       <section id="vision">
         <div class="container">
           <div class="section-header">
@@ -1540,61 +1543,64 @@
               </p>
             </div>
           </div>
+
           <div class="vision-grid">
             <div class="vision-main">
-              <h3 class="vision-block-title">AIF STUDIO のミッション</h3>
-              <div>
+              <h3 class="vision-title">AIF STUDIO のミッション</h3>
+              <p>
                 <strong>「人がすべきでない業務をゼロにし、本来価値に直結する仕事へ集中できる社会をつくる」</strong><br /><br />
                 現場はいつも忙しいのに、成長に直結しない「作業」に追われている。<br />
-                私たちは、<strong>AI × 自動化 × コンサル × システム構築</strong> を一体で提供し、
-                経営・現場・バックオフィスのすべてをつなぐ「AIワークOS」を一社ずつ設計していきます。
-              </div>
+                私たちは、<strong>AI × 自動化 × コンサル × システム構築</strong> を一体として提供し、
+                経営・現場・バックオフィスをつなぐ “AIワークOS” を一社ずつ設計していきます。
+              </p>
               <div class="vision-cols">
                 <div>
-                  <div style="font-weight:600;margin-bottom:4px;">Why Now ─ なぜ今、AI業務自動化なのか</div>
-                  <div>
+                  <h4>Why Now ─ なぜ今、AI業務自動化なのか</h4>
+                  <p>
                     少子高齢化・採用難・残業規制…。<br />
                     「人を増やす」だけでは事業が伸びない時代に、<strong>AIワーカー</strong>は
                     新たなチームメンバーとして、静かに・24時間・正確に仕事をこなします。
-                  </div>
+                  </p>
                 </div>
                 <div>
-                  <div style="font-weight:600;margin-bottom:4px;">Work OS 思想 ─ Monday.com をどう解釈するか</div>
-                  <div>
-                    Monday.com が示したのは、「すべての業務をボード上に構造化し、
-                    テンプレートとして再利用する」という思想です。<br />
-                    AIF STUDIO はこれを受け継ぎ、<strong>AIと自動化を前提とした“業務レイヤー設計”</strong>に拡張します。
-                  </div>
+                  <h4>Work OS 思想 ─ 業務をレイヤーで捉える</h4>
+                  <p>
+                    すべての業務を「目標」「プロジェクト」「タスク」のレイヤーに分解し、
+                    AIと自動化が介入するポイントを設計することで、
+                    <strong>“戦略と現場” が一枚の構造図として見える</strong>ようにします。
+                  </p>
                 </div>
               </div>
               <div class="vision-chip">
                 <span class="vision-chip-dot"></span>
-                <span>業務の「レイヤー構造化」と「テンプレ化」で、AIワーカーを横展開</span>
+                <span>業務をレイヤー構造化し、テンプレートとして横展開できるAIワークOSをつくる。</span>
               </div>
             </div>
+
             <div class="vision-right">
               <div class="vision-card">
                 <div class="vision-card-inner">
-                  <div class="vision-card-title">日本の中小企業が抱える、典型的な“ムダな時間”</div>
+                  <div class="vision-card-title">典型的な“ムダな時間”を、AIワーカーに置き換える。</div>
                   <div class="vision-card-body">
                     ・メール返信のために、毎朝1〜2時間が消える<br />
-                    ・毎月末の請求処理で、経理が数日つかまる<br />
+                    ・月末の請求処理で、経理が数日つかまる<br />
                     ・営業のフォロー漏れで、せっかくの見込み客が流れる<br />
                     ・会議は行われるのに、議事録もToDoも残らない<br /><br />
                     これらをまとめて、<strong>「AIワーカーに任せられる仕事」</strong>に変換していくのが、AIF STUDIO の仕事です。
                   </div>
                   <div class="vision-pill-row">
-                    <div class="vision-pill">メール・チャット対応の自動化</div>
-                    <div class="vision-pill">請求 / 見積フローの自動化</div>
-                    <div class="vision-pill">営業・フォローの自動化</div>
-                    <div class="vision-pill">日報・議事録・ナレッジ整備</div>
+                    <div class="vision-pill">メール・チャット対応</div>
+                    <div class="vision-pill">請求 / 見積フロー</div>
+                    <div class="vision-pill">営業フォロー / リマインド</div>
+                    <div class="vision-pill">日報・議事録・ナレッジ整理</div>
                   </div>
                 </div>
               </div>
+
               <div class="vision-metric">
                 <div class="vision-metric-header">
                   <div>
-                    <div class="vision-metric-label">PoC 1案件あたりの平均削減工数（見込み）</div>
+                    <div class="vision-metric-label">PoC 1案件あたりの平均削減工数（イメージ）</div>
                     <div class="vision-metric-tag">メール・請求・日報・フォローの組み合わせ</div>
                   </div>
                   <div class="vision-metric-value">▲40〜80h / 月</div>
@@ -1603,15 +1609,16 @@
                   <div class="vision-metric-bar-fill"></div>
                 </div>
                 <div class="vision-note">
-                  「現場の感覚」ではなく、<strong>実際の送受信数・処理数・ログ</strong>から削減時間を算出し、
+                  「体感」ではなく、<strong>実際の送受信数・処理数・ログ</strong>から削減時間を算出し、
                   経営と一緒に ROI を確認します。
                 </div>
               </div>
+
               <div class="vision-os">
                 <div class="vision-os-title">AIF Work OS</div>
                 <div>
-                  Monday.com のワークOS思想を引き継ぎながら、
-                  <strong>「AIワーカー前提の業務OS」</strong>として再定義します。
+                  業務をレイヤーで整理し、AIワーカーを配置するための
+                  <strong>「自社専用の業務OS」</strong> を共に設計します。
                 </div>
                 <div class="vision-os-grid">
                   <div class="vision-os-chip">① 目標・KPIの言語化</div>
@@ -1627,7 +1634,9 @@
         </div>
       </section>
 
-      <!-- ============ 3-LAYER OVERVIEW ============ -->
+      <!-- =====================
+           3-LAYER OVERVIEW
+           ===================== -->
       <section id="layers" class="layers">
         <div class="container">
           <div class="section-header">
@@ -1635,13 +1644,14 @@
             <div class="section-title-row">
               <h2 class="section-title">目標・プロジェクト・タスクを AI が貫通する「3レイヤー構造」</h2>
               <p class="section-subtitle">
-                Monday.com のように「目標」「ボード」「タスク」を分離しながら、
-                それらを AI と自動化でつなぐことで、<strong>“戦略と現場” が一枚の構造図として見える</strong>ように設計します。
+                「目標」「ボード」「タスク」を分離しつつ、それらを AI と自動化でつなぐことで、
+                <strong>“戦略と現場” が一枚の構造図として見える</strong>ように設計します。
               </p>
             </div>
           </div>
+
           <div class="layers-grid">
-            <div class="layers-diagram-wrap">
+            <div class="layers-diagram-wrap" aria-hidden="true">
               <div class="layers-diagram">
                 <div class="layer-circle outer"></div>
                 <div class="layer-circle mid"></div>
@@ -1671,11 +1681,12 @@
                 </div>
               </div>
             </div>
+
             <div class="layers-right">
-              <div>
+              <p>
                 AIF STUDIO では、すべての自動化案件をこの <strong>「3レイヤー」</strong> で整理します。
                 単なるツール導入ではなく、<strong>戦略（Goal）→ プロジェクト（Project）→ タスク（Task）</strong>の一貫性を重視します。
-              </div>
+              </p>
               <div class="layers-right-grid">
                 <div class="layer-card">
                   <div class="layer-card-title">Goal Layer</div>
@@ -1687,6 +1698,7 @@
                     <li><span class="layer-card-bullet"></span><span>工数削減時間・人件費削減額</span></li>
                   </ul>
                 </div>
+
                 <div class="layer-card">
                   <div class="layer-card-title">Project Layer</div>
                   <div class="layer-card-pill">部門長・PMが見るレイヤー</div>
@@ -1697,6 +1709,7 @@
                     <li><span class="layer-card-bullet"></span><span>AIチャットボット構築PJ</span></li>
                   </ul>
                 </div>
+
                 <div class="layer-card">
                   <div class="layer-card-title">Task Layer</div>
                   <div class="layer-card-pill">現場が毎日触るレイヤー</div>
@@ -1708,10 +1721,12 @@
                   </ul>
                 </div>
               </div>
-              <div style="margin-top:10px;font-size:11px;color:var(--color-text-muted);">
-                この3レイヤーを分けて考えることで、<strong>「どのレイヤーの、どの業務をAIワーカーに任せるか」</strong>を
-                明確にしながら PoC を設計できます。
+
+              <div style="margin-top:10px;font-size:11px;color:var(--color-muted);">
+                この3レイヤーを分けて考えることで、
+                <strong>「どのレイヤーの、どの業務をAIワーカーに任せるか」</strong>を明確にしながら PoC を設計できます。
               </div>
+
               <div class="layers-legend">
                 <div class="layers-legend-item">
                   <span class="layers-legend-swatch goal"></span>
@@ -1731,7 +1746,9 @@
         </div>
       </section>
 
-      <!-- ============ WHAT WE CAN AUTOMATE ============ -->
+      <!-- =====================
+           WHAT WE CAN AUTOMATE
+           ===================== -->
       <section id="automation" class="automation">
         <div class="container">
           <div class="section-header">
@@ -1744,6 +1761,7 @@
               </p>
             </div>
           </div>
+
           <div class="automation-layout">
             <div class="automation-grid">
               <div class="automation-card">
@@ -1751,12 +1769,12 @@
                   <div class="automation-icon">✉️</div>
                   <div>
                     <div class="automation-title">メール自動振り分け＆返信案生成</div>
-                    <div class="automation-tag">Gmail / Outlook / 代表アドレス</div>
+                    <div class="automation-tag">Gmail / 代表アドレス</div>
                   </div>
                 </div>
                 <div class="automation-body">
                   問い合わせ・営業メール・採用応募などをAIが分類し、
-                  <strong>返信ドラフト</strong>を自動生成。承認後ワンクリックで送信。
+                  <strong>返信ドラフト</strong>を自動生成。承認後ワンクリックで送信できます。
                 </div>
                 <div class="automation-pill-row">
                   <div class="automation-pill">問い合わせ対応</div>
@@ -1775,7 +1793,7 @@
                 </div>
                 <div class="automation-body">
                   PDFやメールから請求情報を抽出し、
-                  <strong>台帳への転記・金額チェック・ステータス更新</strong>を自動化。
+                  <strong>台帳への転記・金額チェック・ステータス更新</strong>を自動化します。
                 </div>
                 <div class="automation-pill-row">
                   <div class="automation-pill">PDF→台帳転記</div>
@@ -1789,12 +1807,12 @@
                   <div class="automation-icon">🤝</div>
                   <div>
                     <div class="automation-title">リード管理＆自動フォロー</div>
-                    <div class="automation-tag">営業リスト / MAツール連携</div>
+                    <div class="automation-tag">営業リスト / CRM 連携</div>
                   </div>
                 </div>
                 <div class="automation-body">
                   「3日返信なし」「見積送付後7日経過」などの条件で、
-                  AIがフォロー文を生成し、自動でフォロー。
+                  AIがフォロー文を生成し、自動でフォローします。
                 </div>
                 <div class="automation-pill-row">
                   <div class="automation-pill">ステータス管理</div>
@@ -1808,12 +1826,12 @@
                   <div class="automation-icon">📝</div>
                   <div>
                     <div class="automation-title">日報・議事録・レポート生成</div>
-                    <div class="automation-tag">Slack / Teams / Zoom / Meet</div>
+                    <div class="automation-tag">Slack / Teams / 会議ログ</div>
                   </div>
                 </div>
                 <div class="automation-body">
                   会議ログやチャットから、<strong>議事録・ToDo・要点</strong>を自動生成。
-                  日報のたたき台もAIが毎日用意。
+                  日報のたたき台もAIが毎日用意します。
                 </div>
                 <div class="automation-pill-row">
                   <div class="automation-pill">議事録自動生成</div>
@@ -1826,13 +1844,13 @@
                 <div class="automation-card-header">
                   <div class="automation-icon">🔍</div>
                   <div>
-                    <div class="automation-title">社内ナレッジ検索 &amp; RAG Bot</div>
+                    <div class="automation-title">社内ナレッジ検索 &amp; QA Bot</div>
                     <div class="automation-tag">Notion / Drive / マニュアル</div>
                   </div>
                 </div>
                 <div class="automation-body">
                   社内マニュアル・議事録・FAQを横断検索し、
-                  <strong>「社内専用ChatGPT」</strong>として回答するRAGボットを構築。
+                  <strong>「社内専用ChatGPT」</strong>として回答するQAボットを構築します。
                 </div>
                 <div class="automation-pill-row">
                   <div class="automation-pill">ナレッジ検索</div>
@@ -1851,11 +1869,11 @@
                 </div>
                 <div class="automation-body">
                   各システムからデータを集約し、
-                  日次・週次で<strong>KPIシートやダッシュボード</strong>を更新。
+                  日次・週次で<strong>KPIシートやダッシュボード</strong>を更新します。
                 </div>
                 <div class="automation-pill-row">
                   <div class="automation-pill">売上・粗利集計</div>
-                  <div class="automation-pill">リード/商談管理</div>
+                  <div class="automation-pill">リード / 商談管理</div>
                   <div class="automation-pill">工数・コスト可視化</div>
                 </div>
               </div>
@@ -1870,7 +1888,7 @@
                 </div>
                 <div class="automation-body">
                   社内からの質問や、Webサイト・LINEからの問い合わせに、
-                  AIが一次対応。難しい内容だけ人へエスカレーション。
+                  AIが一次対応。難しい内容だけ人へエスカレーションします。
                 </div>
                 <div class="automation-pill-row">
                   <div class="automation-pill">一次受けAI</div>
@@ -1931,7 +1949,7 @@
                 </li>
                 <li>
                   <span class="automation-meta-dot"></span>
-                  <span>既存SaaS（会計、人事、MA、CRM 等）との連携</span>
+                  <span>既存SaaS（会計、人事、CRM、MA 等）との連携</span>
                 </li>
                 <li>
                   <span class="automation-meta-dot"></span>
@@ -1956,4 +1974,4 @@
           </div>
         </div>
       </section>
-      <!-- ここまでが PART1（おおよそ1000行弱） -->
+      <!-- ここまでが PART1 -->
