@@ -511,30 +511,55 @@
       margin: 0 auto 10px;
     }
 
+    /* 円そのもの（線や塗り） */
     .layer-ring {
       position: absolute;
       border-radius: 999px;
       border: 1px solid #e5e7eb;
-      background: radial-gradient(circle at top, #eef2ff, #ffffff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #1f2937;
     }
 
     .layer-ring.outer {
       inset: 0;
+      background: radial-gradient(circle at top, #eef2ff, #ffffff);
     }
 
     .layer-ring.middle {
       inset: 34px;
+      background: radial-gradient(circle at top, #f3f4ff, #ffffff);
     }
 
     .layer-ring.inner {
       inset: 80px;
       background: #2563eb;
+    }
+
+    /* テキストは別レイヤーにして、円とはかぶらないように配置 */
+    .layer-label {
+      position: absolute;
+      font-size: 0.8rem;
+      color: #1f2937;
+      white-space: nowrap;
+    }
+
+    /* 外側テキスト：左寄せ */
+    .layer-label.outer {
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+    }
+
+    /* 中央テキスト：右寄せ */
+    .layer-label.middle {
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+    }
+
+    /* 内側（青）のテキスト：中央 */
+    .layer-label.inner {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: #f9fafb;
       font-weight: 600;
       font-size: 0.9rem;
@@ -1150,9 +1175,15 @@
           <div class="layers-grid">
             <div class="layer-diagram-card">
               <div class="layer-diagram">
-                <div class="layer-ring outer">タスク</div>
-                <div class="layer-ring middle">プロジェクト・タイムライン</div>
-                <div class="layer-ring inner">目標・目的</div>
+                <!-- リング -->
+                <div class="layer-ring outer"></div>
+                <div class="layer-ring middle"></div>
+                <div class="layer-ring inner"></div>
+
+                <!-- テキスト（円とは別レイヤー） -->
+                <div class="layer-label outer">タスク</div>
+                <div class="layer-label middle">プロジェクト・タイムライン</div>
+                <div class="layer-label inner">目標・目的</div>
               </div>
               <div class="layer-caption">
                 中心にある「目標・目的」に合わせて、外側のタスクまでAIで最適化していくイメージです。
