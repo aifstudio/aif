@@ -167,13 +167,9 @@
       padding: 52px 0;
     }
 
-    /* Hero */
+    /* Hero：1カラムに変更 */
     .hero {
       padding-top: 20px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 36px;
-      align-items: center;
     }
 
     .badge {
@@ -236,7 +232,7 @@
     .hero-sub {
       font-size: 0.98rem;
       color: var(--text-soft);
-      max-width: 540px;
+      max-width: 640px;
       margin-bottom: 20px;
     }
 
@@ -317,102 +313,6 @@
     .hero-notes span i {
       font-size: 0.8rem;
       color: #16a34a;
-    }
-
-    .hero-right {
-      position: relative;
-      min-height: 220px;
-    }
-
-    .floating-card {
-      position: relative;
-      border-radius: 22px;
-      border: 1px solid #e5e7eb;
-      background: #ffffff;
-      box-shadow: var(--shadow-soft);
-      padding: 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .fc-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-
-    .fc-title {
-      font-size: 0.9rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #4b5563;
-    }
-
-    .fc-badge {
-      font-size: 0.82rem;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: #ecfdf5;
-      border: 1px solid #bbf7d0;
-      color: #166534;
-    }
-
-    .fc-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .fc-block {
-      border-radius: 14px;
-      padding: 10px 12px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-    }
-
-    .fc-block small {
-      font-size: 0.82rem;
-      color: var(--text-soft);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .metric {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #111827;
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-
-    .metric span {
-      font-size: 0.86rem;
-      color: var(--text-soft);
-      font-weight: 400;
-    }
-
-    .fc-status {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-
-    .fc-status span {
-      font-size: 0.78rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #eef2ff;
-      color: #1d4ed8;
-    }
-
-    .fc-caption {
-      margin-top: 8px;
-      font-size: 0.8rem;
-      color: var(--text-soft);
     }
 
     /* Section titles */
@@ -664,7 +564,79 @@
       color: var(--accent-strong);
     }
 
-    /* Implementation timeline diagram：図メイン */
+    /* 円の図：業務レイヤー */
+    .layers-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.4fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .layer-diagram-card {
+      border-radius: 22px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      padding: 18px 16px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .layer-diagram {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      margin: 0 auto 10px;
+    }
+
+    .layer-ring {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: radial-gradient(circle at top, #eef2ff, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.86rem;
+      color: #1f2937;
+    }
+
+    .layer-ring.outer {
+      inset: 0;
+    }
+
+    .layer-ring.middle {
+      inset: 32px;
+    }
+
+    .layer-ring.inner {
+      inset: 72px;
+      background: #2563eb;
+      color: #f9fafb;
+      font-weight: 600;
+    }
+
+    .layer-caption {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    .layer-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .layer-list li {
+      margin-bottom: 6px;
+    }
+
+    .layer-list span {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    /* Implementation timeline diagram */
     .impl-timeline {
       border-radius: 22px;
       border: 1px solid var(--border-subtle);
@@ -884,18 +856,10 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-right {
-        order: -1;
-      }
       .problem-grid,
-      .pricing-grid {
+      .pricing-grid,
+      .layers-grid {
         grid-template-columns: minmax(0, 1fr);
-      }
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .impl-timeline-inner {
         flex-direction: column;
@@ -925,6 +889,10 @@
       .services-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+      .layer-diagram {
+        width: 220px;
+        height: 220px;
+      }
     }
   </style>
 </head>
@@ -942,7 +910,7 @@
         </div>
         <nav class="nav-links">
           <a href="#services">サービス</a>
-          <a href="#more-services">できること</a>
+          <a href="#layers">全体像</a>
           <a href="#flow">導入フロー</a>
           <a href="#pricing">料金</a>
           <a href="#contact">お問い合わせ</a>
@@ -956,7 +924,7 @@
 
     <main>
       <div class="max-w">
-        <!-- Hero -->
+        <!-- Hero（カードなし） -->
         <section class="hero">
           <div>
             <div class="badge">
@@ -997,40 +965,6 @@
               <span><i>●</i> 1人事業・少人数チームでも対応可</span>
               <span><i>●</i> AIモデル開発不要 / 既存LLM活用</span>
               <span><i>●</i> PoCから小さく始めて拡張可能</span>
-            </div>
-          </div>
-
-          <div class="hero-right">
-            <div class="floating-card reveal">
-              <div class="fc-header">
-                <div class="fc-title">AIF AUTONOMOUS WORKER</div>
-                <div class="fc-badge">稼働中・24/7</div>
-              </div>
-
-              <div class="fc-grid">
-                <div class="fc-block">
-                  <small>今日だけで削減した時間</small>
-                  <div class="metric">
-                    <span id="metric-hours">0</span>時間
-                    <span>（人手換算）</span>
-                  </div>
-                  <div class="fc-status">
-                    <span>メール対応</span>
-                    <span>事務処理</span>
-                  </div>
-                </div>
-                <div class="fc-block">
-                  <small>推定コスト削減額</small>
-                  <div class="metric">
-                    ¥<span id="metric-cost">0</span>
-                    <span>/ 月</span>
-                  </div>
-                </div>
-              </div>
-
-              <p class="fc-caption">
-                今日も、裏側で“人がやらなくていい仕事”だけを静かに処理しています。
-              </p>
             </div>
           </div>
         </section>
@@ -1191,86 +1125,35 @@
           </div>
         </section>
 
-        <!-- More services (accordion) -->
-        <section id="more-services" class="reveal">
+        <!-- 円の図：業務レイヤー -->
+        <section id="layers" class="reveal">
           <div class="section-header">
-            <div class="section-eyebrow">More Solutions</div>
-            <div class="section-title">その他、こんなAIもつくれます。</div>
+            <div class="section-eyebrow">Overview</div>
+            <div class="section-title">AIFが自動化する「業務の層」を、ひと目で。</div>
             <p class="section-desc">
-              下記は一例です。実際には、既存の業務フローに合わせてカスタマイズして実装します。
+              目標・プロセス・タスクの3層で業務を整理し、AIが入るポイントを決めます。
+              monday.com のような円グラフレイアウトで、全体像を直感的に伝えます。
             </p>
           </div>
 
-          <div class="accordion">
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span>議事録AI・レポート自動生成</span>
-                <span class="accordion-icon">＋</span>
-              </button>
-              <div class="accordion-content">
-                <ul>
-                  <li>会議音声から議事録とToDoを自動生成</li>
-                  <li>営業日報・週次レポートの自動ドラフト生成</li>
-                  <li>KPIダッシュボードの要約テキスト生成</li>
-                </ul>
+          <div class="layers-grid">
+            <div class="layer-diagram-card">
+              <div class="layer-diagram">
+                <div class="layer-ring outer">日々のタスク<br>（メール・入力・報告）</div>
+                <div class="layer-ring middle">業務プロセス・ワークフロー</div>
+                <div class="layer-ring inner">目標・目的</div>
+              </div>
+              <div class="layer-caption">
+                中心にある「目標・目的」に合わせて、外側のタスクまでAIで最適化していくイメージです。
               </div>
             </div>
 
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span>PDF・Excel・画像からのデータ抽出</span>
-                <span class="accordion-icon">＋</span>
-              </button>
-              <div class="accordion-content">
-                <ul>
-                  <li>見積書・請求書PDFから金額・期日の自動抽出</li>
-                  <li>紙書類・スキャン画像からスプレッドシートへの転記</li>
-                  <li>複数ファイルの一括読み込み → 一覧表の自動生成</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span>予約受付・問い合わせ・カスタマーサポート</span>
-                <span class="accordion-icon">＋</span>
-              </button>
-              <div class="accordion-content">
-                <ul>
-                  <li>LINE / Webフォームからの予約受付AI</li>
-                  <li>問い合わせメールの分類・返信案生成</li>
-                  <li>よくある質問への自動回答ボット（FAQ + RAG）</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span>採用・人事まわりのAIアシスタント</span>
-                <span class="accordion-icon">＋</span>
-              </button>
-              <div class="accordion-content">
-                <ul>
-                  <li>応募メール・履歴書の要点自動サマリ</li>
-                  <li>一次スクリーニングの基準チェック</li>
-                  <li>候補者への定型連絡の自動作成</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <button class="accordion-header">
-                <span>マーケティング・コンテンツ生成</span>
-                <span class="accordion-icon">＋</span>
-              </button>
-              <div class="accordion-content">
-                <ul>
-                  <li>ブログ記事・ニュースレターのドラフト生成</li>
-                  <li>SNS投稿案・広告コピーの大量生成</li>
-                  <li>既存LPの改善案・ABテスト案の提案</li>
-                </ul>
-              </div>
-            </div>
+            <ul class="layer-list">
+              <li><span>① 目標・目的</span> … 何を達成したいのか（売上・工数削減・レスの速さなど）</li>
+              <li><span>② プロセス</span> … 目標達成のためのステップ（営業フロー、請求フローなど）</li>
+              <li><span>③ タスク</span> … 実際の作業（メール返信、転記、資料作成など）</li>
+              <li>この円の図をベースに、「どの層をAIに任せるか」を一緒に設計します。</li>
+            </ul>
           </div>
         </section>
 
@@ -1428,22 +1311,6 @@
       }
     }
 
-    // メトリクス数字アニメーション
-    function animateValue(el, target, duration) {
-      if (!el) return;
-      const start = 0;
-      const startTime = performance.now();
-
-      function frame(now) {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const value = Math.floor(start + (target - start) * progress);
-        el.textContent = value.toLocaleString("ja-JP");
-        if (progress < 1) requestAnimationFrame(frame);
-      }
-
-      requestAnimationFrame(frame);
-    }
-
     // Scroll reveal
     const revealEls = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
@@ -1479,13 +1346,6 @@
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
       typeOnce();
-
-      const hoursEl = document.getElementById("metric-hours");
-      const costEl = document.getElementById("metric-cost");
-      if (hoursEl && costEl) {
-        animateValue(hoursEl, 6, 1200);
-        animateValue(costEl, 220000, 1500);
-      }
     });
   </script>
 </body>
