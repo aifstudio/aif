@@ -930,6 +930,62 @@
       margin-left: 3px;
     }
 
+    /* Implementation timeline diagram */
+    .impl-timeline {
+      border-radius: 22px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 20px;
+    }
+
+    .impl-timeline-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+
+    .impl-step {
+      flex: 1 1 180px;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: #f9fafb;
+      position: relative;
+    }
+
+    .impl-step-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 4px;
+    }
+
+    .impl-step-title {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .impl-step-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .impl-arrow {
+      flex: 0 0 auto;
+      align-self: center;
+      font-size: 1.4rem;
+      color: var(--text-soft);
+      padding: 0 4px;
+    }
+
     /* Pricing */
     .pricing-grid {
       display: grid;
@@ -1122,6 +1178,14 @@
       .flow-arrow {
         transform: rotate(90deg);
       }
+
+      .impl-timeline-inner {
+        flex-direction: column;
+      }
+
+      .impl-arrow {
+        transform: rotate(90deg);
+      }
     }
 
     @media (max-width: 640px) {
@@ -1301,7 +1365,7 @@
             </div>
 
             <div class="overview-card">
-              <!-- 同心円の構造図（monday.comのイメージに寄せたSVG） -->
+              <!-- 同心円の構造図 -->
               <svg viewBox="0 0 320 320" class="overview-svg" aria-hidden="true">
                 <defs>
                   <linearGradient id="ringOuter" x1="0" y1="0" x2="1" y2="1">
@@ -1694,7 +1758,7 @@
           </div>
         </section>
 
-        <!-- Implementation Flow -->
+        <!-- Implementation Flow（図＋テキスト） -->
         <section id="flow" class="reveal">
           <div class="section-header">
             <div class="section-eyebrow">Implementation Flow</div>
@@ -1705,6 +1769,54 @@
             </p>
           </div>
 
+          <!-- 図式された導入フロー（タイムライン） -->
+          <div class="impl-timeline">
+            <div class="impl-timeline-inner">
+              <div class="impl-step">
+                <div class="impl-step-label">Step 1</div>
+                <div class="impl-step-title">現状ヒアリング</div>
+                <div class="impl-step-text">
+                  1〜1.5時間のオンラインミーティングで、業務フロー・使用ツール・ボトルネックを整理。
+                  「どこが一番つらいか」を一緒に言語化します。
+                </div>
+              </div>
+
+              <div class="impl-arrow">➝</div>
+
+              <div class="impl-step">
+                <div class="impl-step-label">Step 2</div>
+                <div class="impl-step-title">AI化ポイント選定 & PoC設計</div>
+                <div class="impl-step-text">
+                  1〜2週間で効果が見える“1業務”にしぼり、AIワーカー / シナリオの役割と範囲を決定。
+                  評価指標（削減時間・件数など）もここで決めます。
+                </div>
+              </div>
+
+              <div class="impl-arrow">➝</div>
+
+              <div class="impl-step">
+                <div class="impl-step-label">Step 3</div>
+                <div class="impl-step-title">PoC構築・検証</div>
+                <div class="impl-step-text">
+                  実データを使ってAIワーカーを稼働。日々のログを見ながら調整し、
+                  「人がやる部分」と「AIに任せる部分」の境界をチューニングします。
+                </div>
+              </div>
+
+              <div class="impl-arrow">➝</div>
+
+              <div class="impl-step">
+                <div class="impl-step-label">Step 4</div>
+                <div class="impl-step-title">本番運用 & 横展開</div>
+                <div class="impl-step-text">
+                  効果が確認できたら本番フローへ組み込み、他部署・他業務へ横展開。
+                  定期的な見直しで、AIワーカーの担当範囲を少しずつ広げていきます。
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 詳細テキスト＋指標 -->
           <div class="flow-grid">
             <div>
               <ol class="flow-steps">
@@ -1712,28 +1824,36 @@
                   <div class="flow-step-num">1</div>
                   <div>
                     <div class="flow-step-title">現状ヒアリング（1〜1.5時間）</div>
-                    <div class="flow-note">業務フロー・使用ツール・ボトルネックを伺い、AIが効く箇所を一緒に洗い出します。</div>
+                    <div class="flow-note">
+                      業務フロー・使用ツール・ボトルネックを伺い、AIが効く箇所を一緒に洗い出します。
+                    </div>
                   </div>
                 </li>
                 <li class="flow-step">
                   <div class="flow-step-num">2</div>
                   <div>
                     <div class="flow-step-title">AI化ポイントの選定 & PoC設計</div>
-                    <div class="flow-note">「1〜2週間で効果が見えるポイント」を優先して、最初のAIワーカー / シナリオを決めます。</div>
+                    <div class="flow-note">
+                      「1〜2週間で効果が見えるポイント」を優先して、最初のAIワーカー / シナリオを決めます。
+                    </div>
                   </div>
                 </li>
                 <li class="flow-step">
                   <div class="flow-step-num">3</div>
                   <div>
                     <div class="flow-step-title">PoC構築（1〜2週間）</div>
-                    <div class="flow-note">最小構成で実際に動かし、削減時間・工数を数値として測定します。</div>
+                    <div class="flow-note">
+                      最小構成で実際に動かし、削減時間・工数を数値として測定します。
+                    </div>
                   </div>
                 </li>
                 <li class="flow-step">
                   <div class="flow-step-num">4</div>
                   <div>
                     <div class="flow-step-title">本番運用 & 横展開</div>
-                    <div class="flow-note">効果が出た箇所を標準フローに組み込み、他部署・他業務へ横展開していきます。</div>
+                    <div class="flow-note">
+                      効果が出た箇所を標準フローに組み込み、他部署・他業務へ横展開していきます。
+                    </div>
                   </div>
                 </li>
               </ol>
@@ -1854,7 +1974,7 @@
       });
     }
 
-    // タイピング：1回だけ打ち切って終了（ループしない）
+    // タイピング：1回だけ打ち切って終了
     const typingEl = document.getElementById("typing");
     const typingText = "AIが、御社の“裏方仕事”をまるごと引き受けます。";
     let charIndex = 0;
@@ -1868,7 +1988,7 @@
       }
     }
 
-    // メトリクス数字アニメーション（1回だけ）
+    // メトリクス数字アニメーション
     function animateValue(el, target, duration) {
       if (!el) return;
       const start = 0;
