@@ -2,26 +2,26 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>AIF Studio | AI業務自動化エージェント構築会社</title>
+  <title>AIF STUDIO | AI業務自動化エージェント構築会社</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AIF Studioは、AIとノーコードを組み合わせて、メール・事務・営業・バックオフィスをまるごと自動化するAI業務自動化エージェント構築会社です。" />
+  <meta name="description" content="AIF STUDIOは、AIとノーコードを組み合わせて、メール・事務・営業・バックオフィスをまるごと自動化するAI業務自動化エージェント構築会社です。" />
 
-  <!-- フォント：Inter + Noto Sans JP -->
+  <!-- フォント -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #f3f4f6;
-      --bg-alt: #e5e7eb;
+      --bg-main: #f9fafb;
       --card-bg: #ffffff;
       --border-subtle: #e5e7eb;
       --accent: #0ea5e9;
       --accent-strong: #2563eb;
-      --accent-soft: #eff6ff;
+      --accent-soft: #e0f2fe;
       --accent-gold: #f59e0b;
       --text-main: #111827;
       --text-soft: #6b7280;
-      --radius-xl: 18px;
+      --radius-lg: 16px;
       --shadow-soft: 0 14px 32px rgba(15, 23, 42, 0.08);
     }
 
@@ -34,7 +34,7 @@
     body {
       font-family: "Inter", "Noto Sans JP", sans-serif;
       font-size: 16px;
-      background: var(--bg);
+      background: radial-gradient(circle at top left, #e5f0ff, #f9fafb 38%, #f3f4f6 100%);
       color: var(--text-main);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
@@ -51,17 +51,18 @@
     }
 
     .max-w {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
+    /* Header */
     header {
       position: sticky;
       top: 0;
       z-index: 30;
       backdrop-filter: blur(14px);
-      background: rgba(248, 250, 252, 0.9);
+      background: rgba(248, 250, 252, 0.92);
       border-bottom: 1px solid #e5e7eb;
     }
 
@@ -84,25 +85,26 @@
       border-radius: 12px;
       object-fit: contain;
       display: block;
+      background: #111827;
     }
 
     .logo-text-main {
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       font-size: 0.9rem;
       text-transform: uppercase;
       color: #111827;
     }
 
     .logo-text-sub {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-soft);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
       font-size: 0.9rem;
       color: var(--text-soft);
     }
@@ -121,7 +123,7 @@
       height: 2px;
       border-radius: 999px;
       background: linear-gradient(to right, var(--accent), var(--accent-strong));
-      transition: width 0.16s ease-out;
+      transition: width 0.14s ease-out;
     }
 
     .nav-links a:hover::after {
@@ -131,7 +133,7 @@
     .nav-cta {
       padding: 7px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(37, 99, 235, 0.2);
+      border: 1px solid rgba(37, 99, 235, 0.28);
       background: #ffffff;
       font-size: 0.85rem;
       color: #1f2937;
@@ -164,12 +166,39 @@
     }
 
     section {
-      padding: 52px 0;
+      padding: 48px 0;
     }
 
     /* Hero */
-    .hero {
-      padding-top: 20px;
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-card {
+      border-radius: 22px;
+      background: var(--card-bg);
+      padding: 22px 22px 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(120deg, rgba(14,165,233,0.08), transparent 40%, rgba(37,99,235,0.08));
+      opacity: 0.9;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
     }
 
     .badge {
@@ -200,10 +229,10 @@
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 3.4vw, 3rem);
+      font-size: clamp(2.2rem, 3.3vw, 3rem);
       line-height: 1.2;
-      letter-spacing: 0.04em;
-      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
       color: #020617;
     }
 
@@ -230,10 +259,10 @@
     }
 
     .hero-sub {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: var(--text-soft);
       max-width: 640px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero-sub strong {
@@ -245,7 +274,7 @@
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .btn-primary {
@@ -268,7 +297,7 @@
     .btn-primary:hover {
       transform: translateY(-1px);
       filter: brightness(1.03);
-      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.32);
     }
 
     .btn-secondary {
@@ -293,7 +322,7 @@
     }
 
     .hero-notes {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       color: var(--text-soft);
       display: flex;
       flex-wrap: wrap;
@@ -315,6 +344,54 @@
       color: #16a34a;
     }
 
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-mini-board {
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 14px 14px 12px;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    }
+
+    .hero-mini-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-mini-title span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-mini-list {
+      list-style: none;
+      font-size: 0.83rem;
+      color: var(--text-soft);
+    }
+
+    .hero-mini-list li {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .hero-mini-list li span.icon {
+      font-size: 0.8rem;
+      color: var(--accent-strong);
+      margin-top: 1px;
+    }
+
     /* Section titles */
     .section-header {
       margin-bottom: 22px;
@@ -324,7 +401,7 @@
     }
 
     .section-eyebrow {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-soft);
@@ -338,12 +415,20 @@
     }
 
     .section-desc {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--text-soft);
       max-width: 640px;
     }
 
-    /* Problem → solution */
+    /* Problem / Solution */
+    .board {
+      border-radius: 22px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
     .problem-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.25fr);
@@ -351,11 +436,10 @@
     }
 
     .card {
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
-      background: var(--card-bg);
-      padding: 18px 16px;
-      box-shadow: var(--shadow-soft);
+      background: #ffffff;
+      padding: 16px 14px;
     }
 
     .card-header {
@@ -366,7 +450,7 @@
     }
 
     .card-chip {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       padding: 2px 10px;
       border-radius: 999px;
       border: 1px solid #e5e7eb;
@@ -383,7 +467,7 @@
     .solution-list {
       list-style: none;
       margin-top: 8px;
-      font-size: 0.93rem;
+      font-size: 0.9rem;
       color: var(--text-soft);
     }
 
@@ -414,17 +498,17 @@
     }
 
     .service-card {
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       padding: 16px 14px 14px;
       background: #ffffff;
       position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.06);
     }
 
     .service-tag {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       padding: 2px 8px;
       border-radius: 999px;
       border: 1px solid #e5e7eb;
@@ -450,7 +534,7 @@
 
     .service-list {
       list-style: none;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-soft);
       margin-bottom: 8px;
     }
@@ -462,7 +546,7 @@
     }
 
     .service-list li span.icon {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--accent-strong);
       margin-top: 2px;
     }
@@ -471,7 +555,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: var(--text-soft);
     }
 
@@ -506,59 +590,60 @@
 
     .layer-diagram {
       position: relative;
-      width: 280px;
-      height: 280px;
+      width: 320px;
+      height: 320px;
       margin: 0 auto 10px;
     }
 
-    .layer-ring {
+    .circle-ring {
       position: absolute;
-      border-radius: 999px;
+      border-radius: 50%;
       border: 1px solid #e5e7eb;
     }
 
-    .layer-ring.outer {
+    .circle-ring.outer {
       inset: 0;
-      background: radial-gradient(circle at top, #eef2ff, #ffffff);
+      background: radial-gradient(circle at top, #f4f6ff, #ffffff);
     }
 
-    .layer-ring.middle {
-      inset: 34px;
-      background: radial-gradient(circle at top, #f3f4ff, #ffffff);
+    .circle-ring.middle {
+      inset: 42px;
+      background: radial-gradient(circle at top, #f7f8ff, #ffffff);
     }
 
-    .layer-ring.inner {
-      inset: 80px;
+    .circle-ring.inner {
+      inset: 96px;
       background: #2563eb;
     }
 
-    /* ラベル（円とは別レイヤー） */
-    .layer-label {
+    .circle-label {
       position: absolute;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: #1f2937;
       white-space: nowrap;
     }
 
-    .layer-label.outer {
+    .circle-label.outer {
       top: 50%;
-      left: 14px;
+      left: 18px;
       transform: translateY(-50%);
+      font-weight: 500;
     }
 
-    .layer-label.middle {
+    .circle-label.middle {
       top: 50%;
-      right: 14px;
+      right: 18px;
       transform: translateY(-50%);
+      font-weight: 500;
     }
 
-    .layer-label.inner {
+    .circle-label.inner {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #f9fafb;
-      font-weight: 600;
-      font-size: 0.9rem;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
     }
 
     .layer-caption {
@@ -580,69 +665,6 @@
     .layer-list span {
       font-weight: 600;
       color: #111827;
-    }
-
-    /* Implementation timeline diagram */
-    .impl-timeline {
-      border-radius: 22px;
-      border: 1px solid var(--border-subtle);
-      background: #ffffff;
-      padding: 18px 20px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .impl-timeline-inner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .impl-step {
-      flex: 1 1 0;
-      min-width: 0;
-      text-align: center;
-    }
-
-    .impl-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      margin: 0 auto 6px;
-      border: 2px solid #1d4ed8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #1d4ed8;
-      background: #eef2ff;
-    }
-
-    .impl-step-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #111827;
-    }
-
-    .impl-mini {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      margin-top: 2px;
-    }
-
-    .impl-line {
-      width: 32px;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(to right, #c7d2fe, #1d4ed8);
-    }
-
-    .flow-note {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      margin-top: 8px;
     }
 
     /* Gmail→AI→Slack→Sheets フロー図 */
@@ -714,6 +736,69 @@
       border-color: transparent transparent transparent #1d4ed8;
     }
 
+    .flow-note {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-top: 8px;
+    }
+
+    /* Implementation timeline */
+    .impl-timeline {
+      border-radius: 22px;
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      padding: 18px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .impl-timeline-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .impl-step {
+      flex: 1 1 0;
+      min-width: 0;
+      text-align: center;
+    }
+
+    .impl-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      margin: 0 auto 6px;
+      border: 2px solid #1d4ed8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1d4ed8;
+      background: #eef2ff;
+    }
+
+    .impl-step-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .impl-mini {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .impl-line {
+      width: 32px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #c7d2fe, #1d4ed8);
+    }
+
     /* Pricing */
     .pricing-grid {
       display: grid;
@@ -722,7 +807,7 @@
     }
 
     .pricing-card {
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       border: 1px solid rgba(209, 213, 219, 0.9);
       padding: 18px 16px 14px;
       background: #ffffff;
@@ -791,7 +876,7 @@
 
     /* Contact */
     .contact-card {
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
       padding: 18px 16px 14px;
       background: #ffffff;
@@ -870,59 +955,46 @@
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
+      .hero-wrap {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-side {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .hero-mini-board {
+        flex: 1 1 220px;
+      }
       .problem-grid,
       .pricing-grid,
       .layers-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .impl-timeline-inner {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .impl-line {
-        width: 2px;
-        height: 24px;
-        margin: 0 auto;
-        background: linear-gradient(to bottom, #c7d2fe, #1d4ed8);
-      }
-      .scenario-flow {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .scenario-arrow {
-        width: 2px;
-        height: 26px;
-        margin: 0 auto;
-        background: linear-gradient(to bottom, #cbd5f5, #1d4ed8);
-      }
-      .scenario-arrow::after {
-        right: 50%;
-        top: auto;
-        bottom: -6px;
-        transform: translateX(50%) rotate(90deg);
-      }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       header {
         position: static;
-      }
-      .nav {
-        padding: 8px 0 6px;
       }
       .nav-links {
         display: none;
       }
-      .hero {
-        padding-top: 8px;
+      section {
+        padding: 40px 0;
       }
       .services-grid {
         grid-template-columns: minmax(0, 1fr);
       }
       .layer-diagram {
-        width: 240px;
-        height: 240px;
+        width: 260px;
+        height: 260px;
+      }
+      .circle-ring.middle {
+        inset: 34px;
+      }
+      .circle-ring.inner {
+        inset: 80px;
       }
     }
   </style>
@@ -932,7 +1004,7 @@
     <header>
       <div class="max-w nav">
         <div class="logo">
-          <img src="aif-logo.png" alt="AIF Studio Logo" class="logo-img" />
+          <img src="aif-logo.png" alt="AIF STUDIO Logo" class="logo-img" />
           <div>
             <div class="logo-text-main">AIF STUDIO</div>
             <div class="logo-text-sub">AI業務自動化エージェント構築会社</div>
@@ -955,47 +1027,76 @@
 
     <main>
       <div class="max-w">
+
         <!-- Hero -->
         <section class="hero">
-          <div>
-            <div class="badge">
-              <div class="badge-dot"></div>
-              <div>
-                <div class="badge-kv">Japan · AI Automation Agency</div>
-                <div style="font-size: 0.86rem; color: var(--text-soft);">
-                  メール・事務・営業を、自律するAIワーカーに。
+          <div class="hero-wrap">
+            <div class="hero-card">
+              <div class="hero-inner">
+                <div class="badge">
+                  <div class="badge-dot"></div>
+                  <div>
+                    <div class="badge-kv">Japan · AI Automation Agency</div>
+                    <div style="font-size: 0.86rem; color: var(--text-soft);">
+                      メール・事務・営業を、自律するAIワーカーに。
+                    </div>
+                  </div>
+                </div>
+
+                <h1 class="hero-title">
+                  日本から、<span class="gradient">未来を照らす</span><br />
+                  AI業務自動化エージェント
+                </h1>
+
+                <div class="hero-sub-typing" id="typing"></div>
+
+                <p class="hero-sub">
+                  AIF STUDIOは、既存の業務を“分析 → 分解 → 自動化”し、
+                  <strong>メール・事務・営業・バックオフィスをAIワーカーに置き換える</strong>
+                  専門チームです。<br />
+                  モデル開発ではなく、<strong>今すぐ動くAIシステム</strong>を構築します。
+                </p>
+
+                <div class="hero-cta-row">
+                  <button class="btn-primary" onclick="scrollToSection('contact')">
+                    無料ヒアリングを予約
+                    <span>→</span>
+                  </button>
+                  <button class="btn-secondary" onclick="scrollToSection('services')">
+                    できることを詳しく見る
+                  </button>
+                </div>
+
+                <div class="hero-notes">
+                  <span><i>●</i> 1人事業・少人数チームでも対応可</span>
+                  <span><i>●</i> AIモデル開発不要 / 既存LLM活用</span>
+                  <span><i>●</i> PoCから小さく始めて拡張可能</span>
                 </div>
               </div>
             </div>
 
-            <h1 class="hero-title">
-              日本から、<span class="gradient">未来を照らす</span><br />
-              AI業務自動化エージェント
-            </h1>
+            <div class="hero-side">
+              <div class="hero-mini-board">
+                <div class="hero-mini-title">
+                  <span class="dot"></span> 今日から削減できる「裏方仕事」
+                </div>
+                <ul class="hero-mini-list">
+                  <li><span class="icon">▸</span><div>問い合わせメールの分類・要約・返信案作成</div></li>
+                  <li><span class="icon">▸</span><div>会議音声からの議事録・ToDo自動生成</div></li>
+                  <li><span class="icon">▸</span><div>PDF・スプレッドシートの項目抽出と転記</div></li>
+                </ul>
+              </div>
 
-            <div class="hero-sub-typing" id="typing"></div>
-
-            <p class="hero-sub">
-              AIF Studioは、既存の業務を“分析 → 分解 → 自動化”し、
-              <strong>メール・事務・営業・バックオフィスをAIワーカーに置き換える</strong>
-              専門チームです。<br />
-              モデル開発ではなく、<strong>今すぐ動くAIシステム</strong>を構築します。
-            </p>
-
-            <div class="hero-cta-row">
-              <button class="btn-primary" onclick="scrollToSection('contact')">
-                無料ヒアリングを予約
-                <span>→</span>
-              </button>
-              <button class="btn-secondary" onclick="scrollToSection('services')">
-                できることを詳しく見る
-              </button>
-            </div>
-
-            <div class="hero-notes">
-              <span><i>●</i> 1人事業・少人数チームでも対応可</span>
-              <span><i>●</i> AIモデル開発不要 / 既存LLM活用</span>
-              <span><i>●</i> PoCから小さく始めて拡張可能</span>
+              <div class="hero-mini-board">
+                <div class="hero-mini-title">
+                  <span class="dot" style="background:#f97316;"></span> AIF STUDIO がやること
+                </div>
+                <ul class="hero-mini-list">
+                  <li><span class="icon">✓</span><div>現場業務のヒアリング＆AI化ポイント整理</div></li>
+                  <li><span class="icon">✓</span><div>Gmail / Slack / Sheets / 既存SaaSの連携設計</div></li>
+                  <li><span class="icon">✓</span><div>PoC構築〜運用までを伴走サポート</div></li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -1011,63 +1112,65 @@
             </p>
           </div>
 
-          <div class="problem-grid">
-            <div class="card">
-              <div class="card-header">
-                <span class="card-chip">Before</span>
-                <span class="card-title">現場で起きている “ムダな仕事”</span>
+          <div class="board">
+            <div class="problem-grid">
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-chip">Before</span>
+                  <span class="card-title">現場で起きている “ムダな仕事”</span>
+                </div>
+                <ul class="problem-list">
+                  <li>
+                    <span class="icon">×</span>
+                    <div>毎日同じようなメールを、言い回しだけ変えて書き直している</div>
+                  </li>
+                  <li>
+                    <span class="icon">×</span>
+                    <div>PDF・Excel・紙の情報を、ひたすら別システムへ転記している</div>
+                  </li>
+                  <li>
+                    <span class="icon">×</span>
+                    <div>報告書や議事録を書くだけで、会議時間の2倍以上かかっている</div>
+                  </li>
+                  <li>
+                    <span class="icon">×</span>
+                    <div>属人化した「この人しか分からない仕事」が増え続けている</div>
+                  </li>
+                  <li>
+                    <span class="icon">×</span>
+                    <div>AIを触ってみたが、日常業務のどこに効かせればよいか分からない</div>
+                  </li>
+                </ul>
               </div>
-              <ul class="problem-list">
-                <li>
-                  <span class="icon">×</span>
-                  <div>毎日同じようなメールを、言い回しだけ変えて書き直している</div>
-                </li>
-                <li>
-                  <span class="icon">×</span>
-                  <div>PDF・Excel・紙の情報を、ひたすら別システムへ転記している</div>
-                </li>
-                <li>
-                  <span class="icon">×</span>
-                  <div>報告書や議事録を書くだけで、会議時間の2倍以上かかっている</div>
-                </li>
-                <li>
-                  <span class="icon">×</span>
-                  <div>属人化した「この人しか分からない仕事」が増え続けている</div>
-                </li>
-                <li>
-                  <span class="icon">×</span>
-                  <div>AIを触ってみたが、日常業務のどこに効かせればよいか分からない</div>
-                </li>
-              </ul>
-            </div>
 
-            <div class="card">
-              <div class="card-header">
-                <span class="card-chip">After</span>
-                <span class="card-title">AIFが提供する “自律するAIワーカー” の姿</span>
+              <div class="card">
+                <div class="card-header">
+                  <span class="card-chip">After</span>
+                  <span class="card-title">AIFが提供する “自律するAIワーカー” の姿</span>
+                </div>
+                <ul class="solution-list">
+                  <li>
+                    <span class="icon">✓</span>
+                    <div>問い合わせメールを自動で分類・要約し、返信案まで生成してくれる</div>
+                  </li>
+                  <li>
+                    <span class="icon">✓</span>
+                    <div>PDF・スプレッドシート・Webの情報を横断し、必要な項目だけ抽出して整理</div>
+                  </li>
+                  <li>
+                    <span class="icon">✓</span>
+                    <div>会議音声から議事録とToDoを自動生成、Slackやメールで共有</div>
+                  </li>
+                  <li>
+                    <span class="icon">✓</span>
+                    <div>社内ナレッジをRAGで統合し、「聞く前にAIに聞く」が当たり前になる</div>
+                  </li>
+                  <li>
+                    <span class="icon">✓</span>
+                    <div>マクロ・RPAでは難しかった“グレーな判断”を、生成AIが補完してくれる</div>
+                  </li>
+                </ul>
               </div>
-              <ul class="solution-list">
-                <li>
-                  <span class="icon">✓</span>
-                  <div>問い合わせメールを自動で分類・要約し、返信案まで生成してくれる</div>
-                </li>
-                <li>
-                  <span class="icon">✓</span>
-                  <div>PDF・スプレッドシート・Webの情報を横断し、必要な項目だけ抽出して整理</div>
-                </li>
-                <li>
-                  <span class="icon">✓</span>
-                  <div>会議音声から議事録とToDoを自動生成、Slackやメールで共有</div>
-                </li>
-                <li>
-                  <span class="icon">✓</span>
-                  <div>社内ナレッジをRAGで統合し、「聞く前にAIに聞く」が当たり前になる</div>
-                </li>
-                <li>
-                  <span class="icon">✓</span>
-                  <div>マクロ・RPAでは難しかった“グレーな判断”を、生成AIが補完してくれる</div>
-                </li>
-              </ul>
             </div>
           </div>
         </section>
@@ -1163,20 +1266,20 @@
             <div class="section-title">AIFが自動化する「業務の層」を、ひと目で。</div>
             <p class="section-desc">
               目標・プロジェクト・タスクの3層で業務を整理し、AIが入るポイントを決めます。
-              monday.com のような円グラフレイアウトで、全体像を直感的に伝えます。
+              monday.com のように、全体像を一枚の円で直感的に伝えます。
             </p>
           </div>
 
           <div class="layers-grid">
             <div class="layer-diagram-card">
               <div class="layer-diagram">
-                <div class="layer-ring outer"></div>
-                <div class="layer-ring middle"></div>
-                <div class="layer-ring inner"></div>
+                <div class="circle-ring outer"></div>
+                <div class="circle-ring middle"></div>
+                <div class="circle-ring inner"></div>
 
-                <div class="layer-label outer">タスク</div>
-                <div class="layer-label middle">プロジェクト・タイムライン</div>
-                <div class="layer-label inner">目標・目的</div>
+                <div class="circle-label outer">タスク</div>
+                <div class="circle-label middle">プロジェクト・タイムライン</div>
+                <div class="circle-label inner">目標・目的</div>
               </div>
               <div class="layer-caption">
                 中心にある「目標・目的」に合わせて、外側のタスクまでAIで最適化していくイメージです。
@@ -1359,15 +1462,16 @@
             </div>
           </div>
         </section>
+
       </div>
-    </main> 
+    </main>
 
     <footer>
       <div class="max-w footer-inner">
         <div class="footer-tagline">
-          日本から、<span>未来を照らす。</span> AIF Studio
+          日本から、<span>未来を照らす。</span> AIF STUDIO
         </div>
-        <div>© <span id="year"></span> AIF Studio. All rights reserved.</div>
+        <div>© <span id="year"></span> AIF STUDIO. All rights reserved.</div>
       </div>
     </footer>
   </div>
