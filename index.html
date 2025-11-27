@@ -167,7 +167,7 @@
       padding: 52px 0;
     }
 
-    /* Hero：1カラム */
+    /* Hero */
     .hero {
       padding-top: 20px;
     }
@@ -511,7 +511,6 @@
       margin: 0 auto 10px;
     }
 
-    /* 円そのもの（線や塗り） */
     .layer-ring {
       position: absolute;
       border-radius: 999px;
@@ -533,7 +532,7 @@
       background: #2563eb;
     }
 
-    /* テキストは別レイヤーにして、円とはかぶらないように配置 */
+    /* ラベル（円とは別レイヤー） */
     .layer-label {
       position: absolute;
       font-size: 0.8rem;
@@ -541,21 +540,18 @@
       white-space: nowrap;
     }
 
-    /* 外側テキスト：左寄せ */
     .layer-label.outer {
       top: 50%;
       left: 14px;
       transform: translateY(-50%);
     }
 
-    /* 中央テキスト：右寄せ */
     .layer-label.middle {
       top: 50%;
       right: 14px;
       transform: translateY(-50%);
     }
 
-    /* 内側（青）のテキスト：中央 */
     .layer-label.inner {
       top: 50%;
       left: 50%;
@@ -649,7 +645,7 @@
       margin-top: 8px;
     }
 
-    /* Gmail→Slack→Sheets フロー図 */
+    /* Gmail→AI→Slack→Sheets フロー図 */
     .scenario-card {
       border-radius: 22px;
       border: 1px solid var(--border-subtle);
@@ -936,7 +932,6 @@
     <header>
       <div class="max-w nav">
         <div class="logo">
-          <!-- 自分のロゴ画像のパスに変更してOK -->
           <img src="aif-logo.png" alt="AIF Studio Logo" class="logo-img" />
           <div>
             <div class="logo-text-main">AIF STUDIO</div>
@@ -1175,12 +1170,10 @@
           <div class="layers-grid">
             <div class="layer-diagram-card">
               <div class="layer-diagram">
-                <!-- リング -->
                 <div class="layer-ring outer"></div>
                 <div class="layer-ring middle"></div>
                 <div class="layer-ring inner"></div>
 
-                <!-- テキスト（円とは別レイヤー） -->
                 <div class="layer-label outer">タスク</div>
                 <div class="layer-label middle">プロジェクト・タイムライン</div>
                 <div class="layer-label inner">目標・目的</div>
@@ -1389,7 +1382,6 @@
       });
     }
 
-    // タイピング：1回だけ
     const typingEl = document.getElementById("typing");
     const typingText = "AIが、御社の“裏方仕事”をまるごと引き受けます。";
     let charIndex = 0;
@@ -1403,7 +1395,6 @@
       }
     }
 
-    // Scroll reveal
     const revealEls = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -1418,7 +1409,6 @@
     );
     revealEls.forEach((el) => observer.observe(el));
 
-    // 年表示＋初期アニメ起動
     window.addEventListener("load", () => {
       const yearEl = document.getElementById("year");
       if (yearEl) yearEl.textContent = new Date().getFullYear();
