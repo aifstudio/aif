@@ -41,7 +41,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -144,7 +143,6 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
     }
 
     .brand-icon {
@@ -235,6 +233,7 @@
       border: 1px solid rgba(203, 213, 225, 0.9);
       background: rgba(248, 250, 252, 0.96);
       color: var(--color-muted);
+      white-space: nowrap;
     }
 
     .nav-toggle {
@@ -491,7 +490,7 @@
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.4);
     }
 
-    /* 概念図：1段の流れを強調 */
+    /* 概念図：1段の流れ */
     .flow-schema {
       border-radius: 18px;
       background: radial-gradient(circle at 0 0, #e0f2fe, #f8fafc 40%, #edf2ff 100%);
@@ -1064,41 +1063,35 @@
     }
 
     /* ========== RESPONSIVE ========== */
+
+    /* 中サイズ以下：ボード縦積み＆フロー縦方向、グリッド2列化 */
     @media (max-width: 960px) {
       .hero-board { grid-template-columns: minmax(0, 1fr); }
       .vision-layout { grid-template-columns: minmax(0, 1fr); }
       .layers-layout { grid-template-columns: minmax(0, 1fr); }
       .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .contact-card { grid-template-columns: minmax(0, 1fr); }
-    }
-
-    @media (max-width: 840px) {
-      .automation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .flows-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 720px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: inline-flex; }
-      section { padding: 48px 0; }
-      .hero { padding-top: 56px; }
-      .hero-title { font-size: clamp(24px, 7vw, 30px); }
-      .hero-board { margin-top: 32px; }
 
       .flow-schema {
         flex-direction: column;
         align-items: stretch;
       }
 
+      .schema-step {
+        width: 100%;
+      }
+
       .schema-arrow {
         width: 2px;
         height: 18px;
-        margin: 2px auto;
+        margin: 4px auto;
         background: linear-gradient(180deg, #0ea5e9, #22c55e);
+        box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
       }
 
       .schema-arrow::after {
+        content: "";
+        position: absolute;
         right: -3px;
         top: auto;
         bottom: -4px;
@@ -1110,6 +1103,20 @@
         border-top: 2px solid #22c55e;
         transform: rotate(45deg);
       }
+
+      .automation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flows-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* モバイル：1列レイアウト＆ナビ切替 */
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; }
+      section { padding: 48px 0; }
+      .hero { padding-top: 56px; }
+      .hero-title { font-size: clamp(24px, 7vw, 30px); }
+      .hero-board { margin-top: 32px; }
 
       .automation-grid { grid-template-columns: minmax(0, 1fr); }
       .flows-grid { grid-template-columns: minmax(0, 1fr); }
@@ -1452,9 +1459,9 @@
       <div class="container">
         <div class="section-eyebrow">AUTOMATION FLOW EXAMPLES</div>
         <h2 class="section-title">よくあるフロー例 3本。</h2>
-      <p class="section-highlight">
-        「何がどこを通って、どこに記録されるか」をざっくり掴めるレベルで載せています。実際には御社の業務に合わせてカスタマイズします。
-      </p>
+        <p class="section-highlight">
+          「何がどこを通って、どこに記録されるか」をざっくり掴めるレベルで載せています。実際には御社の業務に合わせてカスタマイズします。
+        </p>
         <div class="flows-grid">
           <div class="flow-card">
             <div class="flow-label">Flow 01</div>
@@ -1549,7 +1556,7 @@
           <div class="pricing-card">
             <div class="pricing-badge">おすすめ</div>
             <div class="pricing-name">スタンダードPoCプラン</div>
-            <div class="pricing-price">40〜60万円</div>
+            <divの class="pricing-price">40〜60万円</div>
             <div class="pricing-note">対象業務：3〜5本 / 期間：1〜2ヶ月目安</div>
             <ul class="pricing-list">
               <li>複数部署・複数業務をまとめて設計</li>
@@ -1645,30 +1652,32 @@
               <li>もしAIワーカーが1人いたら、どんな仕事を任せたいか。</li>
             </ul>
             <p class="contact-note">
-              フォームがまだ無い場合は、メールでのご連絡でも構いません。  
-              件名に「AI業務自動化の相談」と書いていただけるとスムーズです。
+              下のボタンを押すと、御社のメールソフトが立ち上がります。  
+              件名と簡単な内容だけ送っていただければ大丈夫です。
             </p>
           </div>
           <div class="contact-fields">
             <div class="field">
-              <label class="field-label">会社名・部署名</label>
+              <label class="field-label">会社名・部署名（メモ用・送信はメール側でOK）</label>
               <input class="field-input" type="text" placeholder="例）○○株式会社　バックオフィス部" />
             </div>
             <div class="field">
-              <label class="field-label">お名前</label>
+              <label class="field-label">お名前（メモ用）</label>
               <input class="field-input" type="text" placeholder="例）山田 太郎" />
             </div>
             <div class="field">
-              <label class="field-label">メールアドレス</label>
-              <input class="field-input" type="email" placeholder="例）example@example.com" />
-            </div>
-            <div class="field">
-              <label class="field-label">ご相談内容（簡単で構いません）</label>
+              <label class="field-label">話したいことのメモ</label>
               <textarea class="field-input" rows="3" placeholder="例）問い合わせメール・請求処理・日報作成に時間を取られており、どこから手を付けるべきか相談したいです。"></textarea>
             </div>
-            <button class="btn-primary" style="width:max-content;margin-top:4px;">
-              送信（ダミーUI） / メールで相談する
-            </button>
+
+            <!-- aifstudio.hal@gmail.com に飛ぶボタン -->
+            <a
+              href="mailto:aifstudio.hal@gmail.com?subject=AI業務自動化の相談&body=【会社名／部署名】%0D%0A【お名前】%0D%0A【ご相談内容】%0D%0A"
+              class="btn-primary"
+              style="width:max-content;margin-top:4px; text-decoration:none; display:inline-flex;align-items:center;"
+            >
+              メールで相談する（aifstudio.hal@gmail.com 宛）
+            </a>
           </div>
         </div>
       </div>
